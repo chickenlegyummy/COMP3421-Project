@@ -315,7 +315,7 @@ class ProductsPage {
 
     createProductCard(product) {
         const card = document.createElement('div');
-        card.className = 'product-card scroll-reveal';
+        card.className = 'product-card scroll-reveal revealed';
         card.onclick = () => window.location.href = `product-detail.html?id=${product.id}`;
         
         card.innerHTML = `
