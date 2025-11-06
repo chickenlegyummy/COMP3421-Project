@@ -357,6 +357,11 @@
         padding: var(--space-xl) 0;
     }
     
+    /* Hide view toggle on mobile */
+    .view-toggle {
+        display: none !important;
+    }
+    
     .products-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: var(--space-md);

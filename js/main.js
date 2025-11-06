@@ -72,6 +72,62 @@ function initNavigation() {
             });
         }
     });
+    
+    // Mobile utility buttons
+    const mobileLanguageToggle = document.getElementById('mobileLanguageToggle');
+    const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+    const mobileSearchToggle = document.getElementById('mobileSearchToggle');
+    
+    if (mobileLanguageToggle) {
+        mobileLanguageToggle.addEventListener('click', () => {
+            const languageToggle = document.getElementById('languageToggle');
+            if (languageToggle) languageToggle.click();
+        });
+    }
+    
+    if (mobileThemeToggle) {
+        mobileThemeToggle.addEventListener('click', () => {
+            const themeToggle = document.getElementById('themeToggle');
+            if (themeToggle) themeToggle.click();
+        });
+    }
+    
+    if (mobileSearchToggle) {
+        mobileSearchToggle.addEventListener('click', () => {
+            // Close mobile menu
+            if (navMenu) navMenu.classList.remove('active');
+            if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
+            document.body.classList.remove('menu-open');
+            
+            // Open search
+            const searchToggle = document.getElementById('searchToggle');
+            const searchBox = document.getElementById('searchBox');
+            if (searchBox) {
+                searchBox.classList.add('active');
+                const searchInput = searchBox.querySelector('input');
+                if (searchInput) searchInput.focus();
+            }
+        });
+    }
+    
+    // Update mobile cart count
+    function updateMobileCartCount() {
+        const mobileCartCount = document.getElementById('mobileCartCount');
+        const desktopCartCount = document.querySelector('.nav-right .cart-count');
+        if (mobileCartCount && desktopCartCount) {
+            mobileCartCount.textContent = desktopCartCount.textContent;
+        }
+    }
+    
+    // Update initially and on cart changes
+    updateMobileCartCount();
+    if (window.cartManager) {
+        const originalAddItem = window.cartManager.addItem;
+        window.cartManager.addItem = function(...args) {
+            originalAddItem.apply(this, args);
+            updateMobileCartCount();
+        };
+    }
 }
 
 /**
