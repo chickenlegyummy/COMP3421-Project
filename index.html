@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium Guitar Shop - Explore our collection of electric, acoustic, and bass guitars with accessories">
+    <meta name="keywords" content="guitar, electric guitar, acoustic guitar, bass, music, instruments">
+    <title data-lang-en="GuitarHub - Premium Guitars & Accessories" data-lang-zh="結他中心 - 優質結他及配件">GuitarHub - Premium Guitars & Accessories</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="header" id="header">
+        <div class="top-banner">
+            <p data-lang-en="Free Shipping on Orders Over $299 | Special Holiday Sale - Up to 30% Off" 
+               data-lang-zh="訂單滿$299免運費 | 節日特惠 - 低至七折">
+               Free Shipping on Orders Over $299 | Special Holiday Sale - Up to 30% Off
+            </p>
+        </div>
+        
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <div class="nav-left">
+                    <a href="index.html" class="logo" aria-label="GuitarHub Home">
+                        <i class="fas fa-guitar"></i>
+                        <span>GuitarHub</span>
+                    </a>
+                </div>
+                
+                <div class="nav-center">
+                    <ul class="nav-menu" id="navMenu">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">
+                                <span data-lang-en="Guitars" data-lang-zh="結他">Guitars</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a href="pages/products.html?category=electric" class="dropdown-item" data-lang-en="Electric Guitars" data-lang-zh="電結他">Electric Guitars</a>
+                                <a href="pages/products.html?category=acoustic" class="dropdown-item" data-lang-en="Acoustic Guitars" data-lang-zh="木結他">Acoustic Guitars</a>
+                                <a href="pages/products.html?category=bass" class="dropdown-item" data-lang-en="Bass Guitars" data-lang-zh="低音結他">Bass Guitars</a>
+                                <a href="pages/products.html?category=classical" class="dropdown-item" data-lang-en="Classical Guitars" data-lang-zh="古典結他">Classical Guitars</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">
+                                <span data-lang-en="Accessories" data-lang-zh="配件">Accessories</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a href="pages/accessories.html?category=strings" class="dropdown-item" data-lang-en="Strings" data-lang-zh="琴弦">Strings</a>
+                                <a href="pages/accessories.html?category=picks" class="dropdown-item" data-lang-en="Picks" data-lang-zh="撥片">Picks</a>
+                                <a href="pages/accessories.html?category=cases" class="dropdown-item" data-lang-en="Cases & Bags" data-lang-zh="琴盒及袋">Cases & Bags</a>
+                                <a href="pages/accessories.html?category=cables" class="dropdown-item" data-lang-en="Cables" data-lang-zh="線材">Cables</a>
+                                <a href="pages/accessories.html?category=pedals" class="dropdown-item" data-lang-en="Effects Pedals" data-lang-zh="效果器">Effects Pedals</a>
+                                <a href="pages/accessories.html?category=tuners" class="dropdown-item" data-lang-en="Tuners" data-lang-zh="調音器">Tuners</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/products.html?featured=true" class="nav-link" data-lang-en="New Arrivals" data-lang-zh="新品上架">New Arrivals</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/products.html?sale=true" class="nav-link" data-lang-en="Sale" data-lang-zh="特價">Sale</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/about.html" class="nav-link" data-lang-en="About" data-lang-zh="關於">About</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-right">
+                    <div class="search-container">
+                        <button class="search-btn" id="searchToggle" aria-label="Toggle search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div class="search-box" id="searchBox">
+                            <input type="search" placeholder="Search guitars..." aria-label="Search">
+                            <button type="submit" aria-label="Submit search">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button class="icon-btn language-toggle" id="languageToggle" aria-label="Toggle language">
+                        <span class="lang-text">EN</span>
+                    </button>
+                    
+                    <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <a href="pages/login.html" class="icon-btn" aria-label="User account">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    
+                    <a href="pages/cart.html" class="icon-btn cart-btn" aria-label="Shopping cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </a>
+                    
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-slider" id="heroSlider">
+                <div class="hero-slide active">
+                    <div class="hero-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <div class="hero-content">
+                            <h1 class="hero-title" data-lang-en="Premium Guitars Collection" data-lang-zh="優質結他系列">Premium Guitars Collection</h1>
+                            <p class="hero-subtitle" data-lang-en="Discover legendary sound and craftsmanship" data-lang-zh="探索傳奇聲音與工藝">Discover legendary sound and craftsmanship</p>
+                            <a href="pages/products.html" class="btn btn-primary" data-lang-en="Shop Now" data-lang-zh="立即選購">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-slide">
+                    <div class="hero-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <div class="hero-content">
+                            <h1 class="hero-title" data-lang-en="New Year Sale - Up to 30% Off" data-lang-zh="新年大減價 - 低至七折">New Year Sale - Up to 30% Off</h1>
+                            <p class="hero-subtitle" data-lang-en="Limited time offer on selected models" data-lang-zh="精選型號限時優惠">Limited time offer on selected models</p>
+                            <a href="pages/products.html?sale=true" class="btn btn-primary" data-lang-en="View Sale" data-lang-zh="查看優惠">View Sale</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-slide">
+                    <div class="hero-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <div class="hero-content">
+                            <h1 class="hero-title" data-lang-en="Free Shipping Worldwide" data-lang-zh="全球免運">Free Shipping Worldwide</h1>
+                            <p class="hero-subtitle" data-lang-en="On orders over $299" data-lang-zh="訂單滿$299">On orders over $299</p>
+                            <a href="pages/products.html" class="btn btn-primary" data-lang-en="Learn More" data-lang-zh="了解更多">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="hero-nav hero-prev" aria-label="Previous slide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="hero-nav hero-next" aria-label="Next slide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="hero-indicators" id="heroIndicators"></div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="categories-section">
+            <div class="container">
+                <h2 class="section-title" data-lang-en="Shop by Category" data-lang-zh="按類別選購">Shop by Category</h2>
+                <div class="categories-grid">
+                    <a href="pages/products.html?category=electric" class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-guitar"></i>
+                        </div>
+                        <h3 data-lang-en="Electric Guitars" data-lang-zh="電結他">Electric Guitars</h3>
+                        <p data-lang-en="Explore our electric collection" data-lang-zh="探索我們的電結他系列">Explore our electric collection</p>
+                    </a>
+                    <a href="pages/products.html?category=acoustic" class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-guitar"></i>
+                        </div>
+                        <h3 data-lang-en="Acoustic Guitars" data-lang-zh="木結他">Acoustic Guitars</h3>
+                        <p data-lang-en="Pure, natural sound" data-lang-zh="純淨自然音色">Pure, natural sound</p>
+                    </a>
+                    <a href="pages/products.html?category=bass" class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-guitar"></i>
+                        </div>
+                        <h3 data-lang-en="Bass Guitars" data-lang-zh="低音結他">Bass Guitars</h3>
+                        <p data-lang-en="Deep, powerful tones" data-lang-zh="深沉有力音色">Deep, powerful tones</p>
+                    </a>
+                    <a href="pages/accessories.html" class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-toolbox"></i>
+                        </div>
+                        <h3 data-lang-en="Accessories" data-lang-zh="配件">Accessories</h3>
+                        <p data-lang-en="Complete your setup" data-lang-zh="完善您的設備">Complete your setup</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products Section -->
+        <section class="featured-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" data-lang-en="Featured Products" data-lang-zh="精選產品">Featured Products</h2>
+                    <a href="pages/products.html" class="view-all-link" data-lang-en="View All" data-lang-zh="查看全部">View All <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="products-grid" id="featuredProducts">
+                    <!-- Products will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Promo Banner -->
+        <section class="promo-banner">
+            <div class="container">
+                <div class="promo-content">
+                    <h2 data-lang-en="Join Our Newsletter" data-lang-zh="訂閱我們的電子報">Join Our Newsletter</h2>
+                    <p data-lang-en="Get exclusive deals and updates" data-lang-zh="獲取獨家優惠和資訊">Get exclusive deals and updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" aria-label="Email address" required data-lang-en-placeholder="Enter your email" data-lang-zh-placeholder="輸入您的電郵">
+                        <button type="submit" class="btn btn-primary" data-lang-en="Subscribe" data-lang-zh="訂閱">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 data-lang-en="About Us" data-lang-zh="關於我們">About Us</h3>
+                    <p data-lang-en="Your trusted source for premium guitars and accessories since 2024." data-lang-zh="自2024年起，您值得信賴的優質結他和配件來源。">Your trusted source for premium guitars and accessories since 2024.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 data-lang-en="Quick Links" data-lang-zh="快速連結">Quick Links</h3>
+                    <ul>
+                        <li><a href="pages/products.html" data-lang-en="All Products" data-lang-zh="所有產品">All Products</a></li>
+                        <li><a href="pages/products.html?featured=true" data-lang-en="New Arrivals" data-lang-zh="新品上架">New Arrivals</a></li>
+                        <li><a href="pages/products.html?sale=true" data-lang-en="Sale" data-lang-zh="特價">Sale</a></li>
+                        <li><a href="pages/about.html" data-lang-en="About Us" data-lang-zh="關於我們">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 data-lang-en="Customer Service" data-lang-zh="客戶服務">Customer Service</h3>
+                    <ul>
+                        <li><a href="#" data-lang-en="Contact Us" data-lang-zh="聯絡我們">Contact Us</a></li>
+                        <li><a href="#" data-lang-en="Shipping Info" data-lang-zh="運送資訊">Shipping Info</a></li>
+                        <li><a href="#" data-lang-en="Returns" data-lang-zh="退貨政策">Returns</a></li>
+                        <li><a href="#" data-lang-en="FAQ" data-lang-zh="常見問題">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 data-lang-en="Contact" data-lang-zh="聯絡方式">Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Music Street, HK</li>
+                        <li><i class="fas fa-phone"></i> +852 1234 5678</li>
+                        <li><i class="fas fa-envelope"></i> info@guitarhub.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GuitarHub. <span data-lang-en="All rights reserved." data-lang-zh="版權所有。">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/theme.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
