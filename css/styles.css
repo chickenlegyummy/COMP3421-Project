@@ -129,6 +129,28 @@ input, textarea, select {
     transition: all var(--transition-fast);
 }
 
+/* Mobile Menu Overlay */
+body.menu-open::after {
+    content: '';
+    position: fixed;
+    top: var(--navbar-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    animation: fadeIn 0.3s ease;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 /* ===================================
    Utility Classes
    =================================== */
@@ -408,6 +430,8 @@ input, textarea, select {
     height: 30px;
     justify-content: center;
     padding: 0;
+    background: transparent;
+    cursor: pointer;
 }
 
 .mobile-menu-toggle span {
@@ -416,6 +440,18 @@ input, textarea, select {
     background-color: var(--text-primary);
     border-radius: var(--radius-sm);
     transition: all var(--transition-base);
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
 }
 
 /* ===================================
@@ -846,7 +882,56 @@ input, textarea, select {
    =================================== */
 @media (max-width: 992px) {
     .nav-center {
-        display: none;
+        position: fixed;
+        top: var(--navbar-height);
+        left: -100%;
+        width: 280px;
+        height: calc(100vh - var(--navbar-height));
+        background-color: var(--bg-primary);
+        padding: var(--space-xl);
+        overflow-y: auto;
+        transition: left var(--transition-base);
+        z-index: 1000;
+        box-shadow: var(--shadow-lg);
+        border-right: 1px solid var(--border-color);
+    }
+    
+    .nav-center.active {
+        left: 0;
+    }
+    
+    .nav-menu {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+    }
+    
+    .nav-item {
+        width: 100%;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .nav-link {
+        width: 100%;
+        padding: var(--space-md);
+        justify-content: space-between;
+    }
+    
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        padding-left: var(--space-lg);
+        max-height: 0;
+        overflow: hidden;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: max-height var(--transition-base);
+    }
+    
+    .dropdown-menu.active {
+        max-height: 300px;
     }
     
     .mobile-menu-toggle {
@@ -860,9 +945,17 @@ input, textarea, select {
     .hero-subtitle {
         font-size: var(--font-size-lg);
     }
+    
+    .nav-right {
+        gap: var(--space-xs);
+    }
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding: 0 var(--space-md);
+    }
+    
     .hero-section {
         height: 400px;
     }
@@ -885,7 +978,8 @@ input, textarea, select {
     }
     
     .products-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-md);
     }
     
     .newsletter-form {
@@ -893,8 +987,8 @@ input, textarea, select {
     }
     
     .footer-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-xl);
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-lg);
     }
 }
 
@@ -905,8 +999,21 @@ input, textarea, select {
         --font-size-2xl: 1.25rem;
     }
     
+    .container {
+        padding: 0 var(--space-sm);
+    }
+    
+    .nav-center {
+        width: 100%;
+        left: -100%;
+    }
+    
+    .nav-center.active {
+        left: 0;
+    }
+    
     .hero-content {
-        padding: var(--space-lg);
+        padding: var(--space-md);
     }
     
     .products-grid {
@@ -914,11 +1021,16 @@ input, textarea, select {
     }
     
     .nav-right {
-        gap: var(--space-sm);
+        gap: var(--space-xs);
     }
     
     .icon-btn {
-        width: 36px;
-        height: 36px;
+        width: 32px;
+        height: 32px;
+        font-size: var(--font-size-sm);
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
     }
 }
