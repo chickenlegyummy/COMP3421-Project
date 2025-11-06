@@ -405,44 +405,27 @@ class AccessoriesDetailPage {
             .slice(0, 4);
 
         relatedGrid.innerHTML = relatedProducts.map(product => {
-            const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
+            const badge = product.badge || '';
             
             return `
-                <div class="product-card scroll-reveal">
-                    <a href="./accessories-detail.html?id=${product.id}" class="product-image">
+                <div class="product-card scroll-reveal revealed" onclick="window.location.href='accessories-detail.html?id=${product.id}'">
+                    <div class="product-image">
                         <img src="${product.image}" alt="${product.name}" loading="lazy">
-                        <span class="product-badge">-${discount}%</span>
-                    </a>
-                    <div class="product-content">
-                        <span class="product-category">${product.brand}</span>
-                        <h3 class="product-name">${product.name}</h3>
-                        <div class="product-footer">
-                            <div class="product-price">
-                                <span class="current-price">$${product.price}</span>
-                                <span class="original-price">$${product.originalPrice}</span>
-                            </div>
-                            <button class="btn-icon add-to-cart" data-id="${product.id}" aria-label="Add to cart">
-                                <i class="fas fa-shopping-cart"></i>
+                        ${badge ? `<span class="product-badge">${badge}</span>` : ''}
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">${product.category}</p>
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-price">$${product.price.toLocaleString()}</p>
+                        <div class="product-actions">
+                            <button class="btn btn-primary" onclick="event.stopPropagation(); addToCartAccessory(${product.id})">
+                                <i class="fas fa-shopping-cart"></i> <span data-lang-en="Add to Cart" data-lang-zh="加入購物車">Add to Cart</span>
                             </button>
                         </div>
                     </div>
                 </div>
             `;
         }).join('');
-
-        // Add event listeners to add-to-cart buttons
-        relatedGrid.querySelectorAll('.add-to-cart').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const productId = parseInt(btn.dataset.id);
-                const product = ACCESSORIES_DATABASE_DETAIL.find(p => p.id === productId);
-                
-                if (product) {
-                    const cartManager = new CartManager();
-                    cartManager.addItem(product);
-                }
-            });
-        });
     }
 
     /**
