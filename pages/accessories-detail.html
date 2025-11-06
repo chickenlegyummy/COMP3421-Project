@@ -19,61 +19,95 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
+    <header class="header" id="header">
         <div class="top-banner">
-            <div class="container">
-                <div class="banner-content">
-                    <p data-lang-en="Free Shipping on Orders Over $299" data-lang-zh="訂單滿 $299 免運費">
-                        Free Shipping on Orders Over $299
-                    </p>
-                </div>
-            </div>
+            <p data-lang-en="Free Shipping on Orders Over $299 | Special Holiday Sale - Up to 30% Off" 
+               data-lang-zh="訂單滿$299免運費 | 節日特惠 - 低至七折">
+               Free Shipping on Orders Over $299 | Special Holiday Sale - Up to 30% Off
+            </p>
         </div>
         
-        <nav class="navbar">
-            <div class="container">
-                <div class="nav-content">
-                    <a href="../index.html" class="logo">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <div class="nav-left">
+                    <a href="../index.html" class="logo" aria-label="GuitarHub Home">
                         <i class="fas fa-guitar"></i>
                         <span>GuitarHub</span>
                     </a>
-                    
-                    <ul class="nav-menu">
-                        <li><a href="../index.html" data-lang-en="Home" data-lang-zh="首頁">Home</a></li>
-                        <li class="dropdown">
-                            <a href="./products.html" data-lang-en="Products" data-lang-zh="產品">Products <i class="fas fa-chevron-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="./products.html?category=electric" data-lang-en="Electric Guitars" data-lang-zh="電吉他">Electric Guitars</a></li>
-                                <li><a href="./products.html?category=acoustic" data-lang-en="Acoustic Guitars" data-lang-zh="木吉他">Acoustic Guitars</a></li>
-                                <li><a href="./products.html?category=bass" data-lang-en="Bass Guitars" data-lang-zh="貝斯">Bass Guitars</a></li>
-                                <li><a href="./products.html?category=classical" data-lang-en="Classical Guitars" data-lang-zh="古典吉他">Classical Guitars</a></li>
-                            </ul>
+                </div>
+                
+                <div class="nav-center">
+                    <ul class="nav-menu" id="navMenu">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">
+                                <span data-lang-en="Guitars" data-lang-zh="結他">Guitars</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a href="products.html?category=electric" class="dropdown-item" data-lang-en="Electric Guitars" data-lang-zh="電結他">Electric Guitars</a>
+                                <a href="products.html?category=acoustic" class="dropdown-item" data-lang-en="Acoustic Guitars" data-lang-zh="木結他">Acoustic Guitars</a>
+                                <a href="products.html?category=bass" class="dropdown-item" data-lang-en="Bass Guitars" data-lang-zh="低音結他">Bass Guitars</a>
+                                <a href="products.html?category=classical" class="dropdown-item" data-lang-en="Classical Guitars" data-lang-zh="古典結他">Classical Guitars</a>
+                            </div>
                         </li>
-                        <li><a href="./accessories.html" data-lang-en="Accessories" data-lang-zh="配件">Accessories</a></li>
-                        <li><a href="./about.html" data-lang-en="About" data-lang-zh="關於">About</a></li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">
+                                <span data-lang-en="Accessories" data-lang-zh="配件">Accessories</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a href="accessories.html?category=strings" class="dropdown-item" data-lang-en="Strings" data-lang-zh="琴弦">Strings</a>
+                                <a href="accessories.html?category=picks" class="dropdown-item" data-lang-en="Picks" data-lang-zh="撥片">Picks</a>
+                                <a href="accessories.html?category=cases" class="dropdown-item" data-lang-en="Cases & Bags" data-lang-zh="琴盒及袋">Cases & Bags</a>
+                                <a href="accessories.html?category=cables" class="dropdown-item" data-lang-en="Cables" data-lang-zh="線材">Cables</a>
+                                <a href="accessories.html?category=pedals" class="dropdown-item" data-lang-en="Effects Pedals" data-lang-zh="效果器">Effects Pedals</a>
+                                <a href="accessories.html?category=tuners" class="dropdown-item" data-lang-en="Tuners" data-lang-zh="調音器">Tuners</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="products.html?featured=true" class="nav-link" data-lang-en="New Arrivals" data-lang-zh="新品上架">New Arrivals</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="products.html?sale=true" class="nav-link" data-lang-en="Sale" data-lang-zh="特價">Sale</a>
+                        </li>
                     </ul>
-                    
-                    <div class="nav-actions">
-                        <button class="icon-btn search-btn" aria-label="Search">
+                </div>
+                
+                <div class="nav-right">
+                    <div class="search-container">
+                        <button class="search-btn" id="searchToggle" aria-label="Toggle search">
                             <i class="fas fa-search"></i>
                         </button>
-                        <button class="icon-btn theme-toggle" aria-label="Toggle theme">
-                            <i class="fas fa-moon"></i>
-                        </button>
-                        <button class="icon-btn language-toggle" aria-label="Toggle language">
-                            <span class="lang-text">中文</span>
-                        </button>
-                        <a href="./login.html" class="icon-btn" aria-label="Account">
-                            <i class="fas fa-user"></i>
-                        </a>
-                        <a href="./cart.html" class="icon-btn cart-btn" aria-label="Shopping cart">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span class="cart-badge">0</span>
-                        </a>
-                        <button class="mobile-menu-btn" aria-label="Menu">
-                            <i class="fas fa-bars"></i>
-                        </button>
+                        <div class="search-box" id="searchBox">
+                            <input type="search" placeholder="Search guitars..." aria-label="Search">
+                            <button type="submit" aria-label="Submit search">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
                     </div>
+                    
+                    <button class="icon-btn language-toggle" id="languageToggle" aria-label="Toggle language">
+                        <span class="lang-text">EN</span>
+                    </button>
+                    
+                    <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <a href="login.html" class="icon-btn" aria-label="User account">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    
+                    <a href="cart.html" class="icon-btn cart-btn" aria-label="Shopping cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </a>
+                    
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
             </div>
         </nav>
@@ -320,7 +354,6 @@
                     <ul class="footer-links">
                         <li><a href="./products.html" data-lang-en="Products" data-lang-zh="產品">Products</a></li>
                         <li><a href="./accessories.html" data-lang-en="Accessories" data-lang-zh="配件">Accessories</a></li>
-                        <li><a href="./about.html" data-lang-en="About Us" data-lang-zh="關於我們">About Us</a></li>
                         <li><a href="#" data-lang-en="Contact" data-lang-zh="聯絡我們">Contact</a></li>
                     </ul>
                 </div>
