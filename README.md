@@ -38,21 +38,30 @@ COMP3421-Project/
 ├── css/
 │   ├── styles.css            # Main stylesheet with theme variables
 │   ├── animations.css        # Animation keyframes and utilities
-│   └── products.css          # Products page specific styles
+│   ├── products.css          # Products page specific styles
+│   ├── cart.css              # Cart page specific styles
+│   ├── auth.css              # Authentication pages styles
+│   ├── product-detail.css    # Product detail page styles
+│   └── about.css             # About page styles
 ├── js/
 │   ├── theme.js              # Theme switching functionality
 │   ├── language.js           # Language switching functionality
 │   ├── cart.js               # Shopping cart management
 │   ├── main.js               # Main application logic
-│   └── products.js           # Products page functionality
+│   ├── products.js           # Products page functionality
+│   ├── cart-page.js          # Cart page functionality
+│   ├── auth.js               # Authentication functionality
+│   ├── product-detail.js     # Product detail page functionality
+│   ├── accessories.js        # Accessories page functionality
+│   └── about.js              # About page animations
 ├── pages/
 │   ├── products.html         # Product listing page
-│   ├── product-detail.html   # Individual product detail page (to be created)
-│   ├── cart.html             # Shopping cart page (to be created)
-│   ├── login.html            # Login page (to be created)
-│   ├── register.html         # Registration page (to be created)
-│   ├── accessories.html      # Accessories page (to be created)
-│   └── about.html            # About page (to be created)
+│   ├── product-detail.html   # Individual product detail page
+│   ├── cart.html             # Shopping cart page
+│   ├── login.html            # Login page
+│   ├── register.html         # Registration page
+│   ├── accessories.html      # Accessories page
+│   └── about.html            # About page
 ├── assets/
 │   └── images/               # Product images and assets
 └── data/
@@ -310,6 +319,11 @@ For questions or support regarding this project, please contact through the univ
 
 - ✅ Homepage with hero slider
 - ✅ Product listing page with filters
+- ✅ Product detail page with image gallery
+- ✅ Shopping cart page with summary
+- ✅ Login & Registration pages with validation
+- ✅ Accessories page with filtering
+- ✅ About page with team section
 - ✅ Theme switching (light/dark)
 - ✅ Language switching (EN/中)
 - ✅ Shopping cart functionality
@@ -318,17 +332,23 @@ For questions or support regarding this project, please contact through the univ
 - ✅ Product search
 - ✅ Product sorting
 - ✅ Pagination
+- ✅ Form validation
+- ✅ Password strength indicator
+- ✅ Wishlist functionality
+- ✅ Related products
+- ✅ Product reviews section
 
-## 🚧 To Be Implemented (Optional)
+## 🚧 Backend Integration Required
 
-- Product detail page
-- Shopping cart page (full UI)
-- Login/Register pages
-- User profile page
-- Checkout process
-- Order confirmation
-- About page
-- Contact page
+For a fully functional e-commerce site, implement:
+- User authentication API
+- Product management API
+- Order processing system
+- Payment gateway integration
+- Database for products and users
+- Email notifications
+- Inventory management
+- Order history tracking
 
 ---
 
