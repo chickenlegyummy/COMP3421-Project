@@ -1,535 +1,409 @@
 /**
- * Accessories Page Manager
- * Handles accessories display, filtering, and sorting
+ * Accessories Page JavaScript
+ * Handles filtering, sorting, pagination, and accessory display
  */
 
-// Accessories database
+// Mock accessories database
 const ACCESSORIES_DATABASE = [
-    {
-        id: 101,
-        name: 'Electric Guitar Strings Set',
-        category: 'strings',
-        brand: "D'Addario",
-        price: 12.99,
-        originalPrice: 15.99,
-        image: 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
-        rating: 4.8,
-        reviews: 342
-    },
-    {
-        id: 102,
-        name: 'Acoustic Guitar Strings',
-        category: 'strings',
-        brand: 'Ernie Ball',
-        price: 14.99,
-        originalPrice: 17.99,
-        image: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800',
-        rating: 4.7,
-        reviews: 289
-    },
-    {
-        id: 103,
-        name: 'Premium Guitar Picks Pack (12pcs)',
-        category: 'picks',
-        brand: 'Dunlop',
-        price: 8.99,
-        originalPrice: 11.99,
-        image: 'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=800',
-        rating: 4.9,
-        reviews: 567
-    },
-    {
-        id: 104,
-        name: 'Jazz III Guitar Picks',
-        category: 'picks',
-        brand: 'Dunlop',
-        price: 6.99,
-        originalPrice: 8.99,
-        image: 'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800',
-        rating: 4.8,
-        reviews: 423
-    },
-    {
-        id: 105,
-        name: 'Hard Shell Guitar Case',
-        category: 'cases',
-        brand: 'Fender',
-        price: 149.99,
-        originalPrice: 199.99,
-        image: 'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
-        rating: 4.9,
-        reviews: 156
-    },
-    {
-        id: 106,
-        name: 'Gig Bag Deluxe',
-        category: 'cases',
-        brand: 'Mono',
-        price: 89.99,
-        originalPrice: 119.99,
-        image: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
-        rating: 4.7,
-        reviews: 234
-    },
-    {
-        id: 107,
-        name: 'Professional Guitar Cable 20ft',
-        category: 'cables',
-        brand: 'Monster',
-        price: 39.99,
-        originalPrice: 49.99,
-        image: 'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
-        rating: 4.6,
-        reviews: 189
-    },
-    {
-        id: 108,
-        name: 'Instrument Cable 10ft',
-        category: 'cables',
-        brand: 'Planet Waves',
-        price: 24.99,
-        originalPrice: 29.99,
-        image: 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800',
-        rating: 4.5,
-        reviews: 267
-    },
-    {
-        id: 109,
-        name: 'Overdrive Pedal',
-        category: 'pedals',
-        brand: 'Boss',
-        price: 129.99,
-        originalPrice: 159.99,
-        image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
-        rating: 4.9,
-        reviews: 445
-    },
-    {
-        id: 110,
-        name: 'Delay Pedal',
-        category: 'pedals',
-        brand: 'TC Electronic',
-        price: 149.99,
-        originalPrice: 189.99,
-        image: 'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
-        rating: 4.8,
-        reviews: 312
-    },
-    {
-        id: 111,
-        name: 'Reverb Pedal',
-        category: 'pedals',
-        brand: 'Electro-Harmonix',
-        price: 169.99,
-        originalPrice: 209.99,
-        image: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
-        rating: 4.9,
-        reviews: 278
-    },
-    {
-        id: 112,
-        name: 'Chromatic Tuner Pedal',
-        category: 'tuners',
-        brand: 'Boss',
-        price: 99.99,
-        originalPrice: 129.99,
-        image: 'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
-        rating: 4.8,
-        reviews: 523
-    },
-    {
-        id: 113,
-        name: 'Clip-On Tuner',
-        category: 'tuners',
-        brand: 'Snark',
-        price: 19.99,
-        originalPrice: 24.99,
-        image: 'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800',
-        rating: 4.6,
-        reviews: 892
-    },
-    {
-        id: 114,
-        name: 'Bass Guitar Strings',
-        category: 'strings',
-        brand: 'Ernie Ball',
-        price: 29.99,
-        originalPrice: 34.99,
-        image: 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
-        rating: 4.7,
-        reviews: 178
-    },
-    {
-        id: 115,
-        name: 'Guitar Strap Leather',
-        category: 'cases',
-        brand: 'Levy',
-        price: 49.99,
-        originalPrice: 59.99,
-        image: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800',
-        rating: 4.8,
-        reviews: 445
-    },
-    {
-        id: 116,
-        name: 'Pedalboard Case',
-        category: 'cases',
-        brand: 'Pedaltrain',
-        price: 199.99,
-        originalPrice: 249.99,
-        image: 'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=800',
-        rating: 4.9,
-        reviews: 201
-    }
+    { id: 101, name: 'Electric Guitar Strings Set', category: 'strings', brand: 'daddario', price: 12.99, image: 'https://via.placeholder.com/300x300/667eea/ffffff?text=Strings', badge: 'Popular', featured: true },
+    { id: 102, name: 'Acoustic Guitar Strings', category: 'strings', brand: 'ernieball', price: 14.99, image: 'https://via.placeholder.com/300x300/764ba2/ffffff?text=Acoustic+Strings', badge: 'Sale', featured: true },
+    { id: 103, name: 'Premium Guitar Picks Pack', category: 'picks', brand: 'dunlop', price: 8.99, image: 'https://via.placeholder.com/300x300/f093fb/ffffff?text=Picks', badge: '', featured: true },
+    { id: 104, name: 'Jazz III Guitar Picks', category: 'picks', brand: 'dunlop', price: 6.99, image: 'https://via.placeholder.com/300x300/4facfe/ffffff?text=Jazz+Picks', badge: 'New', featured: false },
+    { id: 105, name: 'Hard Shell Guitar Case', category: 'cases', brand: 'fender', price: 149.99, image: 'https://via.placeholder.com/300x300/fa709a/ffffff?text=Case', badge: '', featured: true },
+    { id: 106, name: 'Gig Bag Deluxe', category: 'cases', brand: 'mono', price: 89.99, image: 'https://via.placeholder.com/300x300/fee140/ffffff?text=Gig+Bag', badge: 'Popular', featured: false },
+    { id: 107, name: 'Professional Guitar Cable 20ft', category: 'cables', brand: 'monster', price: 39.99, image: 'https://via.placeholder.com/300x300/30cfd0/ffffff?text=Cable', badge: 'Sale', featured: false },
+    { id: 108, name: 'Instrument Cable 10ft', category: 'cables', brand: 'planetwaves', price: 24.99, image: 'https://via.placeholder.com/300x300/a8edea/ffffff?text=Cable+10ft', badge: '', featured: false },
+    { id: 109, name: 'Overdrive Pedal', category: 'pedals', brand: 'boss', price: 129.99, image: 'https://via.placeholder.com/300x300/fed6e3/ffffff?text=Overdrive', badge: 'Popular', featured: true },
+    { id: 110, name: 'Delay Pedal', category: 'pedals', brand: 'tcelectronic', price: 149.99, image: 'https://via.placeholder.com/300x300/c1dfc4/ffffff?text=Delay', badge: '', featured: false },
+    { id: 111, name: 'Reverb Pedal', category: 'pedals', brand: 'electroharmonix', price: 169.99, image: 'https://via.placeholder.com/300x300/8ec5fc/ffffff?text=Reverb', badge: 'New', featured: false },
+    { id: 112, name: 'Chromatic Tuner Pedal', category: 'tuners', brand: 'boss', price: 99.99, image: 'https://via.placeholder.com/300x300/e0aaff/ffffff?text=Tuner', badge: '', featured: false },
+    { id: 113, name: 'Clip-On Tuner', category: 'tuners', brand: 'snark', price: 19.99, image: 'https://via.placeholder.com/300x300/b8f2e6/ffffff?text=Clip+Tuner', badge: 'Sale', featured: false },
+    { id: 114, name: 'Bass Guitar Strings', category: 'strings', brand: 'ernieball', price: 29.99, image: 'https://via.placeholder.com/300x300/ffc6ff/ffffff?text=Bass+Strings', badge: '', featured: false },
+    { id: 115, name: 'Guitar Strap Leather', category: 'cases', brand: 'levy', price: 49.99, image: 'https://via.placeholder.com/300x300/bde0fe/ffffff?text=Strap', badge: 'Popular', featured: false },
+    { id: 116, name: 'Pedalboard Case', category: 'cases', brand: 'pedaltrain', price: 199.99, image: 'https://via.placeholder.com/300x300/ffafcc/ffffff?text=Pedalboard', badge: 'New', featured: true },
 ];
 
 class AccessoriesPage {
     constructor() {
-        this.allAccessories = ACCESSORIES_DATABASE;
-        this.filteredAccessories = [...this.allAccessories];
+        this.allProducts = [...ACCESSORIES_DATABASE];
+        this.filteredProducts = [...this.allProducts];
         this.currentPage = 1;
-        this.itemsPerPage = 12;
+        this.productsPerPage = 12;
+        this.currentSort = 'featured';
         this.currentView = 'grid';
         this.filters = {
-            categories: ['all'],
-            priceRanges: []
+            category: [],
+            price: [],
+            brand: []
         };
         
         this.init();
     }
 
     init() {
-        this.renderAccessories();
+        this.loadUrlParams();
+        this.setupEventListeners();
+        this.applyFilters();
+        this.renderProducts();
         this.renderPagination();
-        this.initFilters();
-        this.initSort();
-        this.initViewToggle();
-        this.updateProductCount();
+        
+        // Initialize navigation
+        this.initNavigation();
     }
 
-    /**
-     * Initialize Filters
-     */
-    initFilters() {
-        // Category filters
-        const categoryCheckboxes = document.querySelectorAll('input[name="category"]');
-        categoryCheckboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', () => this.handleCategoryFilter());
-        });
-
-        // Price filters
-        const priceCheckboxes = document.querySelectorAll('input[name="price"]');
-        priceCheckboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', () => this.handlePriceFilter());
-        });
-
-        // Reset button
-        const resetBtn = document.querySelector('.reset-filters');
-        resetBtn.addEventListener('click', () => this.resetFilters());
-    }
-
-    /**
-     * Handle Category Filter
-     */
-    handleCategoryFilter() {
-        const categoryCheckboxes = document.querySelectorAll('input[name="category"]');
-        const allCheckbox = document.querySelector('input[name="category"][value="all"]');
-        const otherCheckboxes = Array.from(categoryCheckboxes).filter(cb => cb.value !== 'all');
-
-        // If "All" is checked, uncheck others
-        if (allCheckbox.checked) {
-            otherCheckboxes.forEach(cb => cb.checked = false);
-            this.filters.categories = ['all'];
-        } else {
-            // If any other is checked, uncheck "All"
-            const checkedCategories = otherCheckboxes.filter(cb => cb.checked).map(cb => cb.value);
-            
-            if (checkedCategories.length > 0) {
-                allCheckbox.checked = false;
-                this.filters.categories = checkedCategories;
+    initNavigation() {
+        const header = document.getElementById('header');
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const searchToggle = document.getElementById('searchToggle');
+        const searchBox = document.getElementById('searchBox');
+        
+        // Sticky header
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                header.classList.add('scrolled');
             } else {
-                // If none are checked, check "All"
-                allCheckbox.checked = true;
-                this.filters.categories = ['all'];
+                header.classList.remove('scrolled');
             }
-        }
-
-        this.applyFilters();
-    }
-
-    /**
-     * Handle Price Filter
-     */
-    handlePriceFilter() {
-        const priceCheckboxes = document.querySelectorAll('input[name="price"]:checked');
-        this.filters.priceRanges = Array.from(priceCheckboxes).map(cb => cb.value);
-        this.applyFilters();
-    }
-
-    /**
-     * Apply Filters
-     */
-    applyFilters() {
-        this.filteredAccessories = this.allAccessories.filter(accessory => {
-            // Category filter
-            const categoryMatch = this.filters.categories.includes('all') || 
-                                 this.filters.categories.includes(accessory.category);
-
-            // Price filter
-            let priceMatch = this.filters.priceRanges.length === 0;
-            if (!priceMatch) {
-                priceMatch = this.filters.priceRanges.some(range => {
-                    if (range === '0-50') return accessory.price < 50;
-                    if (range === '50-100') return accessory.price >= 50 && accessory.price < 100;
-                    if (range === '100-200') return accessory.price >= 100 && accessory.price < 200;
-                    if (range === '200+') return accessory.price >= 200;
-                    return false;
-                });
-            }
-
-            return categoryMatch && priceMatch;
         });
-
-        this.currentPage = 1;
-        this.renderAccessories();
-        this.renderPagination();
-        this.updateProductCount();
-    }
-
-    /**
-     * Reset Filters
-     */
-    resetFilters() {
-        // Reset checkboxes
-        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-            cb.checked = cb.value === 'all';
-        });
-
-        // Reset filters
-        this.filters = {
-            categories: ['all'],
-            priceRanges: []
-        };
-
-        this.applyFilters();
-    }
-
-    /**
-     * Initialize Sort
-     */
-    initSort() {
-        const sortSelect = document.getElementById('sortSelect');
-        sortSelect.addEventListener('change', (e) => {
-            this.sortAccessories(e.target.value);
-        });
-    }
-
-    /**
-     * Sort Accessories
-     */
-    sortAccessories(sortBy) {
-        switch (sortBy) {
-            case 'price-low':
-                this.filteredAccessories.sort((a, b) => a.price - b.price);
-                break;
-            case 'price-high':
-                this.filteredAccessories.sort((a, b) => b.price - a.price);
-                break;
-            case 'name':
-                this.filteredAccessories.sort((a, b) => a.name.localeCompare(b.name));
-                break;
-            default:
-                // Featured (default order)
-                this.filteredAccessories = [...this.allAccessories].filter(accessory => {
-                    const categoryMatch = this.filters.categories.includes('all') || 
-                                         this.filters.categories.includes(accessory.category);
-                    let priceMatch = this.filters.priceRanges.length === 0;
-                    if (!priceMatch) {
-                        priceMatch = this.filters.priceRanges.some(range => {
-                            if (range === '0-50') return accessory.price < 50;
-                            if (range === '50-100') return accessory.price >= 50 && accessory.price < 100;
-                            if (range === '100-200') return accessory.price >= 100 && accessory.price < 200;
-                            if (range === '200+') return accessory.price >= 200;
-                            return false;
-                        });
-                    }
-                    return categoryMatch && priceMatch;
-                });
-        }
-
-        this.renderAccessories();
-    }
-
-    /**
-     * Initialize View Toggle
-     */
-    initViewToggle() {
-        const viewButtons = document.querySelectorAll('.view-btn');
-        const productsGrid = document.getElementById('productsGrid');
-
-        viewButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const view = btn.dataset.view;
-                
-                viewButtons.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                productsGrid.classList.remove('grid-view', 'list-view');
-                productsGrid.classList.add(`${view}-view`);
-                
-                this.currentView = view;
-                this.renderAccessories();
+        
+        // Mobile menu
+        if (mobileMenuToggle && navMenu) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                mobileMenuToggle.classList.toggle('active');
             });
-        });
-    }
-
-    /**
-     * Render Accessories
-     */
-    renderAccessories() {
-        const productsGrid = document.getElementById('productsGrid');
-        const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-        const endIndex = startIndex + this.itemsPerPage;
-        const accessoriesToShow = this.filteredAccessories.slice(startIndex, endIndex);
-
-        productsGrid.innerHTML = accessoriesToShow.map(accessory => {
-            const discount = Math.round(((accessory.originalPrice - accessory.price) / accessory.originalPrice) * 100);
+        }
+        
+        // Search toggle
+        if (searchToggle && searchBox) {
+            searchToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                searchBox.classList.toggle('active');
+            });
             
-            return `
-                <div class="product-card scroll-reveal">
-                    <div class="product-image">
-                        <img src="${accessory.image}" alt="${accessory.name}" loading="lazy">
-                        <span class="product-badge">-${discount}%</span>
-                    </div>
-                    <div class="product-content">
-                        <span class="product-category">${accessory.brand}</span>
-                        <h3 class="product-name">${accessory.name}</h3>
-                        <div class="product-rating">
-                            <div class="stars">
-                                ${this.renderStars(accessory.rating)}
-                            </div>
-                            <span class="rating-count">(${accessory.reviews})</span>
-                        </div>
-                        <div class="product-footer">
-                            <div class="product-price">
-                                <span class="current-price">$${accessory.price}</span>
-                                <span class="original-price">$${accessory.originalPrice}</span>
-                            </div>
-                            <button class="btn-icon add-to-cart" data-id="${accessory.id}" aria-label="Add to cart">
-                                <i class="fas fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }).join('');
-
-        // Add event listeners to add-to-cart buttons
-        productsGrid.querySelectorAll('.add-to-cart').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const accessoryId = parseInt(btn.dataset.id);
-                const accessory = this.allAccessories.find(a => a.id === accessoryId);
-                
-                if (accessory) {
-                    const cartManager = new CartManager();
-                    cartManager.addItem(accessory);
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.search-container')) {
+                    searchBox.classList.remove('active');
                 }
             });
+        }
+    }
+
+    loadUrlParams() {
+        const params = new URLSearchParams(window.location.search);
+        
+        // Handle category filter
+        if (params.get('category')) {
+            this.filters.category = [params.get('category')];
+            this.checkFilterCheckbox('category', params.get('category'));
+        }
+        
+        // Handle sale filter
+        if (params.get('sale') === 'true') {
+            this.allProducts = this.allProducts.filter(p => p.badge === 'Sale');
+            this.filteredProducts = [...this.allProducts];
+        }
+        
+        // Handle featured filter
+        if (params.get('featured') === 'true') {
+            this.allProducts = this.allProducts.filter(p => p.featured);
+            this.filteredProducts = [...this.allProducts];
+        }
+        
+        // Handle search
+        if (params.get('search')) {
+            const query = params.get('search').toLowerCase();
+            this.allProducts = this.allProducts.filter(p => 
+                p.name.toLowerCase().includes(query) || 
+                p.category.toLowerCase().includes(query)
+            );
+            this.filteredProducts = [...this.allProducts];
+        }
+    }
+
+    checkFilterCheckbox(type, value) {
+        const checkbox = document.querySelector(`input[name="${type}"][value="${value}"]`);
+        if (checkbox) {
+            checkbox.checked = true;
+        }
+    }
+
+    setupEventListeners() {
+        // Filter checkboxes
+        document.querySelectorAll('.filter-option input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', () => this.handleFilterChange());
+        });
+        
+        // Reset filters button
+        const resetBtn = document.getElementById('resetFilters');
+        if (resetBtn) {
+            resetBtn.addEventListener('click', () => this.resetFilters());
+        }
+        
+        // Sort select
+        const sortSelect = document.getElementById('sortSelect');
+        if (sortSelect) {
+            sortSelect.addEventListener('change', (e) => {
+                this.currentSort = e.target.value;
+                this.sortProducts();
+                this.renderProducts();
+            });
+        }
+        
+        // View toggle
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                this.currentView = btn.dataset.view;
+                this.updateView();
+            });
         });
     }
 
-    /**
-     * Render Stars
-     */
-    renderStars(rating) {
-        const fullStars = Math.floor(rating);
-        const hasHalfStar = rating % 1 !== 0;
-        let stars = '';
-
-        for (let i = 0; i < fullStars; i++) {
-            stars += '<i class="fas fa-star"></i>';
-        }
-
-        if (hasHalfStar) {
-            stars += '<i class="fas fa-star-half-alt"></i>';
-        }
-
-        const emptyStars = 5 - Math.ceil(rating);
-        for (let i = 0; i < emptyStars; i++) {
-            stars += '<i class="far fa-star"></i>';
-        }
-
-        return stars;
+    handleFilterChange() {
+        // Get selected filters
+        this.filters.category = this.getSelectedFilters('category');
+        this.filters.price = this.getSelectedFilters('price');
+        this.filters.brand = this.getSelectedFilters('brand');
+        
+        this.currentPage = 1;
+        this.applyFilters();
+        this.renderProducts();
+        this.renderPagination();
     }
 
-    /**
-     * Render Pagination
-     */
-    renderPagination() {
-        const pagination = document.getElementById('pagination');
-        const totalPages = Math.ceil(this.filteredAccessories.length / this.itemsPerPage);
+    getSelectedFilters(type) {
+        return Array.from(document.querySelectorAll(`input[name="${type}"]:checked`))
+            .map(cb => cb.value);
+    }
 
-        if (totalPages <= 1) {
-            pagination.innerHTML = '';
+    applyFilters() {
+        this.filteredProducts = this.allProducts.filter(product => {
+            // Category filter
+            if (this.filters.category.length > 0 && !this.filters.category.includes(product.category)) {
+                return false;
+            }
+            
+            // Price filter
+            if (this.filters.price.length > 0) {
+                const inPriceRange = this.filters.price.some(range => {
+                    if (range === '0-50') return product.price < 50;
+                    if (range === '50-100') return product.price >= 50 && product.price < 100;
+                    if (range === '100-200') return product.price >= 100 && product.price < 200;
+                    if (range === '200+') return product.price >= 200;
+                    return false;
+                });
+                if (!inPriceRange) return false;
+            }
+            
+            // Brand filter
+            if (this.filters.brand.length > 0 && !this.filters.brand.includes(product.brand)) {
+                return false;
+            }
+            
+            return true;
+        });
+        
+        this.sortProducts();
+        this.updateProductCount();
+    }
+
+    sortProducts() {
+        switch (this.currentSort) {
+            case 'price-low':
+                this.filteredProducts.sort((a, b) => a.price - b.price);
+                break;
+            case 'price-high':
+                this.filteredProducts.sort((a, b) => b.price - a.price);
+                break;
+            case 'name':
+                this.filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+                break;
+            case 'featured':
+            default:
+                this.filteredProducts.sort((a, b) => {
+                    if (a.featured && !b.featured) return -1;
+                    if (!a.featured && b.featured) return 1;
+                    return 0;
+                });
+                break;
+        }
+    }
+
+    resetFilters() {
+        // Uncheck all checkboxes
+        document.querySelectorAll('.filter-option input[type="checkbox"]').forEach(cb => {
+            cb.checked = false;
+        });
+        
+        this.filters = {
+            category: [],
+            price: [],
+            brand: []
+        };
+        
+        this.currentPage = 1;
+        this.applyFilters();
+        this.renderProducts();
+        this.renderPagination();
+    }
+
+    updateProductCount() {
+        const countEl = document.getElementById('productsCount');
+        if (countEl) {
+            const start = (this.currentPage - 1) * this.productsPerPage + 1;
+            const end = Math.min(this.currentPage * this.productsPerPage, this.filteredProducts.length);
+            const total = this.filteredProducts.length;
+            
+            if (total === 0) {
+                countEl.textContent = 'No products found';
+            } else {
+                countEl.textContent = `Showing ${start}-${end} of ${total} products`;
+            }
+        }
+    }
+
+    updateView() {
+        const grid = document.getElementById('productsGrid');
+        if (this.currentView === 'list') {
+            grid.classList.add('list-view');
+        } else {
+            grid.classList.remove('list-view');
+        }
+    }
+
+    renderProducts() {
+        const grid = document.getElementById('productsGrid');
+        if (!grid) return;
+        
+        // Calculate products for current page
+        const startIndex = (this.currentPage - 1) * this.productsPerPage;
+        const endIndex = startIndex + this.productsPerPage;
+        const productsToShow = this.filteredProducts.slice(startIndex, endIndex);
+        
+        // Clear grid
+        grid.innerHTML = '';
+        
+        // Check if no products
+        if (productsToShow.length === 0) {
+            grid.innerHTML = `
+                <div class="empty-state" style="grid-column: 1 / -1;">
+                    <i class="fas fa-guitar"></i>
+                    <h3>No products found</h3>
+                    <p>Try adjusting your filters</p>
+                </div>
+            `;
             return;
         }
+        
+        // Render products
+        productsToShow.forEach((product, index) => {
+            const card = this.createProductCard(product);
+            card.style.animationDelay = `${index * 0.1}s`;
+            grid.appendChild(card);
+        });
+        
+        // Update view
+        this.updateView();
+        this.updateProductCount();
+        
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
-        let paginationHTML = `
-            <button class="page-btn" data-page="prev" ${this.currentPage === 1 ? 'disabled' : ''}>
+    createProductCard(product) {
+        const card = document.createElement('div');
+        card.className = 'product-card scroll-reveal revealed';
+        card.onclick = () => window.location.href = `accessories-detail.html?id=${product.id}`;
+        
+        card.innerHTML = `
+            <div class="product-image">
+                <img src="${product.image}" alt="${product.name}" loading="lazy">
+                ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+            </div>
+            <div class="product-info">
+                <p class="product-category">${product.category}</p>
+                <h3 class="product-title">${product.name}</h3>
+                <p class="product-price">$${product.price.toLocaleString()}</p>
+                <div class="product-actions">
+                    <button class="btn btn-primary" onclick="event.stopPropagation(); addToCartAccessory(${product.id})">
+                        <i class="fas fa-shopping-cart"></i> <span data-lang-en="Add to Cart" data-lang-zh="加入購物車">Add to Cart</span>
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        return card;
+    }
+
+    renderPagination() {
+        const paginationEl = document.getElementById('pagination');
+        if (!paginationEl) return;
+        
+        const totalPages = Math.ceil(this.filteredProducts.length / this.productsPerPage);
+        
+        if (totalPages <= 1) {
+            paginationEl.innerHTML = '';
+            return;
+        }
+        
+        let html = '';
+        
+        // Previous button
+        html += `
+            <button onclick="accessoriesPage.goToPage(${this.currentPage - 1})" 
+                    ${this.currentPage === 1 ? 'disabled' : ''}>
                 <i class="fas fa-chevron-left"></i>
             </button>
         `;
-
+        
+        // Page numbers
         for (let i = 1; i <= totalPages; i++) {
             if (i === 1 || i === totalPages || (i >= this.currentPage - 1 && i <= this.currentPage + 1)) {
-                paginationHTML += `
-                    <button class="page-btn ${i === this.currentPage ? 'active' : ''}" data-page="${i}">
+                html += `
+                    <button class="page-number ${i === this.currentPage ? 'active' : ''}" 
+                            onclick="accessoriesPage.goToPage(${i})">
                         ${i}
                     </button>
                 `;
             } else if (i === this.currentPage - 2 || i === this.currentPage + 2) {
-                paginationHTML += '<span class="page-dots">...</span>';
+                html += '<span class="page-dots">...</span>';
             }
         }
-
-        paginationHTML += `
-            <button class="page-btn" data-page="next" ${this.currentPage === totalPages ? 'disabled' : ''}>
+        
+        // Next button
+        html += `
+            <button onclick="accessoriesPage.goToPage(${this.currentPage + 1})" 
+                    ${this.currentPage === totalPages ? 'disabled' : ''}>
                 <i class="fas fa-chevron-right"></i>
             </button>
         `;
-
-        pagination.innerHTML = paginationHTML;
-
-        // Add event listeners
-        pagination.querySelectorAll('.page-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const page = btn.dataset.page;
-                
-                if (page === 'prev' && this.currentPage > 1) {
-                    this.currentPage--;
-                } else if (page === 'next' && this.currentPage < totalPages) {
-                    this.currentPage++;
-                } else if (page !== 'prev' && page !== 'next') {
-                    this.currentPage = parseInt(page);
-                }
-
-                this.renderAccessories();
-                this.renderPagination();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        });
+        
+        paginationEl.innerHTML = html;
     }
 
-    /**
-     * Update Product Count
-     */
-    updateProductCount() {
-        const countElement = document.getElementById('productCount');
-        countElement.textContent = this.filteredAccessories.length;
+    goToPage(page) {
+        const totalPages = Math.ceil(this.filteredProducts.length / this.productsPerPage);
+        if (page < 1 || page > totalPages) return;
+        
+        this.currentPage = page;
+        this.renderProducts();
+        this.renderPagination();
     }
 }
 
-// Initialize when DOM is ready
+// Add accessory to cart
+window.addToCartAccessory = function(productId) {
+    const product = ACCESSORIES_DATABASE.find(p => p.id === productId);
+    if (product && typeof cartManager !== 'undefined') {
+        cartManager.addItem(product);
+    }
+};
+
+// Initialize accessories page
+let accessoriesPage;
 document.addEventListener('DOMContentLoaded', () => {
-    new AccessoriesPage();
+    accessoriesPage = new AccessoriesPage();
 });
