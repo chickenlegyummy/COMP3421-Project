@@ -101,16 +101,42 @@ class AccessoriesPage {
         if (mobileLanguageToggle) {
             mobileLanguageToggle.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const languageToggle = document.getElementById('languageToggle');
-                if (languageToggle) languageToggle.click();
+                // Toggle language directly without triggering desktop button
+                if (typeof languageManager !== 'undefined') {
+                    languageManager.toggleLanguage();
+                    // Update mobile button text
+                    const span = mobileLanguageToggle.querySelector('span');
+                    if (span) {
+                        const lang = languageManager.getCurrentLanguage();
+                        span.setAttribute('data-lang-en', lang === 'en' ? 'Language: EN' : 'Language: 中文');
+                        span.setAttribute('data-lang-zh', lang === 'en' ? '語言: EN' : '語言: 中文');
+                        span.textContent = lang === 'en' ? 'Language: EN' : 'Language: 中文';
+                    }
+                }
             });
         }
         
         if (mobileThemeToggle) {
             mobileThemeToggle.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const themeToggle = document.getElementById('themeToggle');
-                if (themeToggle) themeToggle.click();
+                // Toggle theme directly without triggering desktop button
+                if (typeof themeManager !== 'undefined') {
+                    themeManager.toggleTheme();
+                    // Update mobile button icon and text
+                    const icon = mobileThemeToggle.querySelector('i');
+                    const span = mobileThemeToggle.querySelector('span');
+                    const theme = themeManager.getCurrentTheme();
+                    if (icon) {
+                        icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+                    }
+                    if (span) {
+                        const text = theme === 'light' ? 'Dark Mode' : 'Light Mode';
+                        const textZh = theme === 'light' ? '深色模式' : '淺色模式';
+                        span.setAttribute('data-lang-en', text);
+                        span.setAttribute('data-lang-zh', textZh);
+                        span.textContent = languageManager.getCurrentLanguage() === 'en' ? text : textZh;
+                    }
+                }
             });
         }
         
