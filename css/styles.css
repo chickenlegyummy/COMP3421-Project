@@ -444,6 +444,85 @@ body.menu-open {
     border-color: var(--accent-primary);
 }
 
+/* Full-screen Search Overlay (Mobile) */
+.search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--bg-primary);
+    z-index: 2000;
+    display: none;
+    flex-direction: column;
+    padding: var(--space-lg);
+}
+
+.search-overlay.active {
+    display: flex;
+}
+
+.search-overlay-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.search-overlay-back {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: var(--font-size-xl);
+    cursor: pointer;
+}
+
+.search-overlay-input {
+    flex: 1;
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+    font-size: var(--font-size-base);
+}
+
+.search-overlay-input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
+.search-overlay-content {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.search-suggestions {
+    list-style: none;
+}
+
+.search-suggestion-item {
+    padding: var(--space-md);
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    transition: background-color var(--transition-fast);
+}
+
+.search-suggestion-item:hover {
+    background-color: var(--bg-secondary);
+}
+
+.search-suggestion-item i {
+    color: var(--text-secondary);
+}
+
 /* Mobile Menu Toggle */
 .mobile-menu-toggle {
     display: none;
@@ -948,7 +1027,8 @@ body.menu-open {
     .nav-link {
         width: 100%;
         padding: var(--space-md);
-        justify-content: space-between;
+        justify-content: flex-start;
+        gap: var(--space-md);
     }
     
     /* Mobile-only items styling */
@@ -966,6 +1046,15 @@ body.menu-open {
     .mobile-only .nav-link .cart-count {
         margin-left: auto;
         position: static;
+    }
+    
+    /* Dropdown chevron stays on right */
+    .dropdown .nav-link {
+        justify-content: space-between;
+    }
+    
+    .dropdown .nav-link > span {
+        flex: 1;
     }
     
     .dropdown-menu {
@@ -1065,8 +1154,8 @@ body.menu-open {
     }
     
     .nav-center {
-        width: 100%;
-        left: -100%;
+        width: 280px;
+        left: -280px;
     }
     
     .nav-center.active {

@@ -76,6 +76,88 @@ class ProductsPage {
             });
         }
         
+        // Close menu when clicking navigation links (but NOT utility buttons)
+        const navLinks = document.querySelectorAll('.nav-link:not(#mobileLanguageToggle):not(#mobileThemeToggle):not(#mobileSearchToggle)');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (link.tagName === 'A' && window.innerWidth <= 992) {
+                    setTimeout(() => {
+                        if (navCenter) navCenter.classList.remove('active');
+                        if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
+                        document.body.classList.remove('menu-open');
+                    }, 100);
+                }
+            });
+        });
+        
+        // Mobile utility buttons
+        const mobileLanguageToggle = document.getElementById('mobileLanguageToggle');
+        const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+        const mobileSearchToggle = document.getElementById('mobileSearchToggle');
+        const searchOverlay = document.getElementById('searchOverlay');
+        const searchOverlayBack = document.getElementById('searchOverlayBack');
+        const searchOverlayInput = document.getElementById('searchOverlayInput');
+        
+        if (mobileLanguageToggle) {
+            mobileLanguageToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const languageToggle = document.getElementById('languageToggle');
+                if (languageToggle) languageToggle.click();
+            });
+        }
+        
+        if (mobileThemeToggle) {
+            mobileThemeToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const themeToggle = document.getElementById('themeToggle');
+                if (themeToggle) themeToggle.click();
+            });
+        }
+        
+        if (mobileSearchToggle) {
+            mobileSearchToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (navCenter) navCenter.classList.remove('active');
+                if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                
+                if (searchOverlay) {
+                    searchOverlay.classList.add('active');
+                    if (searchOverlayInput) {
+                        setTimeout(() => searchOverlayInput.focus(), 100);
+                    }
+                }
+            });
+        }
+        
+        if (searchOverlayBack && searchOverlay) {
+            searchOverlayBack.addEventListener('click', () => {
+                searchOverlay.classList.remove('active');
+            });
+        }
+        
+        if (searchOverlayInput) {
+            searchOverlayInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    const query = searchOverlayInput.value.trim();
+                    if (query) {
+                        window.location.href = `products.html?search=${encodeURIComponent(query)}`;
+                    }
+                }
+            });
+        }
+        
+        const searchSuggestions = document.querySelectorAll('.search-suggestion-item');
+        searchSuggestions.forEach(item => {
+            item.addEventListener('click', () => {
+                const text = item.querySelector('span').textContent;
+                if (searchOverlayInput) {
+                    searchOverlayInput.value = text;
+                    searchOverlayInput.focus();
+                }
+            });
+        });
+        
         // Search toggle
         if (searchToggle && searchBox) {
             searchToggle.addEventListener('click', (e) => {

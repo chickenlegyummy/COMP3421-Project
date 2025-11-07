@@ -147,6 +147,23 @@
         </nav>
     </header>
 
+    <!-- Full-screen Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-header">
+            <button class="search-overlay-back" id="searchOverlayBack" aria-label="Close search">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <input type="search" class="search-overlay-input" id="searchOverlayInput" placeholder="Search..." aria-label="Search">
+        </div>
+        <div class="search-overlay-content">
+            <ul class="search-suggestions">
+                <li class="search-suggestion-item"><i class="fas fa-search"></i><span data-lang-en="Strings" data-lang-zh="琴弦">Strings</span></li>
+                <li class="search-suggestion-item"><i class="fas fa-search"></i><span data-lang-en="Picks" data-lang-zh="撥片">Picks</span></li>
+                <li class="search-suggestion-item"><i class="fas fa-search"></i><span data-lang-en="Cases" data-lang-zh="琴盒">Cases</span></li>
+            </ul>
+        </div>
+    </div>
+
     <!-- Main Content -->
     <main class="products-page">
         <!-- Page Header -->
