@@ -25,7 +25,7 @@ class CartPage {
     initNavigation() {
         const header = document.getElementById('header');
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const navMenu = document.getElementById('navMenu');
+        const navCenter = document.querySelector('.nav-center');
         const searchToggle = document.getElementById('searchToggle');
         const searchBox = document.getElementById('searchBox');
         
@@ -37,10 +37,11 @@ class CartPage {
             }
         });
         
-        if (mobileMenuToggle && navMenu) {
+        if (mobileMenuToggle && navCenter) {
             mobileMenuToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
+                navCenter.classList.toggle('active');
                 mobileMenuToggle.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
             });
         }
         
