@@ -138,7 +138,7 @@ body.menu-open::after {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+    z-index: 997;
     animation: fadeIn 0.3s ease;
 }
 
@@ -229,6 +229,20 @@ body.menu-open {
     align-items: center;
     justify-content: space-between;
     gap: var(--space-lg);
+    position: relative;
+}
+
+@media (max-width: 992px) {
+    .nav-container {
+        padding: 0 var(--space-md);
+        gap: var(--space-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0 var(--space-sm);
+    }
 }
 
 .nav-left {
@@ -243,6 +257,7 @@ body.menu-open {
     font-weight: 700;
     color: var(--accent-primary);
     transition: transform var(--transition-base);
+    white-space: nowrap;
 }
 
 .logo:hover {
@@ -251,6 +266,16 @@ body.menu-open {
 
 .logo i {
     font-size: var(--font-size-2xl);
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: var(--font-size-lg);
+    }
+    
+    .logo i {
+        font-size: var(--font-size-xl);
+    }
 }
 
 .nav-center {
@@ -997,14 +1022,14 @@ body.menu-open {
     .nav-center {
         position: fixed;
         top: 120px; /* Top banner (~40px) + Navbar (80px) */
-        left: -100%;
+        left: -280px;
         width: 280px;
         height: calc(100vh - 120px);
         background-color: var(--bg-primary);
         padding: var(--space-xl);
         overflow-y: auto;
         transition: left var(--transition-base);
-        z-index: 1000;
+        z-index: 998;
         box-shadow: var(--shadow-lg);
         border-right: 1px solid var(--border-color);
     }
@@ -1017,11 +1042,16 @@ body.menu-open {
         flex-direction: column;
         align-items: flex-start;
         gap: 0;
+        width: 100%;
     }
     
     .nav-item {
         width: 100%;
         border-bottom: 1px solid var(--border-color);
+    }
+    
+    .nav-item:last-child {
+        border-bottom: none;
     }
     
     .nav-link {
@@ -1032,6 +1062,10 @@ body.menu-open {
     }
     
     /* Mobile-only items styling */
+    .mobile-only {
+        display: block !important;
+    }
+    
     .mobile-only .nav-link {
         justify-content: flex-start;
         gap: var(--space-md);
@@ -1068,10 +1102,11 @@ body.menu-open {
         visibility: visible;
         transform: none;
         transition: max-height var(--transition-base);
+        background-color: transparent;
     }
     
     .dropdown-menu.active {
-        max-height: 300px;
+        max-height: 500px;
     }
     
     /* Hide desktop nav-right icons on mobile, but keep mobile menu toggle */
