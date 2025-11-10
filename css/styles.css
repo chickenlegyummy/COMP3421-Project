@@ -133,7 +133,7 @@ input, textarea, select {
 body.menu-open::after {
     content: '';
     position: fixed;
-    top: 120px; /* Top banner + Navbar */
+    top: var(--menu-top-offset, 120px); /* Fallback to 120px if not set */
     left: 0;
     right: 0;
     bottom: 0;
@@ -1021,10 +1021,9 @@ body.menu-open {
 @media (max-width: 992px) {
     .nav-center {
         position: fixed;
-        top: 120px; /* Top banner (~40px) + Navbar (80px) */
+        /* top and height will be set dynamically by JavaScript */
         left: -280px;
         width: 280px;
-        height: calc(100vh - 120px);
         background-color: var(--bg-primary);
         padding: var(--space-xl);
         overflow-y: auto;

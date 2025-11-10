@@ -38,6 +38,29 @@ class CartPage {
         });
         
         if (mobileMenuToggle && navCenter) {
+            // Calculate and set dynamic top position for mobile menu
+            const updateMenuPosition = () => {
+                if (window.innerWidth <= 992) {
+                    const topBanner = document.querySelector('.top-banner');
+                    const navbar = document.querySelector('.navbar');
+                    const topOffset = (topBanner?.offsetHeight || 0) + (navbar?.offsetHeight || 0);
+                    navCenter.style.top = `${topOffset}px`;
+                    navCenter.style.height = `calc(100vh - ${topOffset}px)`;
+                    // Also set CSS variable for overlay
+                    document.documentElement.style.setProperty('--menu-top-offset', `${topOffset}px`);
+                } else {
+                    navCenter.style.top = '';
+                    navCenter.style.height = '';
+                    document.documentElement.style.removeProperty('--menu-top-offset');
+                }
+            };
+            
+            // Set initial position
+            updateMenuPosition();
+            
+            // Update on window resize
+            window.addEventListener('resize', updateMenuPosition);
+            
             mobileMenuToggle.addEventListener('click', () => {
                 navCenter.classList.toggle('active');
                 mobileMenuToggle.classList.toggle('active');
