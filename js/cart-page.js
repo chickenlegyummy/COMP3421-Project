@@ -45,10 +45,16 @@ class CartPage {
             });
         }
         
-        // Close menu when clicking navigation links (but NOT utility buttons)
+        // Close menu when clicking navigation links (but NOT utility buttons or dropdown toggles)
         const navLinks = document.querySelectorAll('.nav-link:not(#mobileLanguageToggle):not(#mobileThemeToggle):not(#mobileSearchToggle)');
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
+                // Don't close menu if it's a dropdown toggle button
+                if (link.closest('.dropdown')) {
+                    return; // Let the dropdown handler deal with it
+                }
+                
+                // Only close menu for actual navigation links (a tags), not buttons
                 if (link.tagName === 'A' && window.innerWidth <= 992) {
                     setTimeout(() => {
                         if (navCenter) navCenter.classList.remove('active');
@@ -57,6 +63,41 @@ class CartPage {
                     }, 100);
                 }
             });
+        });
+        
+        // Dropdown menu functionality
+        const dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('.nav-link');
+            const menu = dropdown.querySelector('.dropdown-menu');
+            
+            if (link && menu) {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 992) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        menu.classList.toggle('active');
+                        link.setAttribute('aria-expanded', 
+                            menu.classList.contains('active') ? 'true' : 'false'
+                        );
+                        // Don't close the mobile menu - behave like language/theme toggle
+                    }
+                });
+                
+                // Close menu when clicking dropdown items
+                const dropdownItems = menu.querySelectorAll('.dropdown-item');
+                dropdownItems.forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        if (window.innerWidth <= 992) {
+                            setTimeout(() => {
+                                if (navCenter) navCenter.classList.remove('active');
+                                if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
+                                document.body.classList.remove('menu-open');
+                            }, 100);
+                        }
+                    });
+                });
+            }
         });
         
         // Mobile utility buttons
