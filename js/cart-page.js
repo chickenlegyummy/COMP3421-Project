@@ -397,13 +397,10 @@ class CartPage {
         const container = document.getElementById('recommendedProducts');
         if (!container) return;
         
-        // Mock recommended products
-        const recommended = [
-            { id: 17, name: 'Guitar Strings Premium', category: 'Accessories', price: 29, image: 'https://via.placeholder.com/300x300/8b5cf6/ffffff?text=Strings', badge: '' },
-            { id: 18, name: 'Guitar Case Deluxe', category: 'Accessories', price: 89, image: 'https://via.placeholder.com/300x300/7c3aed/ffffff?text=Case', badge: 'Popular' },
-            { id: 19, name: 'Guitar Tuner Pro', category: 'Accessories', price: 49, image: 'https://via.placeholder.com/300x300/6d28d9/ffffff?text=Tuner', badge: 'New' },
-            { id: 20, name: 'Guitar Picks Set', category: 'Accessories', price: 15, image: 'https://via.placeholder.com/300x300/5b21b6/ffffff?text=Picks', badge: '' }
-        ];
+        // Get recommended products from PRODUCTS_DATABASE
+        const recommended = typeof PRODUCTS_DATABASE !== 'undefined' 
+            ? PRODUCTS_DATABASE.filter(p => p.featured).slice(0, 4)
+            : [];
         
         container.innerHTML = '';
         recommended.forEach(product => {
@@ -437,17 +434,14 @@ class CartPage {
     }
 
     addRecommendedToCart(productId) {
-        // In real implementation, fetch product details from database
-        const product = {
-            id: productId,
-            name: 'Recommended Product',
-            price: 49,
-            image: 'https://via.placeholder.com/300x300',
-            category: 'Accessories',
-            quantity: 1
-        };
+        // Fetch product details from PRODUCTS_DATABASE
+        const product = typeof PRODUCTS_DATABASE !== 'undefined'
+            ? PRODUCTS_DATABASE.find(p => p.id === productId)
+            : null;
         
-        cartManager.addItem(product);
+        if (product) {
+            cartManager.addItem(product);
+        }
     }
 
     showNotification(message, type = 'success') {
