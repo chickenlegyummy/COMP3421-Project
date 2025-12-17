@@ -5,22 +5,22 @@
 
 // Mock product database
 const PRODUCTS_DATABASE = [
-    { id: 1, name: 'Les Paul Standard', category: 'electric', brand: 'gibson', price: 2999, image: 'https://via.placeholder.com/300x300/667eea/ffffff?text=Les+Paul', badge: 'New', featured: true },
-    { id: 2, name: 'Stratocaster Deluxe', category: 'electric', brand: 'fender', price: 2499, image: 'https://via.placeholder.com/300x300/764ba2/ffffff?text=Stratocaster', badge: 'Sale', featured: true },
-    { id: 3, name: 'Acoustic Dreadnought', category: 'acoustic', brand: 'martin', price: 1899, image: 'https://via.placeholder.com/300x300/f093fb/ffffff?text=Acoustic', badge: '', featured: true },
-    { id: 4, name: 'Jazz Bass Premium', category: 'bass', brand: 'fender', price: 2299, image: 'https://via.placeholder.com/300x300/4facfe/ffffff?text=Jazz+Bass', badge: 'Popular', featured: true },
-    { id: 5, name: 'SG Special', category: 'electric', brand: 'gibson', price: 1599, image: 'https://via.placeholder.com/300x300/fa709a/ffffff?text=SG+Special', badge: '', featured: false },
-    { id: 6, name: 'Telecaster Classic', category: 'electric', brand: 'fender', price: 1899, image: 'https://via.placeholder.com/300x300/fee140/ffffff?text=Telecaster', badge: 'Sale', featured: false },
-    { id: 7, name: 'Classical Pro', category: 'classical', brand: 'martin', price: 899, image: 'https://via.placeholder.com/300x300/30cfd0/ffffff?text=Classical', badge: '', featured: false },
-    { id: 8, name: 'RG Series', category: 'electric', brand: 'ibanez', price: 799, image: 'https://via.placeholder.com/300x300/a8edea/ffffff?text=RG+Series', badge: 'New', featured: false },
-    { id: 9, name: 'Precision Bass', category: 'bass', brand: 'fender', price: 1799, image: 'https://via.placeholder.com/300x300/fed6e3/ffffff?text=P-Bass', badge: '', featured: false },
-    { id: 10, name: 'J-45 Acoustic', category: 'acoustic', brand: 'gibson', price: 2799, image: 'https://via.placeholder.com/300x300/c1dfc4/ffffff?text=J-45', badge: 'Popular', featured: false },
-    { id: 11, name: 'Explorer', category: 'electric', brand: 'gibson', price: 2199, image: 'https://via.placeholder.com/300x300/8ec5fc/ffffff?text=Explorer', badge: '', featured: false },
-    { id: 12, name: 'SR Bass', category: 'bass', brand: 'ibanez', price: 699, image: 'https://via.placeholder.com/300x300/e0aaff/ffffff?text=SR+Bass', badge: 'Sale', featured: false },
-    { id: 13, name: 'D-28 Acoustic', category: 'acoustic', brand: 'martin', price: 3199, image: 'https://via.placeholder.com/300x300/b8f2e6/ffffff?text=D-28', badge: 'New', featured: false },
-    { id: 14, name: 'Jem Series', category: 'electric', brand: 'ibanez', price: 1999, image: 'https://via.placeholder.com/300x300/ffc6ff/ffffff?text=Jem', badge: '', featured: false },
-    { id: 15, name: 'Nylon Classical', category: 'classical', brand: 'gibson', price: 1299, image: 'https://via.placeholder.com/300x300/bde0fe/ffffff?text=Classical', badge: '', featured: false },
-    { id: 16, name: 'American Ultra', category: 'electric', brand: 'fender', price: 2899, image: 'https://via.placeholder.com/300x300/ffafcc/ffffff?text=Ultra', badge: 'Popular', featured: true },
+    { id: 1, name: 'Les Paul Standard', category: 'electric', brand: 'gibson', price: 2999, image: 'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=300', badge: 'New', featured: true },
+    { id: 2, name: 'Stratocaster Deluxe', category: 'electric', brand: 'fender', price: 2499, image: 'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=300', badge: 'Sale', featured: true },
+    { id: 3, name: 'Acoustic Dreadnought', category: 'acoustic', brand: 'martin', price: 1899, image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=300', badge: '', featured: true },
+    { id: 4, name: 'Jazz Bass Premium', category: 'bass', brand: 'fender', price: 2299, image: 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=300', badge: 'Popular', featured: true },
+    { id: 5, name: 'SG Special', category: 'electric', brand: 'gibson', price: 1599, image: 'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=300', badge: '', featured: false },
+    { id: 6, name: 'Telecaster Classic', category: 'electric', brand: 'fender', price: 1899, image: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=300', badge: 'Sale', featured: false },
+    { id: 7, name: 'Classical Pro', category: 'classical', brand: 'martin', price: 899, image: 'https://images.unsplash.com/photo-1525201548942-d8732f6617a0?w=300', badge: '', featured: false },
+    { id: 8, name: 'RG Series', category: 'electric', brand: 'ibanez', price: 799, image: 'https://images.unsplash.com/photo-1558272287-4fbd5d9bfd9d?w=300', badge: 'New', featured: false },
+    { id: 9, name: 'Precision Bass', category: 'bass', brand: 'fender', price: 1799, image: 'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=300', badge: '', featured: false },
+    { id: 10, name: 'J-45 Acoustic', category: 'acoustic', brand: 'gibson', price: 2799, image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=300', badge: 'Popular', featured: false },
+    { id: 11, name: 'Explorer', category: 'electric', brand: 'gibson', price: 2199, image: 'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=300', badge: '', featured: false },
+    { id: 12, name: 'SR Bass', category: 'bass', brand: 'ibanez', price: 699, image: 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=300', badge: 'Sale', featured: false },
+    { id: 13, name: 'D-28 Acoustic', category: 'acoustic', brand: 'martin', price: 3199, image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=300', badge: 'New', featured: false },
+    { id: 14, name: 'Jem Series', category: 'electric', brand: 'ibanez', price: 1999, image: 'https://images.unsplash.com/photo-1558272287-4fbd5d9bfd9d?w=300', badge: '', featured: false },
+    { id: 15, name: 'Nylon Classical', category: 'classical', brand: 'gibson', price: 1299, image: 'https://images.unsplash.com/photo-1525201548942-d8732f6617a0?w=300', badge: '', featured: false },
+    { id: 16, name: 'American Ultra', category: 'electric', brand: 'fender', price: 2899, image: 'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=300', badge: 'Popular', featured: true },
 ];
 
 class ProductsPage {
@@ -59,13 +59,15 @@ class ProductsPage {
         const searchBox = document.getElementById('searchBox');
         
         // Sticky header
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+        if (header) {
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        }
         
         // Mobile menu
         if (mobileMenuToggle && navCenter) {

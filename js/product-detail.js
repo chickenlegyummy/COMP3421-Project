@@ -12,6 +12,7 @@ const PRODUCT_DATABASE = [
         category: 'electric',
         price: 2499,
         originalPrice: 2999,
+        badge: 'New',
         image: 'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
         images: [
             'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
@@ -35,11 +36,12 @@ const PRODUCT_DATABASE = [
     },
     {
         id: 2,
-        name: 'Stratocaster American Professional',
+        name: 'Stratocaster Deluxe',
         brand: 'Fender',
         category: 'electric',
-        price: 1699,
-        originalPrice: 1999,
+        price: 2099,
+        originalPrice: 2499,
+        badge: 'Sale',
         image: 'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800',
         images: [
             'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800',
@@ -47,7 +49,7 @@ const PRODUCT_DATABASE = [
             'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
             'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800'
         ],
-        description: 'The American Professional Stratocaster combines classic Fender tone with modern innovations. Featuring V-Mod II single-coil pickups and a Deep "C" maple neck, this guitar is perfect for players seeking versatile tones and exceptional playability.',
+        description: 'The Stratocaster Deluxe combines classic Fender tone with modern innovations. Featuring premium pickups and exceptional playability, this guitar is perfect for players seeking versatile tones.',
         rating: 4.9,
         reviews: 203,
         specs: {
@@ -63,21 +65,312 @@ const PRODUCT_DATABASE = [
     },
     {
         id: 3,
-        name: 'Martin D-28',
+        name: 'Acoustic Dreadnought',
         brand: 'Martin',
         category: 'acoustic',
-        price: 3199,
-        originalPrice: 3499,
+        price: 1899,
+        originalPrice: 2199,
+        badge: '',
         image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
         images: [
             'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
-            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
+            'https://images.unsplash.com/photo-1525201548942-d8732f6617a0?w=800',
             'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
             'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800'
         ],
-        description: 'The legendary Martin D-28 has been a favorite of musicians for decades. With its rich, powerful tone and stunning craftsmanship, this dreadnought acoustic delivers the authentic sound that has made Martin guitars world-famous.',
-        rating: 4.9,
+        description: 'Classic dreadnought acoustic guitar with rich, powerful tone. Perfect for strumming and fingerpicking, this instrument delivers exceptional sound quality.',
+        rating: 4.7,
         reviews: 156,
+        specs: {
+            'Body Style': 'Dreadnought',
+            'Top Material': 'Sitka Spruce',
+            'Back & Sides': 'Rosewood',
+            'Neck Material': 'Mahogany',
+            'Fretboard': 'Rosewood',
+            'Scale Length': '25.4"',
+            'Frets': '20',
+            'Electronics': 'None'
+        }
+    },
+    {
+        id: 4,
+        name: 'Jazz Bass Premium',
+        brand: 'Fender',
+        category: 'bass',
+        price: 2299,
+        originalPrice: 2699,
+        badge: 'Popular',
+        image: 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800',
+            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
+            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
+            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800'
+        ],
+        description: 'Premium Jazz Bass featuring classic tone and modern playability. Dual single-coil pickups deliver the iconic sound that has defined bass playing for decades.',
+        rating: 4.8,
+        reviews: 189,
+        specs: {
+            'Body Material': 'Alder',
+            'Neck Material': 'Maple',
+            'Fretboard': 'Rosewood',
+            'Scale Length': '34"',
+            'Frets': '20',
+            'Pickups': 'Single-Coil x2',
+            'Strings': '4',
+            'Hardware': 'Chrome'
+        }
+    },
+    {
+        id: 5,
+        name: 'SG Special',
+        brand: 'Gibson',
+        category: 'electric',
+        price: 1599,
+        originalPrice: 1899,
+        badge: '',
+        image: 'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
+            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
+            'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800',
+            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800'
+        ],
+        description: 'The SG Special delivers classic Gibson tone in a lightweight, double-cutaway design. Perfect for rock and blues players seeking powerful humbucker tones.',
+        rating: 4.7,
+        reviews: 134,
+        specs: {
+            'Body Material': 'Mahogany',
+            'Neck Material': 'Mahogany',
+            'Fretboard': 'Rosewood',
+            'Scale Length': '24.75"',
+            'Frets': '22',
+            'Pickups': 'Humbucker x2',
+            'Hardware': 'Chrome',
+            'Weight': 'Light'
+        }
+    },
+    {
+        id: 6,
+        name: 'Telecaster Classic',
+        brand: 'Fender',
+        category: 'electric',
+        price: 1899,
+        originalPrice: 2199,
+        badge: 'Sale',
+        image: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
+            'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800',
+            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
+            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800'
+        ],
+        description: 'Classic Telecaster offering legendary twang and versatile tones. From country to rock, this guitar delivers the authentic Fender sound.',
+        rating: 4.8,
+        reviews: 167,
+        specs: {
+            'Body Material': 'Ash',
+            'Neck Material': 'Maple',
+            'Fretboard': 'Maple',
+            'Scale Length': '25.5"',
+            'Frets': '21',
+            'Pickups': 'Single-Coil x2',
+            'Hardware': 'Chrome',
+            'Bridge': 'Fixed'
+        }
+    },
+    {
+        id: 7,
+        name: 'Classical Pro',
+        brand: 'Martin',
+        category: 'classical',
+        price: 899,
+        originalPrice: 1099,
+        badge: '',
+        image: 'https://images.unsplash.com/photo-1525201548942-d8732f6617a0?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1525201548942-d8732f6617a0?w=800',
+            'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
+            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
+            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800'
+        ],
+        description: 'Professional classical guitar with warm, resonant tone. Features traditional construction with premium tonewoods and nylon strings.',
+        rating: 4.6,
+        reviews: 98,
+        specs: {
+            'Body Style': 'Classical',
+            'Top Material': 'Cedar',
+            'Back & Sides': 'Mahogany',
+            'Neck Material': 'Mahogany',
+            'Fretboard': 'Rosewood',
+            'Scale Length': '25.6"',
+            'Frets': '19',
+            'Strings': 'Nylon'
+        }
+    },
+    {
+        id: 8,
+        name: 'RG Series',
+        brand: 'Ibanez',
+        category: 'electric',
+        price: 799,
+        originalPrice: 999,
+        badge: 'New',
+        image: 'https://images.unsplash.com/photo-1558272287-4fbd5d9bfd9d?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1558272287-4fbd5d9bfd9d?w=800',
+            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
+            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
+            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800'
+        ],
+        description: 'High-performance electric guitar designed for speed and precision. Perfect for metal and rock players seeking aggressive tones and fast playability.',
+        rating: 4.7,
+        reviews: 223,
+        specs: {
+            'Body Material': 'Basswood',
+            'Neck Material': 'Maple',
+            'Fretboard': 'Rosewood',
+            'Scale Length': '25.5"',
+            'Frets': '24',
+            'Pickups': 'Humbucker x2, Single-Coil x1',
+            'Hardware': 'Black',
+            'Bridge': 'Floyd Rose'
+        }
+    },
+    {
+        id: 9,
+        name: 'Precision Bass',
+        brand: 'Fender',
+        category: 'bass',
+        price: 1799,
+        originalPrice: 2099,
+        badge: '',
+        image: 'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
+            'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800',
+            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
+            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800'
+        ],
+        description: 'The legendary Precision Bass delivers powerful, punchy tone. Split-coil pickup provides the classic sound that has defined bass playing.',
+        rating: 4.9,
+        reviews: 245,
+        specs: {
+            'Body Material': 'Alder',
+            'Neck Material': 'Maple',
+            'Fretboard': 'Maple',
+            'Scale Length': '34"',
+            'Frets': '20',
+            'Pickups': 'Split-Coil',
+            'Strings': '4',
+            'Hardware': 'Chrome'
+        }
+    },
+    {
+        id: 10,
+        name: 'J-45 Acoustic',
+        brand: 'Gibson',
+        category: 'acoustic',
+        price: 2799,
+        originalPrice: 3199,
+        badge: 'Popular',
+        image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
+            'https://images.unsplash.com/photo-1525201548942-d8732f6617a0?w=800',
+            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
+            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800'
+        ],
+        description: 'Iconic Gibson acoustic guitar with warm, balanced tone. The J-45 has been a favorite of songwriters for generations.',
+        rating: 4.9,
+        reviews: 178,
+        specs: {
+            'Body Style': 'Round Shoulder',
+            'Top Material': 'Sitka Spruce',
+            'Back & Sides': 'Mahogany',
+            'Neck Material': 'Mahogany',
+            'Fretboard': 'Rosewood',
+            'Scale Length': '24.75"',
+            'Frets': '20',
+            'Electronics': 'Optional'
+        }
+    },
+    {
+        id: 11,
+        name: 'Explorer',
+        brand: 'Gibson',
+        category: 'electric',
+        price: 2199,
+        originalPrice: 2599,
+        badge: '',
+        image: 'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
+            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
+            'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800',
+            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800'
+        ],
+        description: 'Bold and aggressive Explorer design with powerful humbucker pickups. Perfect for rock and metal players seeking distinctive tone and style.',
+        rating: 4.7,
+        reviews: 142,
+        specs: {
+            'Body Material': 'Mahogany',
+            'Neck Material': 'Mahogany',
+            'Fretboard': 'Rosewood',
+            'Scale Length': '24.75"',
+            'Frets': '22',
+            'Pickups': 'Humbucker x2',
+            'Hardware': 'Chrome',
+            'Shape': 'Explorer'
+        }
+    },
+    {
+        id: 12,
+        name: 'SR Bass',
+        brand: 'Ibanez',
+        category: 'bass',
+        price: 699,
+        originalPrice: 899,
+        badge: 'Sale',
+        image: 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800',
+            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
+            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
+            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800'
+        ],
+        description: 'Versatile SR Bass with slim neck profile and active electronics. Perfect for modern players seeking fast playability and tonal flexibility.',
+        rating: 4.6,
+        reviews: 198,
+        specs: {
+            'Body Material': 'Mahogany',
+            'Neck Material': 'Maple',
+            'Fretboard': 'Rosewood',
+            'Scale Length': '34"',
+            'Frets': '24',
+            'Pickups': 'Active x2',
+            'Strings': '4',
+            'Electronics': 'Active EQ'
+        }
+    },
+    {
+        id: 13,
+        name: 'D-28 Acoustic',
+        brand: 'Martin',
+        category: 'acoustic',
+        price: 3199,
+        originalPrice: 3599,
+        badge: 'New',
+        image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
+            'https://images.unsplash.com/photo-1525201548942-d8732f6617a0?w=800',
+            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
+            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800'
+        ],
+        description: 'The legendary Martin D-28 has been a favorite of musicians for decades. Rich, powerful tone and stunning craftsmanship define this classic dreadnought.',
+        rating: 4.9,
+        reviews: 267,
         specs: {
             'Body Style': 'Dreadnought',
             'Top Material': 'Sitka Spruce',
@@ -87,6 +380,93 @@ const PRODUCT_DATABASE = [
             'Scale Length': '25.4"',
             'Frets': '20',
             'Electronics': 'None'
+        }
+    },
+    {
+        id: 14,
+        name: 'Jem Series',
+        brand: 'Ibanez',
+        category: 'electric',
+        price: 1999,
+        originalPrice: 2399,
+        badge: '',
+        image: 'https://images.unsplash.com/photo-1558272287-4fbd5d9bfd9d?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1558272287-4fbd5d9bfd9d?w=800',
+            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
+            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
+            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800'
+        ],
+        description: 'Signature Jem Series guitar featuring unique styling and premium components. Designed for virtuoso players seeking exceptional tone and playability.',
+        rating: 4.8,
+        reviews: 156,
+        specs: {
+            'Body Material': 'Basswood',
+            'Neck Material': 'Maple',
+            'Fretboard': 'Maple',
+            'Scale Length': '25.5"',
+            'Frets': '24',
+            'Pickups': 'DiMarzio',
+            'Hardware': 'Gold',
+            'Bridge': 'Edge Tremolo'
+        }
+    },
+    {
+        id: 15,
+        name: 'Nylon Classical',
+        brand: 'Gibson',
+        category: 'classical',
+        price: 1299,
+        originalPrice: 1599,
+        badge: '',
+        image: 'https://images.unsplash.com/photo-1525201548942-d8732f6617a0?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1525201548942-d8732f6617a0?w=800',
+            'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
+            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
+            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800'
+        ],
+        description: 'Premium classical guitar with exceptional tonal clarity. Traditional construction with modern refinements for discerning players.',
+        rating: 4.7,
+        reviews: 112,
+        specs: {
+            'Body Style': 'Classical',
+            'Top Material': 'Spruce',
+            'Back & Sides': 'Rosewood',
+            'Neck Material': 'Mahogany',
+            'Fretboard': 'Ebony',
+            'Scale Length': '25.6"',
+            'Frets': '19',
+            'Strings': 'Nylon'
+        }
+    },
+    {
+        id: 16,
+        name: 'American Ultra',
+        brand: 'Fender',
+        category: 'electric',
+        price: 2899,
+        originalPrice: 3299,
+        badge: 'Popular',
+        image: 'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800',
+            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
+            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
+            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800'
+        ],
+        description: 'The ultimate Fender performance guitar featuring modern appointments and premium craftsmanship. Ultra Noiseless pickups and advanced ergonomics.',
+        rating: 4.9,
+        reviews: 189,
+        specs: {
+            'Body Material': 'Alder',
+            'Neck Material': 'Maple',
+            'Fretboard': 'Maple',
+            'Scale Length': '25.5"',
+            'Frets': '22',
+            'Pickups': 'Ultra Noiseless x3',
+            'Hardware': 'Chrome',
+            'Bridge': '2-Point Tremolo'
         }
     }
 ];
@@ -110,6 +490,212 @@ class ProductDetailPage {
         this.initAddToCart();
         this.initWishlist();
         this.loadRelatedProducts();
+        this.initNavigation();
+    }
+
+    /**
+     * Initialize Navigation
+     */
+    initNavigation() {
+        const header = document.getElementById('header');
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navCenter = document.querySelector('.nav-center');
+        const searchToggle = document.getElementById('searchToggle');
+        const searchBox = document.getElementById('searchBox');
+        
+        // Sticky header
+        if (header) {
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        }
+        
+        // Mobile menu
+        if (mobileMenuToggle && navCenter) {
+            // Calculate and set dynamic top position for mobile menu
+            const updateMenuPosition = () => {
+                if (window.innerWidth <= 992) {
+                    const topBanner = document.querySelector('.top-banner');
+                    const navbar = document.querySelector('.navbar');
+                    const topOffset = (topBanner?.offsetHeight || 0) + (navbar?.offsetHeight || 0);
+                    navCenter.style.top = `${topOffset}px`;
+                    navCenter.style.height = `calc(100vh - ${topOffset}px)`;
+                    // Also set CSS variable for overlay
+                    document.documentElement.style.setProperty('--menu-top-offset', `${topOffset}px`);
+                } else {
+                    navCenter.style.top = '';
+                    navCenter.style.height = '';
+                    document.documentElement.style.removeProperty('--menu-top-offset');
+                }
+            };
+            
+            // Set initial position
+            updateMenuPosition();
+            
+            // Update on window resize
+            window.addEventListener('resize', updateMenuPosition);
+            
+            mobileMenuToggle.addEventListener('click', () => {
+                navCenter.classList.toggle('active');
+                mobileMenuToggle.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+            });
+        }
+        
+        // Close menu when clicking navigation links (but NOT utility buttons or dropdown toggles)
+        const navLinks = document.querySelectorAll('.nav-link:not(#mobileLanguageToggle):not(#mobileThemeToggle):not(#mobileSearchToggle)');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Don't close menu if it's a dropdown toggle button
+                if (link.closest('.dropdown')) {
+                    return; // Let the dropdown handler deal with it
+                }
+                
+                // Only close menu for actual navigation links (a tags), not buttons
+                if (link.tagName === 'A' && window.innerWidth <= 992) {
+                    setTimeout(() => {
+                        if (navCenter) navCenter.classList.remove('active');
+                        if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
+                        document.body.classList.remove('menu-open');
+                    }, 100);
+                }
+            });
+        });
+        
+        // Dropdown menu functionality
+        const dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('.nav-link');
+            const menu = dropdown.querySelector('.dropdown-menu');
+            
+            if (link && menu) {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 992) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        menu.classList.toggle('active');
+                        link.setAttribute('aria-expanded', 
+                            menu.classList.contains('active') ? 'true' : 'false'
+                        );
+                    }
+                });
+                
+                // Close menu when clicking dropdown items
+                const dropdownItems = menu.querySelectorAll('.dropdown-item');
+                dropdownItems.forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        if (window.innerWidth <= 992) {
+                            setTimeout(() => {
+                                if (navCenter) navCenter.classList.remove('active');
+                                if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
+                                document.body.classList.remove('menu-open');
+                            }, 100);
+                        }
+                    });
+                });
+            }
+        });
+        
+        // Mobile utility buttons
+        const mobileLanguageToggle = document.getElementById('mobileLanguageToggle');
+        const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+        const mobileSearchToggle = document.getElementById('mobileSearchToggle');
+        const searchOverlay = document.getElementById('searchOverlay');
+        const searchOverlayBack = document.getElementById('searchOverlayBack');
+        const searchOverlayInput = document.getElementById('searchOverlayInput');
+        
+        if (mobileLanguageToggle) {
+            mobileLanguageToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (typeof languageManager !== 'undefined') {
+                    languageManager.toggleLanguage();
+                    const span = mobileLanguageToggle.querySelector('span');
+                    if (span) {
+                        const lang = languageManager.getCurrentLanguage();
+                        span.setAttribute('data-lang-en', lang === 'en' ? 'Language: EN' : 'Language: 中文');
+                        span.setAttribute('data-lang-zh', lang === 'en' ? '語言: EN' : '語言: 中文');
+                        span.textContent = lang === 'en' ? 'Language: EN' : 'Language: 中文';
+                    }
+                }
+            });
+        }
+        
+        if (mobileThemeToggle) {
+            mobileThemeToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (typeof themeManager !== 'undefined') {
+                    themeManager.toggleTheme();
+                    const icon = mobileThemeToggle.querySelector('i');
+                    const span = mobileThemeToggle.querySelector('span');
+                    const theme = themeManager.getCurrentTheme();
+                    if (icon) {
+                        icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+                    }
+                    if (span) {
+                        const text = theme === 'light' ? 'Dark Mode' : 'Light Mode';
+                        const textZh = theme === 'light' ? '深色模式' : '淺色模式';
+                        span.setAttribute('data-lang-en', text);
+                        span.setAttribute('data-lang-zh', textZh);
+                        span.textContent = text;
+                    }
+                }
+            });
+        }
+        
+        if (mobileSearchToggle) {
+            mobileSearchToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (navCenter) navCenter.classList.remove('active');
+                if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                
+                if (searchOverlay) {
+                    searchOverlay.classList.add('active');
+                    if (searchOverlayInput) searchOverlayInput.focus();
+                }
+            });
+        }
+        
+        if (searchOverlayBack && searchOverlay) {
+            searchOverlayBack.addEventListener('click', () => searchOverlay.classList.remove('active'));
+        }
+        
+        if (searchOverlayInput) {
+            searchOverlayInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    window.location.href = `products.html?search=${searchOverlayInput.value}`;
+                }
+            });
+        }
+        
+        const searchSuggestions = document.querySelectorAll('.search-suggestion-item');
+        searchSuggestions.forEach(item => {
+            item.addEventListener('click', () => {
+                const text = item.querySelector('span').textContent;
+                if (searchOverlayInput) {
+                    searchOverlayInput.value = text;
+                    window.location.href = `products.html?search=${text}`;
+                }
+            });
+        });
+        
+        // Search toggle
+        if (searchToggle && searchBox) {
+            searchToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                searchBox.classList.toggle('active');
+            });
+            
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.search-container')) {
+                    searchBox.classList.remove('active');
+                }
+            });
+        }
     }
 
     /**

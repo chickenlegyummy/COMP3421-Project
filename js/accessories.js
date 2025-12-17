@@ -5,22 +5,22 @@
 
 // Mock accessories database
 const ACCESSORIES_DATABASE = [
-    { id: 101, name: 'Electric Guitar Strings Set', category: 'strings', brand: 'daddario', price: 12.99, image: 'https://via.placeholder.com/300x300/667eea/ffffff?text=Strings', badge: 'Popular', featured: true },
-    { id: 102, name: 'Acoustic Guitar Strings', category: 'strings', brand: 'ernieball', price: 14.99, image: 'https://via.placeholder.com/300x300/764ba2/ffffff?text=Acoustic+Strings', badge: 'Sale', featured: true },
-    { id: 103, name: 'Premium Guitar Picks Pack', category: 'picks', brand: 'dunlop', price: 8.99, image: 'https://via.placeholder.com/300x300/f093fb/ffffff?text=Picks', badge: '', featured: true },
-    { id: 104, name: 'Jazz III Guitar Picks', category: 'picks', brand: 'dunlop', price: 6.99, image: 'https://via.placeholder.com/300x300/4facfe/ffffff?text=Jazz+Picks', badge: 'New', featured: false },
-    { id: 105, name: 'Hard Shell Guitar Case', category: 'cases', brand: 'fender', price: 149.99, image: 'https://via.placeholder.com/300x300/fa709a/ffffff?text=Case', badge: '', featured: true },
-    { id: 106, name: 'Gig Bag Deluxe', category: 'cases', brand: 'mono', price: 89.99, image: 'https://via.placeholder.com/300x300/fee140/ffffff?text=Gig+Bag', badge: 'Popular', featured: false },
-    { id: 107, name: 'Professional Guitar Cable 20ft', category: 'cables', brand: 'monster', price: 39.99, image: 'https://via.placeholder.com/300x300/30cfd0/ffffff?text=Cable', badge: 'Sale', featured: false },
-    { id: 108, name: 'Instrument Cable 10ft', category: 'cables', brand: 'planetwaves', price: 24.99, image: 'https://via.placeholder.com/300x300/a8edea/ffffff?text=Cable+10ft', badge: '', featured: false },
-    { id: 109, name: 'Overdrive Pedal', category: 'pedals', brand: 'boss', price: 129.99, image: 'https://via.placeholder.com/300x300/fed6e3/ffffff?text=Overdrive', badge: 'Popular', featured: true },
-    { id: 110, name: 'Delay Pedal', category: 'pedals', brand: 'tcelectronic', price: 149.99, image: 'https://via.placeholder.com/300x300/c1dfc4/ffffff?text=Delay', badge: '', featured: false },
-    { id: 111, name: 'Reverb Pedal', category: 'pedals', brand: 'electroharmonix', price: 169.99, image: 'https://via.placeholder.com/300x300/8ec5fc/ffffff?text=Reverb', badge: 'New', featured: false },
-    { id: 112, name: 'Chromatic Tuner Pedal', category: 'tuners', brand: 'boss', price: 99.99, image: 'https://via.placeholder.com/300x300/e0aaff/ffffff?text=Tuner', badge: '', featured: false },
-    { id: 113, name: 'Clip-On Tuner', category: 'tuners', brand: 'snark', price: 19.99, image: 'https://via.placeholder.com/300x300/b8f2e6/ffffff?text=Clip+Tuner', badge: 'Sale', featured: false },
-    { id: 114, name: 'Bass Guitar Strings', category: 'strings', brand: 'ernieball', price: 29.99, image: 'https://via.placeholder.com/300x300/ffc6ff/ffffff?text=Bass+Strings', badge: '', featured: false },
-    { id: 115, name: 'Guitar Strap Leather', category: 'cases', brand: 'levy', price: 49.99, image: 'https://via.placeholder.com/300x300/bde0fe/ffffff?text=Strap', badge: 'Popular', featured: false },
-    { id: 116, name: 'Pedalboard Case', category: 'cases', brand: 'pedaltrain', price: 199.99, image: 'https://via.placeholder.com/300x300/ffafcc/ffffff?text=Pedalboard', badge: 'New', featured: true },
+    { id: 101, name: 'Electric Guitar Strings Set', category: 'strings', brand: 'daddario', price: 12.99, image: 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=300', badge: 'Popular', featured: true },
+    { id: 102, name: 'Acoustic Guitar Strings', category: 'strings', brand: 'ernieball', price: 14.99, image: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=300', badge: 'Sale', featured: true },
+    { id: 103, name: 'Premium Guitar Picks Pack', category: 'picks', brand: 'dunlop', price: 8.99, image: 'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=300', badge: '', featured: true },
+    { id: 104, name: 'Jazz III Guitar Picks', category: 'picks', brand: 'dunlop', price: 6.99, image: 'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=300', badge: 'New', featured: false },
+    { id: 105, name: 'Hard Shell Guitar Case', category: 'cases', brand: 'fender', price: 149.99, image: 'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=300', badge: '', featured: true },
+    { id: 106, name: 'Gig Bag Deluxe', category: 'cases', brand: 'mono', price: 89.99, image: 'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=300', badge: 'Popular', featured: false },
+    { id: 107, name: 'Professional Guitar Cable 20ft', category: 'cables', brand: 'monster', price: 39.99, image: 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=300', badge: 'Sale', featured: false },
+    { id: 108, name: 'Instrument Cable 10ft', category: 'cables', brand: 'planetwaves', price: 24.99, image: 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=300', badge: '', featured: false },
+    { id: 109, name: 'Overdrive Pedal', category: 'pedals', brand: 'boss', price: 129.99, image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=300', badge: 'Popular', featured: true },
+    { id: 110, name: 'Delay Pedal', category: 'pedals', brand: 'tcelectronic', price: 149.99, image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=300', badge: '', featured: false },
+    { id: 111, name: 'Reverb Pedal', category: 'pedals', brand: 'electroharmonix', price: 169.99, image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=300', badge: 'New', featured: false },
+    { id: 112, name: 'Chromatic Tuner Pedal', category: 'tuners', brand: 'boss', price: 99.99, image: 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=300', badge: '', featured: false },
+    { id: 113, name: 'Clip-On Tuner', category: 'tuners', brand: 'snark', price: 19.99, image: 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=300', badge: 'Sale', featured: false },
+    { id: 114, name: 'Bass Guitar Strings', category: 'strings', brand: 'ernieball', price: 29.99, image: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=300', badge: '', featured: false },
+    { id: 115, name: 'Guitar Strap Leather', category: 'cases', brand: 'levy', price: 49.99, image: 'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=300', badge: 'Popular', featured: false },
+    { id: 116, name: 'Pedalboard Case', category: 'cases', brand: 'pedaltrain', price: 199.99, image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=300', badge: 'New', featured: true },
 ];
 
 class AccessoriesPage {
@@ -59,13 +59,15 @@ class AccessoriesPage {
         const searchBox = document.getElementById('searchBox');
         
         // Sticky header
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+        if (header) {
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        }
         
         // Mobile menu
         if (mobileMenuToggle && navCenter) {

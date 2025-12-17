@@ -19,22 +19,21 @@ function initNavigation() {
     const header = document.getElementById('header');
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
     const navCenter = document.querySelector('.nav-center');
+    const searchToggle = document.getElementById('searchToggle');
+    const searchBox = document.getElementById('searchBox');
     
-    // Sticky header on scroll
-    let lastScroll = 0;
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-        
-        lastScroll = currentScroll;
-    });
+    // Sticky header
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
     
-    // Mobile menu toggle
+    // Mobile menu
     if (mobileMenuToggle && navCenter) {
         // Calculate and set dynamic top position for mobile menu
         const updateMenuPosition = () => {
@@ -66,18 +65,6 @@ function initNavigation() {
         });
     }
     
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (navCenter && navCenter.classList.contains('active')) {
-            // Don't close if clicking inside nav-center or on toggle button
-            if (!e.target.closest('.nav-center') && !e.target.closest('.mobile-menu-toggle')) {
-                navCenter.classList.remove('active');
-                mobileMenuToggle.classList.remove('active');
-                document.body.classList.remove('menu-open');
-            }
-        }
-    });
-    
     // Close menu when clicking navigation links (but NOT utility buttons or dropdown toggles)
     const navLinks = document.querySelectorAll('.nav-link:not(#mobileLanguageToggle):not(#mobileThemeToggle):not(#mobileSearchToggle)');
     navLinks.forEach(link => {
@@ -98,7 +85,7 @@ function initNavigation() {
         });
     });
     
-    // Dropdown menu accessibility
+    // Dropdown menu functionality
     const dropdowns = document.querySelectorAll('.dropdown');
     dropdowns.forEach(dropdown => {
         const link = dropdown.querySelector('.nav-link');
@@ -156,7 +143,6 @@ function initNavigation() {
                     span.textContent = lang === 'en' ? 'Language: EN' : 'Language: 中文';
                 }
             }
-            // Don't close menu for language toggle
         });
     }
     
@@ -181,19 +167,16 @@ function initNavigation() {
                     span.textContent = languageManager.getCurrentLanguage() === 'en' ? text : textZh;
                 }
             }
-            // Don't close menu for theme toggle
         });
     }
     
     if (mobileSearchToggle) {
         mobileSearchToggle.addEventListener('click', (e) => {
             e.stopPropagation();
-            // Close mobile menu
             if (navCenter) navCenter.classList.remove('active');
             if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
             document.body.classList.remove('menu-open');
             
-            // Open full-screen search overlay
             if (searchOverlay) {
                 searchOverlay.classList.add('active');
                 if (searchOverlayInput) {
@@ -203,14 +186,12 @@ function initNavigation() {
         });
     }
     
-    // Close search overlay
     if (searchOverlayBack && searchOverlay) {
         searchOverlayBack.addEventListener('click', () => {
             searchOverlay.classList.remove('active');
         });
     }
     
-    // Handle search overlay input
     if (searchOverlayInput) {
         searchOverlayInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
@@ -222,7 +203,6 @@ function initNavigation() {
         });
     }
     
-    // Handle search suggestions click
     const searchSuggestions = document.querySelectorAll('.search-suggestion-item');
     searchSuggestions.forEach(item => {
         item.addEventListener('click', () => {
@@ -234,23 +214,18 @@ function initNavigation() {
         });
     });
     
-    // Update mobile cart count
-    function updateMobileCartCount() {
-        const mobileCartCount = document.getElementById('mobileCartCount');
-        const desktopCartCount = document.querySelector('.nav-right .cart-count');
-        if (mobileCartCount && desktopCartCount) {
-            mobileCartCount.textContent = desktopCartCount.textContent;
-        }
-    }
-    
-    // Update initially and on cart changes
-    updateMobileCartCount();
-    if (window.cartManager) {
-        const originalAddItem = window.cartManager.addItem;
-        window.cartManager.addItem = function(...args) {
-            originalAddItem.apply(this, args);
-            updateMobileCartCount();
-        };
+    // Search toggle
+    if (searchToggle && searchBox) {
+        searchToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            searchBox.classList.toggle('active');
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (!searchBox.contains(e.target) && !searchToggle.contains(e.target)) {
+                searchBox.classList.remove('active');
+            }
+        });
     }
 }
 
@@ -448,51 +423,31 @@ async function loadFeaturedProducts() {
 }
 
 /**
- * Fetch featured products (mock data)
+ * Fetch featured products (from products.js database)
  */
 async function fetchFeaturedProducts() {
     // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 500));
     
-    // Mock data - replace with actual API call
-    return [
-        {
-            id: 1,
-            name: 'Les Paul Standard',
-            category: 'Electric Guitar',
-            price: 2999,
-            image: 'https://via.placeholder.com/300x300/667eea/ffffff?text=Les+Paul',
-            badge: 'New',
-            featured: true
-        },
-        {
-            id: 2,
-            name: 'Stratocaster Deluxe',
-            category: 'Electric Guitar',
-            price: 2499,
-            image: 'https://via.placeholder.com/300x300/764ba2/ffffff?text=Stratocaster',
-            badge: 'Sale',
-            featured: true
-        },
-        {
-            id: 3,
-            name: 'Acoustic Dreadnought',
-            category: 'Acoustic Guitar',
-            price: 1899,
-            image: 'https://via.placeholder.com/300x300/f093fb/ffffff?text=Acoustic',
-            badge: '',
-            featured: true
-        },
-        {
-            id: 4,
-            name: 'Jazz Bass Premium',
-            category: 'Bass Guitar',
-            price: 2299,
-            image: 'https://via.placeholder.com/300x300/4facfe/ffffff?text=Jazz+Bass',
-            badge: 'Popular',
-            featured: true
-        }
-    ];
+    // Get featured products from PRODUCTS_DATABASE
+    // This assumes products.js is loaded before main.js
+    if (typeof PRODUCTS_DATABASE !== 'undefined') {
+        return PRODUCTS_DATABASE
+            .filter(product => product.featured)
+            .slice(0, 4)
+            .map(product => ({
+                id: product.id,
+                name: product.name,
+                category: product.category.charAt(0).toUpperCase() + product.category.slice(1) + ' Guitar',
+                price: product.price,
+                image: product.image,
+                badge: product.badge,
+                featured: product.featured
+            }));
+    }
+    
+    // Fallback if PRODUCTS_DATABASE is not available
+    return [];
 }
 
 /**
@@ -548,12 +503,13 @@ function createLoadingSkeleton(count) {
  */
 window.addToCart = async function(productId) {
     try {
-        // Fetch product details
-        const products = await fetchFeaturedProducts();
-        const product = products.find(p => p.id === productId);
-        
-        if (product && typeof cartManager !== 'undefined') {
-            cartManager.addItem(product);
+        // Get product from PRODUCTS_DATABASE
+        if (typeof PRODUCTS_DATABASE !== 'undefined') {
+            const product = PRODUCTS_DATABASE.find(p => p.id === productId);
+            
+            if (product && typeof cartManager !== 'undefined') {
+                cartManager.addItem(product);
+            }
         }
     } catch (error) {
         console.error('Error adding to cart:', error);

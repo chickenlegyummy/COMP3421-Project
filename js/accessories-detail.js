@@ -12,6 +12,7 @@ const ACCESSORIES_DATABASE_DETAIL = [
         category: 'strings',
         price: 12.99,
         originalPrice: 15.99,
+        badge: 'Popular',
         image: 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
         images: [
             'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
@@ -40,6 +41,7 @@ const ACCESSORIES_DATABASE_DETAIL = [
         category: 'strings',
         price: 14.99,
         originalPrice: 17.99,
+        badge: 'Sale',
         image: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800',
         images: [
             'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800',
@@ -63,11 +65,12 @@ const ACCESSORIES_DATABASE_DETAIL = [
     },
     {
         id: 103,
-        name: 'Premium Guitar Picks Pack (12pcs)',
+        name: 'Premium Guitar Picks Pack',
         brand: 'Dunlop',
         category: 'picks',
         price: 8.99,
         originalPrice: 11.99,
+        badge: '',
         image: 'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=800',
         images: [
             'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=800',
@@ -90,12 +93,42 @@ const ACCESSORIES_DATABASE_DETAIL = [
         }
     },
     {
+        id: 104,
+        name: 'Jazz III Guitar Picks',
+        brand: 'Dunlop',
+        category: 'picks',
+        price: 6.99,
+        originalPrice: 8.99,
+        badge: 'New',
+        image: 'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=800',
+            'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
+            'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800',
+            'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800'
+        ],
+        description: 'Legendary Jazz III picks favored by speed players and technical guitarists. Small, sharp tip provides precision and control for fast playing.',
+        rating: 4.9,
+        reviews: 423,
+        specs: {
+            'Quantity': '6 picks',
+            'Gauge': '1.38mm',
+            'Material': 'Nylon',
+            'Shape': 'Jazz III',
+            'Grip': 'Standard',
+            'Color': 'Black',
+            'Package': 'Bag',
+            'Brand': 'Dunlop'
+        }
+    },
+    {
         id: 105,
         name: 'Hard Shell Guitar Case',
         brand: 'Fender',
         category: 'cases',
         price: 149.99,
         originalPrice: 199.99,
+        badge: '',
         image: 'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
         images: [
             'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
@@ -118,12 +151,100 @@ const ACCESSORIES_DATABASE_DETAIL = [
         }
     },
     {
+        id: 106,
+        name: 'Gig Bag Deluxe',
+        brand: 'Mono',
+        category: 'cases',
+        price: 89.99,
+        originalPrice: 109.99,
+        badge: 'Popular',
+        image: 'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
+            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
+            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
+            'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800'
+        ],
+        description: 'Deluxe gig bag with excellent protection and comfort. Multiple pockets for accessories, padded straps, and weather-resistant exterior.',
+        rating: 4.7,
+        reviews: 234,
+        specs: {
+            'Type': 'Gig Bag',
+            'Fit': 'Universal',
+            'Interior': '20mm Padding',
+            'Pockets': 'Multiple',
+            'Straps': 'Padded Backpack',
+            'Exterior': 'Water Resistant',
+            'Weight': '3 lbs',
+            'Brand': 'Mono'
+        }
+    },
+    {
+        id: 107,
+        name: 'Professional Guitar Cable 20ft',
+        brand: 'Monster',
+        category: 'cables',
+        price: 39.99,
+        originalPrice: 49.99,
+        badge: 'Sale',
+        image: 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
+            'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800',
+            'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=800',
+            'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800'
+        ],
+        description: 'Professional quality guitar cable with superior shielding and low capacitance. Gold-plated connectors ensure reliable signal transmission.',
+        rating: 4.8,
+        reviews: 312,
+        specs: {
+            'Length': '20 feet',
+            'Connectors': '1/4" Gold Plated',
+            'Shielding': '95% Coverage',
+            'Capacitance': 'Low',
+            'Jacket': 'Braided',
+            'Warranty': 'Lifetime',
+            'Color': 'Black',
+            'Brand': 'Monster'
+        }
+    },
+    {
+        id: 108,
+        name: 'Instrument Cable 10ft',
+        brand: 'Planet Waves',
+        category: 'cables',
+        price: 24.99,
+        originalPrice: 29.99,
+        badge: '',
+        image: 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
+            'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800',
+            'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=800',
+            'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800'
+        ],
+        description: 'Reliable instrument cable perfect for studio and stage use. Features molded connectors and high-quality copper conductors.',
+        rating: 4.6,
+        reviews: 267,
+        specs: {
+            'Length': '10 feet',
+            'Connectors': '1/4" Nickel',
+            'Shielding': '90% Coverage',
+            'Capacitance': 'Standard',
+            'Jacket': 'PVC',
+            'Warranty': 'Limited Lifetime',
+            'Color': 'Black',
+            'Brand': 'Planet Waves'
+        }
+    },
+    {
         id: 109,
         name: 'Overdrive Pedal',
         brand: 'Boss',
         category: 'pedals',
         price: 129.99,
         originalPrice: 159.99,
+        badge: 'Popular',
         image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
         images: [
             'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
@@ -143,6 +264,209 @@ const ACCESSORIES_DATABASE_DETAIL = [
             'Power': '9V DC',
             'Dimensions': '2.87" x 5" x 2.25"',
             'Brand': 'Boss'
+        }
+    },
+    {
+        id: 110,
+        name: 'Delay Pedal',
+        brand: 'TC Electronic',
+        category: 'pedals',
+        price: 149.99,
+        originalPrice: 179.99,
+        badge: '',
+        image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
+            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
+            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
+            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800'
+        ],
+        description: 'Professional delay pedal with crystal-clear repeats and extensive control. Multiple delay modes and tap tempo functionality.',
+        rating: 4.8,
+        reviews: 356,
+        specs: {
+            'Type': 'Digital Delay',
+            'Controls': 'Time, Feedback, Mix, Type',
+            'Bypass': 'True Bypass',
+            'Delay Time': 'Up to 7 seconds',
+            'Modes': '4 Delay Types',
+            'Power': '9V DC',
+            'Dimensions': '2.8" x 4.8" x 2.2"',
+            'Brand': 'TC Electronic'
+        }
+    },
+    {
+        id: 111,
+        name: 'Reverb Pedal',
+        brand: 'Electro-Harmonix',
+        category: 'pedals',
+        price: 169.99,
+        originalPrice: 199.99,
+        badge: 'New',
+        image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
+            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
+            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
+            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800'
+        ],
+        description: 'Versatile reverb pedal with multiple hall, room, and plate algorithms. Create lush ambient soundscapes or subtle space.',
+        rating: 4.7,
+        reviews: 298,
+        specs: {
+            'Type': 'Digital Reverb',
+            'Controls': 'Decay, Mix, Tone, Type',
+            'Bypass': 'Buffered',
+            'Modes': '9 Reverb Types',
+            'Trails': 'Yes',
+            'Power': '9V DC',
+            'Dimensions': '4.5" x 2.75" x 2.1"',
+            'Brand': 'Electro-Harmonix'
+        }
+    },
+    {
+        id: 112,
+        name: 'Chromatic Tuner Pedal',
+        brand: 'Boss',
+        category: 'tuners',
+        price: 99.99,
+        originalPrice: 119.99,
+        badge: '',
+        image: 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
+            'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800',
+            'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=800',
+            'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800'
+        ],
+        description: 'Professional chromatic tuner pedal with large LED display. Fast, accurate tuning with true bypass for transparent operation.',
+        rating: 4.9,
+        reviews: 478,
+        specs: {
+            'Type': 'Chromatic',
+            'Display': 'LED',
+            'Accuracy': '+/- 1 cent',
+            'Bypass': 'True Bypass',
+            'Modes': 'Chromatic, Guitar, Bass',
+            'Power': '9V DC',
+            'Dimensions': '2.87" x 5" x 2.25"',
+            'Brand': 'Boss'
+        }
+    },
+    {
+        id: 113,
+        name: 'Clip-On Tuner',
+        brand: 'Snark',
+        category: 'tuners',
+        price: 19.99,
+        originalPrice: 24.99,
+        badge: 'Sale',
+        image: 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
+            'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800',
+            'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=800',
+            'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800'
+        ],
+        description: 'Compact clip-on tuner with bright display. Perfect for quick tuning adjustments on stage or in the studio.',
+        rating: 4.6,
+        reviews: 612,
+        specs: {
+            'Type': 'Clip-On Chromatic',
+            'Display': 'Full Color',
+            'Accuracy': '+/- 1 cent',
+            'Battery': 'CR2032',
+            'Modes': 'Guitar, Bass, Violin',
+            'Rotation': '360°',
+            'Auto Off': 'Yes',
+            'Brand': 'Snark'
+        }
+    },
+    {
+        id: 114,
+        name: 'Bass Guitar Strings',
+        brand: 'Ernie Ball',
+        category: 'strings',
+        price: 29.99,
+        originalPrice: 34.99,
+        badge: '',
+        image: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800',
+            'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
+            'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=800',
+            'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800'
+        ],
+        description: 'Professional bass guitar strings with punchy tone and excellent sustain. Round-wound construction for bright attack.',
+        rating: 4.8,
+        reviews: 245,
+        specs: {
+            'Gauge': '.045-.105',
+            'Material': 'Nickel Wound',
+            'Coating': 'No',
+            'Strings': '4',
+            'Tone': 'Bright',
+            'Durability': 'High',
+            'Package': 'Single Set',
+            'Brand': 'Ernie Ball'
+        }
+    },
+    {
+        id: 115,
+        name: 'Guitar Strap Leather',
+        brand: "Levy's",
+        category: 'cases',
+        price: 49.99,
+        originalPrice: 59.99,
+        badge: 'Popular',
+        image: 'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
+            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
+            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
+            'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800'
+        ],
+        description: 'Premium leather guitar strap with comfortable padding. Adjustable length and durable construction for long-lasting use.',
+        rating: 4.9,
+        reviews: 389,
+        specs: {
+            'Material': 'Genuine Leather',
+            'Width': '2.5"',
+            'Length': 'Adjustable 42"-60"',
+            'Padding': 'Yes',
+            'Ends': 'Leather Reinforced',
+            'Color': 'Brown',
+            'Style': 'Classic',
+            'Brand': "Levy's"
+        }
+    },
+    {
+        id: 116,
+        name: 'Pedalboard Case',
+        brand: 'Pedaltrain',
+        category: 'cases',
+        price: 199.99,
+        originalPrice: 249.99,
+        badge: 'New',
+        image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
+        images: [
+            'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
+            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
+            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
+            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800'
+        ],
+        description: 'Professional pedalboard with tour-grade case. Includes mounting tape and cable management. Perfect for gigging musicians.',
+        rating: 4.9,
+        reviews: 234,
+        specs: {
+            'Size': 'Medium (24" x 12.5")',
+            'Case': 'Soft Case Included',
+            'Material': 'Aircraft Aluminum',
+            'Weight': '6 lbs',
+            'Cable Management': 'Yes',
+            'Mounting': 'Hook & Loop',
+            'Capacity': '8-10 pedals',
+            'Brand': 'Pedaltrain'
         }
     }
 ];
@@ -164,6 +488,212 @@ class AccessoriesDetailPage {
         this.initAddToCart();
         this.initWishlist();
         this.loadRelatedProducts();
+        this.initNavigation();
+    }
+
+    /**
+     * Initialize Navigation
+     */
+    initNavigation() {
+        const header = document.getElementById('header');
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navCenter = document.querySelector('.nav-center');
+        const searchToggle = document.getElementById('searchToggle');
+        const searchBox = document.getElementById('searchBox');
+        
+        // Sticky header
+        if (header) {
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        }
+        
+        // Mobile menu
+        if (mobileMenuToggle && navCenter) {
+            // Calculate and set dynamic top position for mobile menu
+            const updateMenuPosition = () => {
+                if (window.innerWidth <= 992) {
+                    const topBanner = document.querySelector('.top-banner');
+                    const navbar = document.querySelector('.navbar');
+                    const topOffset = (topBanner?.offsetHeight || 0) + (navbar?.offsetHeight || 0);
+                    navCenter.style.top = `${topOffset}px`;
+                    navCenter.style.height = `calc(100vh - ${topOffset}px)`;
+                    // Also set CSS variable for overlay
+                    document.documentElement.style.setProperty('--menu-top-offset', `${topOffset}px`);
+                } else {
+                    navCenter.style.top = '';
+                    navCenter.style.height = '';
+                    document.documentElement.style.removeProperty('--menu-top-offset');
+                }
+            };
+            
+            // Set initial position
+            updateMenuPosition();
+            
+            // Update on window resize
+            window.addEventListener('resize', updateMenuPosition);
+            
+            mobileMenuToggle.addEventListener('click', () => {
+                navCenter.classList.toggle('active');
+                mobileMenuToggle.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+            });
+        }
+        
+        // Close menu when clicking navigation links (but NOT utility buttons or dropdown toggles)
+        const navLinks = document.querySelectorAll('.nav-link:not(#mobileLanguageToggle):not(#mobileThemeToggle):not(#mobileSearchToggle)');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Don't close menu if it's a dropdown toggle button
+                if (link.closest('.dropdown')) {
+                    return; // Let the dropdown handler deal with it
+                }
+                
+                // Only close menu for actual navigation links (a tags), not buttons
+                if (link.tagName === 'A' && window.innerWidth <= 992) {
+                    setTimeout(() => {
+                        if (navCenter) navCenter.classList.remove('active');
+                        if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
+                        document.body.classList.remove('menu-open');
+                    }, 100);
+                }
+            });
+        });
+        
+        // Dropdown menu functionality
+        const dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('.nav-link');
+            const menu = dropdown.querySelector('.dropdown-menu');
+            
+            if (link && menu) {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 992) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        menu.classList.toggle('active');
+                        link.setAttribute('aria-expanded', 
+                            menu.classList.contains('active') ? 'true' : 'false'
+                        );
+                    }
+                });
+                
+                // Close menu when clicking dropdown items
+                const dropdownItems = menu.querySelectorAll('.dropdown-item');
+                dropdownItems.forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        if (window.innerWidth <= 992) {
+                            setTimeout(() => {
+                                if (navCenter) navCenter.classList.remove('active');
+                                if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
+                                document.body.classList.remove('menu-open');
+                            }, 100);
+                        }
+                    });
+                });
+            }
+        });
+        
+        // Mobile utility buttons
+        const mobileLanguageToggle = document.getElementById('mobileLanguageToggle');
+        const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+        const mobileSearchToggle = document.getElementById('mobileSearchToggle');
+        const searchOverlay = document.getElementById('searchOverlay');
+        const searchOverlayBack = document.getElementById('searchOverlayBack');
+        const searchOverlayInput = document.getElementById('searchOverlayInput');
+        
+        if (mobileLanguageToggle) {
+            mobileLanguageToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (typeof languageManager !== 'undefined') {
+                    languageManager.toggleLanguage();
+                    const span = mobileLanguageToggle.querySelector('span');
+                    if (span) {
+                        const lang = languageManager.getCurrentLanguage();
+                        span.setAttribute('data-lang-en', lang === 'en' ? 'Language: EN' : 'Language: 中文');
+                        span.setAttribute('data-lang-zh', lang === 'en' ? '語言: EN' : '語言: 中文');
+                        span.textContent = lang === 'en' ? 'Language: EN' : 'Language: 中文';
+                    }
+                }
+            });
+        }
+        
+        if (mobileThemeToggle) {
+            mobileThemeToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (typeof themeManager !== 'undefined') {
+                    themeManager.toggleTheme();
+                    const icon = mobileThemeToggle.querySelector('i');
+                    const span = mobileThemeToggle.querySelector('span');
+                    const theme = themeManager.getCurrentTheme();
+                    if (icon) {
+                        icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+                    }
+                    if (span) {
+                        const text = theme === 'light' ? 'Dark Mode' : 'Light Mode';
+                        const textZh = theme === 'light' ? '深色模式' : '淺色模式';
+                        span.setAttribute('data-lang-en', text);
+                        span.setAttribute('data-lang-zh', textZh);
+                        span.textContent = text;
+                    }
+                }
+            });
+        }
+        
+        if (mobileSearchToggle) {
+            mobileSearchToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (navCenter) navCenter.classList.remove('active');
+                if (mobileMenuToggle) mobileMenuToggle.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                
+                if (searchOverlay) {
+                    searchOverlay.classList.add('active');
+                    if (searchOverlayInput) searchOverlayInput.focus();
+                }
+            });
+        }
+        
+        if (searchOverlayBack && searchOverlay) {
+            searchOverlayBack.addEventListener('click', () => searchOverlay.classList.remove('active'));
+        }
+        
+        if (searchOverlayInput) {
+            searchOverlayInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    window.location.href = `accessories.html?search=${searchOverlayInput.value}`;
+                }
+            });
+        }
+        
+        const searchSuggestions = document.querySelectorAll('.search-suggestion-item');
+        searchSuggestions.forEach(item => {
+            item.addEventListener('click', () => {
+                const text = item.querySelector('span').textContent;
+                if (searchOverlayInput) {
+                    searchOverlayInput.value = text;
+                    window.location.href = `accessories.html?search=${text}`;
+                }
+            });
+        });
+        
+        // Search toggle
+        if (searchToggle && searchBox) {
+            searchToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                searchBox.classList.toggle('active');
+            });
+            
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.search-container')) {
+                    searchBox.classList.remove('active');
+                }
+            });
+        }
     }
 
     /**
