@@ -577,8 +577,13 @@ window.addToCartProduct = function(productId) {
     }
 };
 
-// Initialize products page
+// Initialize products page only on products.html
 let productsPage;
 document.addEventListener('DOMContentLoaded', () => {
-    productsPage = new ProductsPage();
+    // Check if we're on the products page by checking the URL
+    const isProductsPage = window.location.pathname.includes('products.html');
+    
+    if (isProductsPage) {
+        productsPage = new ProductsPage();
+    }
 });
