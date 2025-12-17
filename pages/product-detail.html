@@ -70,42 +70,41 @@
                         <li class="nav-item">
                             <a href="products.html?sale=true" class="nav-link" data-lang-en="Sale" data-lang-zh="特價">Sale</a>
                         </li>
+                        
+                        <!-- Mobile-only utility items -->
+                        <li class="nav-item mobile-only">
+                            <button class="nav-link" id="mobileSearchToggle">
+                                <i class="fas fa-search"></i>
+                                <span data-lang-en="Search" data-lang-zh="搜尋">Search</span>
+                            </button>
+                        </li>
+                        <li class="nav-item mobile-only">
+                            <button class="nav-link" id="mobileLanguageToggle">
+                                <i class="fas fa-language"></i>
+                                <span data-lang-en="Language: EN" data-lang-zh="語言: 中文">Language: EN</span>
+                            </button>
+                        </li>
+                        <li class="nav-item mobile-only">
+                            <button class="nav-link" id="mobileThemeToggle">
+                                <i class="fas fa-moon"></i>
+                                <span data-lang-en="Dark Mode" data-lang-zh="深色模式">Dark Mode</span>
+                            </button>
+                        </li>
+                        <li class="nav-item mobile-only">
+                            <a href="login.html" class="nav-link">
+                                <i class="fas fa-user"></i>
+                                <span data-lang-en="Account" data-lang-zh="帳戶">Account</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mobile-only">
+                            <a href="cart.html" class="nav-link">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span data-lang-en="Shopping Cart" data-lang-zh="購物車">Shopping Cart</span>
+                                <span class="cart-count" id="mobileCartCount">0</span>
+                            </a>
+                        </li>
                     </ul>
-                    
-                    <!-- Mobile-only utility items -->
-                    <li class="nav-item mobile-only">
-                        <button class="nav-link" id="mobileSearchToggle">
-                            <i class="fas fa-search"></i>
-                            <span data-lang-en="Search" data-lang-zh="搜尋">Search</span>
-                        </button>
-                    </li>
-                    <li class="nav-item mobile-only">
-                        <button class="nav-link" id="mobileLanguageToggle">
-                            <i class="fas fa-language"></i>
-                            <span data-lang-en="Language: EN" data-lang-zh="語言: 中文">Language: EN</span>
-                        </button>
-                    </li>
-                    <li class="nav-item mobile-only">
-                        <button class="nav-link" id="mobileThemeToggle">
-                            <i class="fas fa-moon"></i>
-                            <span data-lang-en="Dark Mode" data-lang-zh="深色模式">Dark Mode</span>
-                        </button>
-                    </li>
-                    <li class="nav-item mobile-only">
-                        <a href="login.html" class="nav-link">
-                            <i class="fas fa-user"></i>
-                            <span data-lang-en="Account" data-lang-zh="帳戶">Account</span>
-                        </a>
-                    </li>
-                    <li class="nav-item mobile-only">
-                        <a href="cart.html" class="nav-link">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span data-lang-en="Shopping Cart" data-lang-zh="購物車">Shopping Cart</span>
-                            <span class="cart-count" id="mobileCartCount">0</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                </div>
                 
                 <div class="nav-right">
                     <div class="search-container">
