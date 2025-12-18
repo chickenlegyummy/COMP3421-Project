@@ -236,6 +236,12 @@ class ProductsPage {
                         span.setAttribute('data-lang-zh', lang === 'en' ? '語言: EN' : '語言: 中文');
                         span.textContent = lang === 'en' ? 'Language: EN' : 'Language: 中文';
                     }
+                    // Recalculate menu position after language change
+                    if (typeof window.updateMobileMenuPosition === 'function') {
+                        setTimeout(() => {
+                            window.updateMobileMenuPosition();
+                        }, 10); // Minimal delay for DOM update
+                    }
                 }
             });
         }

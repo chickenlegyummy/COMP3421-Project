@@ -3,6 +3,32 @@
  * Updates navigation links based on authentication status
  */
 
+// Mobile menu position calculator
+const updateMobileMenuPosition = () => {
+    if (window.innerWidth <= 992) {
+        const navCenter = document.querySelector('.nav-center');
+        const topBanner = document.querySelector('.top-banner');
+        const navbar = document.querySelector('.navbar');
+        const topOffset = (topBanner?.offsetHeight || 0) + (navbar?.offsetHeight || 0);
+        if (navCenter) {
+            navCenter.style.top = `${topOffset}px`;
+            navCenter.style.height = `calc(100vh - ${topOffset}px)`;
+        }
+        // Also set CSS variable for overlay
+        document.documentElement.style.setProperty('--menu-top-offset', `${topOffset}px`);
+    } else {
+        const navCenter = document.querySelector('.nav-center');
+        if (navCenter) {
+            navCenter.style.top = '';
+            navCenter.style.height = '';
+        }
+        document.documentElement.style.removeProperty('--menu-top-offset');
+    }
+};
+
+// Make function globally accessible for language changes
+window.updateMobileMenuPosition = updateMobileMenuPosition;
+
 // Update user account links based on login status
 function updateAccountLinks() {
     if (AuthHelper.isLoggedIn()) {
@@ -29,10 +55,17 @@ function updateAccountLinks() {
 
 // Call this when DOM is loaded
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', updateAccountLinks);
+    document.addEventListener('DOMContentLoaded', () => {
+        updateAccountLinks();
+        updateMobileMenuPosition();
+    });
 } else {
     updateAccountLinks();
+    updateMobileMenuPosition();
 }
 
 // Also update when auth state changes
 window.addEventListener('authStateChanged', updateAccountLinks);
+
+// Update on window resize
+window.addEventListener('resize', updateMobileMenuPosition);

@@ -55,7 +55,7 @@ class LanguageManager {
             if (typeof window.updateMobileMenuPosition === 'function') {
                 window.updateMobileMenuPosition();
             }
-        }, 100); // Small delay to allow DOM to update
+        }, 10); // Minimal delay for DOM update
         
         // Dispatch custom event for other components
         window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: this.language } }));

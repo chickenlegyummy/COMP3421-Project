@@ -149,7 +149,7 @@ function initNavigation() {
                     if (typeof window.updateMobileMenuPosition === 'function') {
                         window.updateMobileMenuPosition();
                     }
-                }, 150);
+                }, 10); // Minimal delay for DOM update
             }
         });
     }

@@ -3,6 +3,29 @@
  * Handles product detail display, image gallery, tabs, and related products
  */
 
+// Mobile menu position calculator
+const updateMobileMenuPosition = () => {
+    if (window.innerWidth <= 992) {
+        const navCenter = document.querySelector('.nav-center');
+        const topBanner = document.querySelector('.top-banner');
+        const navbar = document.querySelector('.navbar');
+        const topOffset = (topBanner?.offsetHeight || 0) + (navbar?.offsetHeight || 0);
+        if (navCenter) {
+            navCenter.style.top = `${topOffset}px`;
+            navCenter.style.height = `calc(100vh - ${topOffset}px)`;
+        }
+        document.documentElement.style.setProperty('--menu-top-offset', `${topOffset}px`);
+    } else {
+        const navCenter = document.querySelector('.nav-center');
+        if (navCenter) {
+            navCenter.style.top = '';
+            navCenter.style.height = '';
+        }
+        document.documentElement.style.removeProperty('--menu-top-offset');
+    }
+};
+window.updateMobileMenuPosition = updateMobileMenuPosition;
+
 // Import product database from products.js
 const PRODUCT_DATABASE = [
     {
@@ -619,6 +642,12 @@ class ProductDetailPage {
                         span.setAttribute('data-lang-en', lang === 'en' ? 'Language: EN' : 'Language: 中文');
                         span.setAttribute('data-lang-zh', lang === 'en' ? '語言: EN' : '語言: 中文');
                         span.textContent = lang === 'en' ? 'Language: EN' : 'Language: 中文';
+                    }
+                    // Recalculate menu position after language change
+                    if (typeof window.updateMobileMenuPosition === 'function') {
+                        setTimeout(() => {
+                            window.updateMobileMenuPosition();
+                        }, 10); // Minimal delay for DOM update
                     }
                 }
             });
