@@ -50,6 +50,13 @@ class LanguageManager {
         this.updateToggleText();
         localStorage.setItem('language', this.language);
         
+        // Recalculate mobile menu position after language change (text height may change)
+        setTimeout(() => {
+            if (typeof window.updateMobileMenuPosition === 'function') {
+                window.updateMobileMenuPosition();
+            }
+        }, 100); // Small delay to allow DOM to update
+        
         // Dispatch custom event for other components
         window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: this.language } }));
     }

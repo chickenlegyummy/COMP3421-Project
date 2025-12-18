@@ -51,6 +51,9 @@ function initNavigation() {
             }
         };
         
+        // Make function globally accessible for language changes
+        window.updateMobileMenuPosition = updateMenuPosition;
+        
         // Set initial position
         updateMenuPosition();
         
@@ -141,6 +144,12 @@ function initNavigation() {
                     span.setAttribute('data-lang-zh', lang === 'en' ? '語言: EN' : '語言: 中文');
                     span.textContent = lang === 'en' ? 'Language: EN' : 'Language: 中文';
                 }
+                // Recalculate menu position after language change
+                setTimeout(() => {
+                    if (typeof window.updateMobileMenuPosition === 'function') {
+                        window.updateMobileMenuPosition();
+                    }
+                }, 150);
             }
         });
     }
