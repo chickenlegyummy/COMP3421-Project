@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize all components
     initNavigation();
     initHeroSlider();
-    initSearch();
     initScrollAnimations();
     loadFeaturedProducts();
     initNewsletterForm();
@@ -302,46 +301,6 @@ function initHeroSlider() {
     
     // Start auto play
     startAutoPlay();
-}
-
-/**
- * Search functionality
- */
-function initSearch() {
-    const searchToggle = document.getElementById('searchToggle');
-    const searchBox = document.getElementById('searchBox');
-    
-    if (searchToggle && searchBox) {
-        searchToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            searchBox.classList.toggle('active');
-            
-            if (searchBox.classList.contains('active')) {
-                const input = searchBox.querySelector('input');
-                if (input) input.focus();
-            }
-        });
-        
-        // Close search when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.search-container')) {
-                searchBox.classList.remove('active');
-            }
-        });
-        
-        // Handle search submission
-        const searchForm = searchBox.querySelector('input');
-        if (searchForm) {
-            searchForm.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    const query = searchForm.value.trim();
-                    if (query) {
-                        window.location.href = `pages/products.html?search=${encodeURIComponent(query)}`;
-                    }
-                }
-            });
-        }
-    }
 }
 
 /**

@@ -75,12 +75,6 @@
                         
                         <!-- Mobile-only utility items -->
                         <li class="nav-item mobile-only">
-                            <button class="nav-link" id="mobileSearchToggle">
-                                <i class="fas fa-search"></i>
-                                <span data-lang-en="Search" data-lang-zh="搜尋">Search</span>
-                            </button>
-                        </li>
-                        <li class="nav-item mobile-only">
                             <button class="nav-link" id="mobileLanguageToggle">
                                 <i class="fas fa-language"></i>
                                 <span data-lang-en="Language: EN" data-lang-zh="語言: 中文">Language: EN</span>
@@ -109,18 +103,6 @@
                 </div>
                 
                 <div class="nav-right">
-                    <div class="search-container">
-                        <button class="search-btn" id="searchToggle" aria-label="Toggle search">
-                            <i class="fas fa-search"></i>
-                        </button>
-                        <div class="search-box" id="searchBox">
-                            <input type="search" placeholder="Search guitars..." aria-label="Search">
-                            <button type="submit" aria-label="Submit search">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
                     <button class="icon-btn language-toggle" id="languageToggle" aria-label="Toggle language">
                         <span class="lang-text">EN</span>
                     </button>
@@ -148,32 +130,8 @@
         </nav>
     </header>
 
-    <!-- Full-screen Search Overlay -->
-    <div class="search-overlay" id="searchOverlay">
-        <div class="search-overlay-header">
-            <button class="search-overlay-back" id="searchOverlayBack" aria-label="Close search">
-                <i class="fas fa-arrow-left"></i>
-            </button>
-            <input type="search" class="search-overlay-input" id="searchOverlayInput" placeholder="Search guitars..." aria-label="Search">
-        </div>
-        <div class="search-overlay-content">
-            <ul class="search-suggestions">
-                <li class="search-suggestion-item">
-                    <i class="fas fa-search"></i>
-                    <span data-lang-en="Electric Guitars" data-lang-zh="電結他">Electric Guitars</span>
-                </li>
-                <li class="search-suggestion-item">
-                    <i class="fas fa-search"></i>
-                    <span data-lang-en="Acoustic Guitars" data-lang-zh="木結他">Acoustic Guitars</span>
-                </li>
-                <li class="search-suggestion-item">
-                    <i class="fas fa-search"></i>
-                    <span data-lang-en="Bass Guitars" data-lang-zh="低音結他">Bass Guitars</span>
-                </li>
-                <li class="search-suggestion-item">
-                    <i class="fas fa-search"></i>
-                    <span data-lang-en="Guitar Accessories" data-lang-zh="結他配件">Guitar Accessories</span>
-                </li>
+    <!-- Main Content -->
+
             </ul>
         </div>
     </div>

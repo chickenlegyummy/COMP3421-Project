@@ -7,6 +7,7 @@ class CartManager {
     constructor() {
         this.cart = [];
         this.cartCount = document.getElementById('cartCount');
+        this.mobileCartCount = document.getElementById('mobileCartCount');
         this.init();
     }
 
@@ -226,10 +227,16 @@ class CartManager {
     }
 
     updateCartCount() {
+        const count = this.getItemCount();
+        
         if (this.cartCount) {
-            const count = this.getItemCount();
             this.cartCount.textContent = count;
             this.cartCount.style.display = count > 0 ? 'flex' : 'none';
+        }
+        
+        if (this.mobileCartCount) {
+            this.mobileCartCount.textContent = count;
+            this.mobileCartCount.style.display = count > 0 ? 'inline' : 'none';
         }
     }
 

@@ -22,6 +22,7 @@
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
+            margin-top: 120px;
         }
 
         .account-header {
@@ -355,12 +356,6 @@
                         
                         <!-- Mobile-only utility items -->
                         <li class="nav-item mobile-only">
-                            <button class="nav-link" id="mobileSearchToggle">
-                                <i class="fas fa-search"></i>
-                                <span data-lang-en="Search" data-lang-zh="搜尋">Search</span>
-                            </button>
-                        </li>
-                        <li class="nav-item mobile-only">
                             <button class="nav-link" id="mobileLanguageToggle">
                                 <i class="fas fa-language"></i>
                                 <span data-lang-en="Language: EN" data-lang-zh="語言: 中文">Language: EN</span>
@@ -389,18 +384,6 @@
                 </div>
                 
                 <div class="nav-right">
-                    <div class="search-container">
-                        <button class="search-btn" id="searchToggle" aria-label="Toggle search">
-                            <i class="fas fa-search"></i>
-                        </button>
-                        <div class="search-box" id="searchBox">
-                            <input type="search" placeholder="Search guitars..." aria-label="Search">
-                            <button type="submit" aria-label="Submit search">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
                     <button class="icon-btn language-toggle" id="languageToggle" aria-label="Toggle language">
                         <span class="lang-text">EN</span>
                     </button>
@@ -581,6 +564,7 @@
     <!-- Scripts -->
     <script src="../js/api-config.js"></script>
     <script src="../js/cart.js"></script>
+    <script src="../js/main.js"></script>
     <script src="../js/navigation.js"></script>
     <script src="../js/language.js"></script>
     <script src="../js/theme.js"></script>
