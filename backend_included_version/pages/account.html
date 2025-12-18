@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My Account - GuitarHub">
+    <title data-lang-en="My Account - GuitarHub" data-lang-zh="我的帳戶 - 結他中心">My Account - GuitarHub</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <style>
+        .account-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .account-header {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .account-header h1 {
+            margin: 0 0 0.5rem 0;
+            color: var(--text-primary);
+        }
+
+        .account-header p {
+            margin: 0;
+            color: var(--text-secondary);
+        }
+
+        .account-grid {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .account-sidebar {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            height: fit-content;
+            box-shadow: var(--shadow-md);
+        }
+
+        .account-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .account-nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .account-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .account-nav-link:hover {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .account-nav-link.active {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .account-content {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .account-section {
+            display: none;
+        }
+
+        .account-section.active {
+            display: block;
+        }
+
+        .account-section h2 {
+            margin-top: 0;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-primary);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            padding: 1rem;
+            background: var(--bg-primary);
+            border-radius: 8px;
+        }
+
+        .info-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .info-value {
+            font-size: 1.125rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .order-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .order-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .order-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .order-id {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .order-date {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .order-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .order-status.pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .order-status.completed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .order-items {
+            margin-bottom: 1rem;
+        }
+
+        .order-item {
+            display: flex;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .order-item-info {
+            flex: 1;
+        }
+
+        .order-item-name {
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .order-item-details {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .order-total {
+            display: flex;
+            justify-content: flex-end;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .order-total strong {
+            font-size: 1.25rem;
+            color: var(--primary);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            color: var(--text-secondary);
+            opacity: 0.3;
+            margin-bottom: 1rem;
+        }
+
+        .empty-state h3 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .empty-state p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-logout {
+            background: #dc3545;
+            color: #ffffff;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-logout:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .account-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .account-sidebar {
+                order: 2;
+            }
+
+            .account-content {
+                order: 1;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .order-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="header" id="header">
+        <div class="top-banner">
+            <p data-lang-en="Free Shipping on Orders Over $299 | Special Holiday Sale - Up to 30% Off" 
+               data-lang-zh="訂單滿$299免運費 | 節日特惠 - 低至七折">
+               Free Shipping on Orders Over $299 | Special Holiday Sale - Up to 30% Off
+            </p>
+        </div>
+        
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <div class="nav-left">
+                    <a href="../index.html" class="logo" aria-label="GuitarHub Home">
+                        <i class="fas fa-guitar"></i>
+                        <span>GuitarHub</span>
+                    </a>
+                </div>
+                
+                <div class="nav-center">
+                    <ul class="nav-menu" id="navMenu">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">
+                                <span data-lang-en="Guitars" data-lang-zh="結他">Guitars</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a href="products.html?category=electric" class="dropdown-item" data-lang-en="Electric Guitars" data-lang-zh="電結他">Electric Guitars</a>
+                                <a href="products.html?category=acoustic" class="dropdown-item" data-lang-en="Acoustic Guitars" data-lang-zh="木結他">Acoustic Guitars</a>
+                                <a href="products.html?category=bass" class="dropdown-item" data-lang-en="Bass Guitars" data-lang-zh="低音結他">Bass Guitars</a>
+                                <a href="products.html?category=classical" class="dropdown-item" data-lang-en="Classical Guitars" data-lang-zh="古典結他">Classical Guitars</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">
+                                <span data-lang-en="Accessories" data-lang-zh="配件">Accessories</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a href="accessories.html?category=strings" class="dropdown-item" data-lang-en="Strings" data-lang-zh="琴弦">Strings</a>
+                                <a href="accessories.html?category=picks" class="dropdown-item" data-lang-en="Picks" data-lang-zh="撥片">Picks</a>
+                                <a href="accessories.html?category=cases" class="dropdown-item" data-lang-en="Cases & Bags" data-lang-zh="琴盒及袋">Cases & Bags</a>
+                                <a href="accessories.html?category=cables" class="dropdown-item" data-lang-en="Cables" data-lang-zh="線材">Cables</a>
+                                <a href="accessories.html?category=pedals" class="dropdown-item" data-lang-en="Effects Pedals" data-lang-zh="效果器">Effects Pedals</a>
+                                <a href="accessories.html?category=tuners" class="dropdown-item" data-lang-en="Tuners" data-lang-zh="調音器">Tuners</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="products.html?featured=true" class="nav-link" data-lang-en="New Arrivals" data-lang-zh="新品上架">New Arrivals</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="products.html?sale=true" class="nav-link" data-lang-en="Sale" data-lang-zh="特價">Sale</a>
+                        </li>
+                        
+                        <!-- Mobile-only utility items -->
+                        <li class="nav-item mobile-only">
+                            <button class="nav-link" id="mobileSearchToggle">
+                                <i class="fas fa-search"></i>
+                                <span data-lang-en="Search" data-lang-zh="搜尋">Search</span>
+                            </button>
+                        </li>
+                        <li class="nav-item mobile-only">
+                            <button class="nav-link" id="mobileLanguageToggle">
+                                <i class="fas fa-language"></i>
+                                <span data-lang-en="Language: EN" data-lang-zh="語言: 中文">Language: EN</span>
+                            </button>
+                        </li>
+                        <li class="nav-item mobile-only">
+                            <button class="nav-link" id="mobileThemeToggle">
+                                <i class="fas fa-moon"></i>
+                                <span data-lang-en="Dark Mode" data-lang-zh="深色模式">Dark Mode</span>
+                            </button>
+                        </li>
+                        <li class="nav-item mobile-only">
+                            <a href="login.html" class="nav-link">
+                                <i class="fas fa-user"></i>
+                                <span data-lang-en="Account" data-lang-zh="帳戶">Account</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mobile-only">
+                            <a href="cart.html" class="nav-link">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span data-lang-en="Shopping Cart" data-lang-zh="購物車">Shopping Cart</span>
+                                <span class="cart-count" id="mobileCartCount">0</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-right">
+                    <div class="search-container">
+                        <button class="search-btn" id="searchToggle" aria-label="Toggle search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div class="search-box" id="searchBox">
+                            <input type="search" placeholder="Search guitars..." aria-label="Search">
+                            <button type="submit" aria-label="Submit search">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button class="icon-btn language-toggle" id="languageToggle" aria-label="Toggle language">
+                        <span class="lang-text">EN</span>
+                    </button>
+                    
+                    <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <a href="login.html" class="icon-btn" aria-label="User account">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    
+                    <a href="cart.html" class="icon-btn cart-btn" aria-label="Shopping cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </a>
+                    
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="account-container">
+        <!-- Account Header -->
+        <div class="account-header">
+            <h1 id="accountTitle">My Account</h1>
+            <p id="accountEmail">Loading...</p>
+        </div>
+
+        <!-- Account Grid -->
+        <div class="account-grid">
+            <!-- Sidebar Navigation -->
+            <aside class="account-sidebar">
+                <ul class="account-nav">
+                    <li>
+                        <a href="#" class="account-nav-link active" data-section="profile">
+                            <i class="fas fa-user"></i>
+                            <span data-lang-en="Profile" data-lang-zh="個人資料">Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="account-nav-link" data-section="orders">
+                            <i class="fas fa-box"></i>
+                            <span data-lang-en="Orders" data-lang-zh="訂單">Orders</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="account-nav-link" data-section="settings">
+                            <i class="fas fa-cog"></i>
+                            <span data-lang-en="Settings" data-lang-zh="設定">Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <button class="btn-logout" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span data-lang-en="Logout" data-lang-zh="登出">Logout</span>
+                        </button>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="account-content">
+                <!-- Profile Section -->
+                <section id="profile" class="account-section active">
+                    <h2 data-lang-en="Profile Information" data-lang-zh="個人資料">Profile Information</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label" data-lang-en="Name" data-lang-zh="姓名">Name</div>
+                            <div class="info-value" id="profileName">-</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label" data-lang-en="Email" data-lang-zh="電子郵件">Email</div>
+                            <div class="info-value" id="profileEmail">-</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label" data-lang-en="Member Since" data-lang-zh="加入日期">Member Since</div>
+                            <div class="info-value" id="profileJoinDate">-</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label" data-lang-en="Total Orders" data-lang-zh="總訂單數">Total Orders</div>
+                            <div class="info-value" id="profileOrderCount">0</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Orders Section -->
+                <section id="orders" class="account-section">
+                    <h2 data-lang-en="Order History" data-lang-zh="訂單歷史">Order History</h2>
+                    <div id="ordersList" class="order-list">
+                        <div class="empty-state">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <h3>Loading orders...</h3>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section id="settings" class="account-section">
+                    <h2 data-lang-en="Account Settings" data-lang-zh="帳戶設定">Account Settings</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label" data-lang-en="Language" data-lang-zh="語言">Language</div>
+                            <div class="info-value">
+                                <select id="settingsLanguage" style="padding: 0.5rem; border-radius: 4px;">
+                                    <option value="en">English</option>
+                                    <option value="zh">中文</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label" data-lang-en="Theme" data-lang-zh="主題">Theme</div>
+                            <div class="info-value">
+                                <select id="settingsTheme" style="padding: 0.5rem; border-radius: 4px;">
+                                    <option value="light">Light</option>
+                                    <option value="dark">Dark</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 data-lang-en="About Us" data-lang-zh="關於我們">About Us</h3>
+                    <p data-lang-en="Your trusted source for premium guitars and accessories since 2024." data-lang-zh="自2024年起，您值得信賴的優質結他和配件來源。">Your trusted source for premium guitars and accessories since 2024.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 data-lang-en="Quick Links" data-lang-zh="快速連結">Quick Links</h3>
+                    <ul>
+                        <li><a href="products.html" data-lang-en="All Products" data-lang-zh="所有產品">All Products</a></li>
+                        <li><a href="products.html?featured=true" data-lang-en="New Arrivals" data-lang-zh="新品上架">New Arrivals</a></li>
+                        <li><a href="products.html?sale=true" data-lang-en="Sale" data-lang-zh="特價">Sale</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 data-lang-en="Customer Service" data-lang-zh="客戶服務">Customer Service</h3>
+                    <ul>
+                        <li><a href="#" data-lang-en="Contact Us" data-lang-zh="聯絡我們">Contact Us</a></li>
+                        <li><a href="#" data-lang-en="Shipping Info" data-lang-zh="運送資訊">Shipping Info</a></li>
+                        <li><a href="#" data-lang-en="Returns" data-lang-zh="退貨政策">Returns</a></li>
+                        <li><a href="#" data-lang-en="FAQ" data-lang-zh="常見問題">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 data-lang-en="Contact" data-lang-zh="聯絡方式">Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Music Street, HK</li>
+                        <li><i class="fas fa-phone"></i> +852 1234 5678</li>
+                        <li><i class="fas fa-envelope"></i> info@guitarhub.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GuitarHub. <span data-lang-en="All rights reserved." data-lang-zh="版權所有。">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/api-config.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/language.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        // Account Page Manager
+        class AccountManager {
+            constructor() {
+                this.user = null;
+                this.orders = [];
+                this.init();
+            }
+
+            async init() {
+                // Check if logged in
+                if (!AuthHelper.isLoggedIn()) {
+                    window.location.href = 'login.html?redirect=account.html';
+                    return;
+                }
+
+                this.user = AuthHelper.getUser();
+                this.setupNavigation();
+                this.loadUserData();
+                this.loadOrders();
+                this.setupLogout();
+            }
+
+            setupNavigation() {
+                const navLinks = document.querySelectorAll('.account-nav-link');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const section = link.dataset.section;
+                        this.showSection(section);
+                        
+                        // Update active state
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    });
+                });
+            }
+
+            showSection(sectionId) {
+                const sections = document.querySelectorAll('.account-section');
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById(sectionId).classList.add('active');
+            }
+
+            loadUserData() {
+                if (!this.user) return;
+
+                // Update header
+                document.getElementById('accountTitle').textContent = `Welcome, ${this.user.username || this.user.email.split('@')[0]}!`;
+                document.getElementById('accountEmail').textContent = this.user.email;
+
+                // Update profile section
+                document.getElementById('profileName').textContent = this.user.username || this.user.email.split('@')[0];
+                document.getElementById('profileEmail').textContent = this.user.email;
+                document.getElementById('profileJoinDate').textContent = new Date(this.user.created_at || Date.now()).toLocaleDateString();
+            }
+
+            async loadOrders() {
+                const ordersList = document.getElementById('ordersList');
+                
+                try {
+                    const response = await apiRequest(API.ORDERS.LIST);
+                    this.orders = response.orders;
+
+                    // Update order count
+                    document.getElementById('profileOrderCount').textContent = this.orders.length;
+
+                    if (this.orders.length === 0) {
+                        ordersList.innerHTML = `
+                            <div class="empty-state">
+                                <i class="fas fa-box-open"></i>
+                                <h3>No orders yet</h3>
+                                <p>Start shopping to see your orders here!</p>
+                                <a href="products.html" class="btn btn-primary">Browse Products</a>
+                            </div>
+                        `;
+                    } else {
+                        ordersList.innerHTML = this.orders.map(order => this.createOrderCard(order)).join('');
+                    }
+                } catch (error) {
+                    console.error('Error loading orders:', error);
+                    ordersList.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <h3>Error loading orders</h3>
+                            <p>Please try again later</p>
+                        </div>
+                    `;
+                }
+            }
+
+            createOrderCard(order) {
+                const orderDate = new Date(order.created_at).toLocaleDateString();
+                const statusClass = order.status === 'completed' ? 'completed' : 'pending';
+                
+                return `
+                    <div class="order-card">
+                        <div class="order-header">
+                            <div>
+                                <div class="order-id">Order #${order.id}</div>
+                                <div class="order-date">${orderDate}</div>
+                            </div>
+                            <span class="order-status ${statusClass}">${order.status}</span>
+                        </div>
+                        <div class="order-items">
+                            ${order.items.map(item => `
+                                <div class="order-item">
+                                    <div class="order-item-info">
+                                        <div class="order-item-name">${item.product_name}</div>
+                                        <div class="order-item-details">Quantity: ${item.quantity} × $${item.price.toFixed(2)}</div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="order-total">
+                            <strong>Total: $${order.total_amount.toFixed(2)}</strong>
+                        </div>
+                    </div>
+                `;
+            }
+
+            setupLogout() {
+                const logoutBtn = document.getElementById('logoutBtn');
+                logoutBtn.addEventListener('click', () => {
+                    AuthHelper.logout();
+                    window.location.href = '../index.html';
+                });
+            }
+        }
+
+        // Initialize account manager
+        const accountManager = new AccountManager();
+    </script>
+</body>
+</html>

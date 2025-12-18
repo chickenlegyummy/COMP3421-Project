@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login to your GuitarHub account">
+    <title data-lang-en="Login - GuitarHub" data-lang-zh="登入 - GuitarHub">Login - GuitarHub</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="header" id="header">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <div class="nav-left">
+                    <a href="../index.html" class="logo" aria-label="GuitarHub Home">
+                        <i class="fas fa-guitar"></i>
+                        <span>GuitarHub</span>
+                    </a>
+                </div>
+                
+                <div class="nav-right">
+                    <button class="icon-btn language-toggle" id="languageToggle" aria-label="Toggle language">
+                        <span class="lang-text">EN</span>
+                    </button>
+                    
+                    <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="auth-page">
+        <div class="auth-container">
+            <div class="auth-card animate-fade-in-up">
+                <div class="auth-header">
+                    <h1 data-lang-en="Welcome Back" data-lang-zh="歡迎回來">Welcome Back</h1>
+                    <p data-lang-en="Login to your account" data-lang-zh="登入您的帳戶">Login to your account</p>
+                </div>
+
+                <form class="auth-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i>
+                            <span data-lang-en="Email Address" data-lang-zh="電郵地址">Email Address</span>
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="Enter your email" 
+                            data-lang-en-placeholder="Enter your email"
+                            data-lang-zh-placeholder="輸入您的電郵"
+                            required
+                        >
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">
+                            <i class="fas fa-lock"></i>
+                            <span data-lang-en="Password" data-lang-zh="密碼">Password</span>
+                        </label>
+                        <div class="password-input-group">
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                placeholder="Enter your password"
+                                data-lang-en-placeholder="Enter your password"
+                                data-lang-zh-placeholder="輸入您的密碼"
+                                required
+                            >
+                            <button type="button" class="password-toggle" id="passwordToggle">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <span class="error-message" id="passwordError"></span>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="remember" id="remember">
+                            <span data-lang-en="Remember me" data-lang-zh="記住我">Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-link" data-lang-en="Forgot password?" data-lang-zh="忘記密碼？">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-auth" data-lang-en="Login" data-lang-zh="登入">Login</button>
+
+                    <div class="auth-divider">
+                        <span data-lang-en="or continue with" data-lang-zh="或使用以下方式繼續">or continue with</span>
+                    </div>
+
+                    <div class="social-auth">
+                        <button type="button" class="social-btn google-btn">
+                            <i class="fab fa-google"></i>
+                            <span>Google</span>
+                        </button>
+                        <button type="button" class="social-btn facebook-btn">
+                            <i class="fab fa-facebook-f"></i>
+                            <span>Facebook</span>
+                        </button>
+                    </div>
+
+                    <div class="auth-footer">
+                        <p>
+                            <span data-lang-en="Don't have an account?" data-lang-zh="沒有帳戶？">Don't have an account?</span>
+                            <a href="register.html" class="auth-link" data-lang-en="Sign up" data-lang-zh="註冊">Sign up</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../js/api-config.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/language.js"></script>
+    <script src="../js/auth.js"></script>
+</body>
+</html>

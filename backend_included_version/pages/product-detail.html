@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium guitar details - specifications, features, and purchase options">
+    <title>Product Details - Guitar Shop</title>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/product-detail.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="top-banner">
+            <p data-lang-en="Free Shipping on Orders Over $299 | Special Holiday Sale - Up to 30% Off" 
+               data-lang-zh="訂單滿$299免運費 | 節日特惠 - 低至七折">
+               Free Shipping on Orders Over $299 | Special Holiday Sale - Up to 30% Off
+            </p>
+        </div>
+        
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="nav-container">
+                <div class="nav-left">
+                    <a href="../index.html" class="logo" aria-label="GuitarHub Home">
+                        <i class="fas fa-guitar"></i>
+                        <span>GuitarHub</span>
+                    </a>
+                </div>
+                
+                <div class="nav-center">
+                    <ul class="nav-menu" id="navMenu">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">
+                                <span data-lang-en="Guitars" data-lang-zh="結他">Guitars</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a href="products.html?category=electric" class="dropdown-item" data-lang-en="Electric Guitars" data-lang-zh="電結他">Electric Guitars</a>
+                                <a href="products.html?category=acoustic" class="dropdown-item" data-lang-en="Acoustic Guitars" data-lang-zh="木結他">Acoustic Guitars</a>
+                                <a href="products.html?category=bass" class="dropdown-item" data-lang-en="Bass Guitars" data-lang-zh="低音結他">Bass Guitars</a>
+                                <a href="products.html?category=classical" class="dropdown-item" data-lang-en="Classical Guitars" data-lang-zh="古典結他">Classical Guitars</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" aria-haspopup="true" aria-expanded="false">
+                                <span data-lang-en="Accessories" data-lang-zh="配件">Accessories</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a href="accessories.html?category=strings" class="dropdown-item" data-lang-en="Strings" data-lang-zh="琴弦">Strings</a>
+                                <a href="accessories.html?category=picks" class="dropdown-item" data-lang-en="Picks" data-lang-zh="撥片">Picks</a>
+                                <a href="accessories.html?category=cases" class="dropdown-item" data-lang-en="Cases & Bags" data-lang-zh="琴盒及袋">Cases & Bags</a>
+                                <a href="accessories.html?category=cables" class="dropdown-item" data-lang-en="Cables" data-lang-zh="線材">Cables</a>
+                                <a href="accessories.html?category=pedals" class="dropdown-item" data-lang-en="Effects Pedals" data-lang-zh="效果器">Effects Pedals</a>
+                                <a href="accessories.html?category=tuners" class="dropdown-item" data-lang-en="Tuners" data-lang-zh="調音器">Tuners</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="products.html?featured=true" class="nav-link" data-lang-en="New Arrivals" data-lang-zh="新品上架">New Arrivals</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="products.html?sale=true" class="nav-link" data-lang-en="Sale" data-lang-zh="特價">Sale</a>
+                        </li>
+                        
+                        <!-- Mobile-only utility items -->
+                        <li class="nav-item mobile-only">
+                            <button class="nav-link" id="mobileSearchToggle">
+                                <i class="fas fa-search"></i>
+                                <span data-lang-en="Search" data-lang-zh="搜尋">Search</span>
+                            </button>
+                        </li>
+                        <li class="nav-item mobile-only">
+                            <button class="nav-link" id="mobileLanguageToggle">
+                                <i class="fas fa-language"></i>
+                                <span data-lang-en="Language: EN" data-lang-zh="語言: 中文">Language: EN</span>
+                            </button>
+                        </li>
+                        <li class="nav-item mobile-only">
+                            <button class="nav-link" id="mobileThemeToggle">
+                                <i class="fas fa-moon"></i>
+                                <span data-lang-en="Dark Mode" data-lang-zh="深色模式">Dark Mode</span>
+                            </button>
+                        </li>
+                        <li class="nav-item mobile-only">
+                            <a href="login.html" class="nav-link">
+                                <i class="fas fa-user"></i>
+                                <span data-lang-en="Account" data-lang-zh="帳戶">Account</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mobile-only">
+                            <a href="cart.html" class="nav-link">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span data-lang-en="Shopping Cart" data-lang-zh="購物車">Shopping Cart</span>
+                                <span class="cart-count" id="mobileCartCount">0</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-right">
+                    <div class="search-container">
+                        <button class="search-btn" id="searchToggle" aria-label="Toggle search">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div class="search-box" id="searchBox">
+                            <input type="search" placeholder="Search guitars..." aria-label="Search">
+                            <button type="submit" aria-label="Submit search">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button class="icon-btn language-toggle" id="languageToggle" aria-label="Toggle language">
+                        <span class="lang-text">EN</span>
+                    </button>
+                    
+                    <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <a href="login.html" class="icon-btn" aria-label="User account">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    
+                    <a href="cart.html" class="icon-btn cart-btn" aria-label="Shopping cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </a>
+                    
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Full-screen Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-header">
+            <button class="search-overlay-back" id="searchOverlayBack" aria-label="Close search">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <input type="search" class="search-overlay-input" id="searchOverlayInput" placeholder="Search..." aria-label="Search">
+        </div>
+        <div class="search-overlay-content">
+            <ul class="search-suggestions">
+                <li class="search-suggestion-item"><i class="fas fa-search"></i><span>Electric Guitars</span></li>
+                <li class="search-suggestion-item"><i class="fas fa-search"></i><span>Acoustic Guitars</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Product Detail Section -->
+    <section class="product-detail-section">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html" data-lang-en="Home" data-lang-zh="首頁">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="./products.html" data-lang-en="Products" data-lang-zh="產品">Products</a>
+                <i class="fas fa-chevron-right"></i>
+                <span id="productName">Loading...</span>
+            </div>
+
+            <div class="product-detail-container">
+                <!-- Image Gallery -->
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img id="mainImage" src="" alt="Product Image" class="animate-fade-in">
+                        <button class="zoom-btn" aria-label="Zoom image">
+                            <i class="fas fa-search-plus"></i>
+                        </button>
+                    </div>
+                    <div class="thumbnail-gallery">
+                        <!-- Thumbnails will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="product-info">
+                    <div class="product-header">
+                        <div class="product-brand" id="productBrand">Loading...</div>
+                        <h1 class="product-title" id="productTitle">Loading...</h1>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-text">4.8 (127 <span data-lang-en="reviews" data-lang-zh="評價">reviews</span>)</span>
+                        </div>
+                    </div>
+
+                    <div class="product-price">
+                        <span class="current-price" id="productPrice">$0</span>
+                        <span class="original-price" id="originalPrice">$0</span>
+                        <span class="discount-badge" id="discountBadge">-0%</span>
+                    </div>
+
+                    <div class="product-description" id="productDescription">
+                        Loading product description...
+                    </div>
+
+                    <!-- Product Options -->
+                    <div class="product-options">
+                        <div class="option-group">
+                            <label data-lang-en="Color" data-lang-zh="顏色">Color</label>
+                            <div class="color-options">
+                                <button class="color-option active" data-color="Sunburst" style="background: linear-gradient(135deg, #ff6b35, #f7931e, #ffd700);"></button>
+                                <button class="color-option" data-color="Black" style="background: #000;"></button>
+                                <button class="color-option" data-color="White" style="background: #fff; border: 2px solid #ddd;"></button>
+                                <button class="color-option" data-color="Red" style="background: #dc2626;"></button>
+                                <button class="color-option" data-color="Blue" style="background: #2563eb;"></button>
+                            </div>
+                        </div>
+
+                        <div class="option-group">
+                            <label data-lang-en="Quantity" data-lang-zh="數量">Quantity</label>
+                            <div class="quantity-selector">
+                                <button class="qty-btn decrease" aria-label="Decrease quantity">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <input type="number" class="qty-input" value="1" min="1" max="10">
+                                <button class="qty-btn increase" aria-label="Increase quantity">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="product-actions">
+                        <button class="btn btn-primary add-to-cart-btn">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span data-lang-en="Add to Cart" data-lang-zh="加入購物車">Add to Cart</span>
+                        </button>
+                        <button class="btn btn-outline wishlist-btn" aria-label="Add to wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+
+                    <!-- Product Features -->
+                    <div class="product-features">
+                        <div class="feature-item">
+                            <i class="fas fa-truck"></i>
+                            <div>
+                                <strong data-lang-en="Free Shipping" data-lang-zh="免費送貨">Free Shipping</strong>
+                                <span data-lang-en="On orders over $299" data-lang-zh="訂單滿 $299">On orders over $299</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <strong data-lang-en="2 Year Warranty" data-lang-zh="2 年保修">2 Year Warranty</strong>
+                                <span data-lang-en="Full coverage" data-lang-zh="全面保障">Full coverage</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-undo"></i>
+                            <div>
+                                <strong data-lang-en="30 Day Returns" data-lang-zh="30 天退貨">30 Day Returns</strong>
+                                <span data-lang-en="No questions asked" data-lang-zh="無條件退貨">No questions asked</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Tabs -->
+            <div class="product-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="specifications">
+                        <span data-lang-en="Specifications" data-lang-zh="規格">Specifications</span>
+                    </button>
+                    <button class="tab-btn" data-tab="reviews">
+                        <span data-lang-en="Reviews" data-lang-zh="評價">Reviews</span>
+                        <span class="tab-badge">127</span>
+                    </button>
+                    <button class="tab-btn" data-tab="shipping">
+                        <span data-lang-en="Shipping" data-lang-zh="運送">Shipping</span>
+                    </button>
+                </div>
+
+                <div class="tab-content">
+                    <!-- Specifications Tab -->
+                    <div class="tab-pane active" id="specifications">
+                        <div class="specs-grid" id="specsContainer">
+                            <!-- Specs loaded dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Reviews Tab -->
+                    <div class="tab-pane" id="reviews">
+                        <div class="reviews-summary">
+                            <div class="rating-overview">
+                                <div class="rating-score">4.8</div>
+                                <div class="rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <div class="rating-count">Based on 127 reviews</div>
+                            </div>
+                        </div>
+
+                        <div class="reviews-list">
+                            <!-- Sample reviews -->
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <div class="reviewer-info">
+                                        <div class="reviewer-avatar">JD</div>
+                                        <div>
+                                            <div class="reviewer-name">John Doe</div>
+                                            <div class="review-date">2 weeks ago</div>
+                                        </div>
+                                    </div>
+                                    <div class="review-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="review-content">
+                                    <p>Absolutely love this guitar! The sound quality is incredible and it feels great to play. Worth every penny!</p>
+                                </div>
+                            </div>
+
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <div class="reviewer-info">
+                                        <div class="reviewer-avatar">SM</div>
+                                        <div>
+                                            <div class="reviewer-name">Sarah Miller</div>
+                                            <div class="review-date">1 month ago</div>
+                                        </div>
+                                    </div>
+                                    <div class="review-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="review-content">
+                                    <p>Great guitar for the price. Only minor complaint is the factory setup could be better, but after a professional setup it plays beautifully.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Shipping Tab -->
+                    <div class="tab-pane" id="shipping">
+                        <div class="shipping-info">
+                            <h3 data-lang-en="Shipping Information" data-lang-zh="運送資訊">Shipping Information</h3>
+                            <ul>
+                                <li data-lang-en="Free standard shipping on orders over $299" data-lang-zh="訂單滿 $299 享免費標準運送">Free standard shipping on orders over $299</li>
+                                <li data-lang-en="Express shipping available for $29.99" data-lang-zh="快速運送服務 $29.99">Express shipping available for $29.99</li>
+                                <li data-lang-en="Orders ship within 1-2 business days" data-lang-zh="訂單將在 1-2 個工作天內寄出">Orders ship within 1-2 business days</li>
+                                <li data-lang-en="Delivery takes 3-7 business days" data-lang-zh="運送需時 3-7 個工作天">Delivery takes 3-7 business days</li>
+                                <li data-lang-en="International shipping available" data-lang-zh="提供國際運送服務">International shipping available</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Products -->
+            <div class="related-products">
+                <h2 data-lang-en="You May Also Like" data-lang-zh="您可能也喜歡">You May Also Like</h2>
+                <div class="products-grid" id="relatedProductsGrid">
+                    <!-- Related products loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 data-lang-en="About Us" data-lang-zh="關於我們">About Us</h3>
+                    <p data-lang-en="Your trusted source for premium guitars and accessories since 2024." data-lang-zh="自2024年起，您值得信賴的優質結他和配件來源。">Your trusted source for premium guitars and accessories since 2024.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3 data-lang-en="Quick Links" data-lang-zh="快速連結">Quick Links</h3>
+                    <ul>
+                        <li><a href="products.html" data-lang-en="All Products" data-lang-zh="所有產品">All Products</a></li>
+                        <li><a href="products.html?featured=true" data-lang-en="New Arrivals" data-lang-zh="新品上架">New Arrivals</a></li>
+                        <li><a href="products.html?sale=true" data-lang-en="Sale" data-lang-zh="特價">Sale</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 data-lang-en="Customer Service" data-lang-zh="客戶服務">Customer Service</h3>
+                    <ul>
+                        <li><a href="#" data-lang-en="Contact Us" data-lang-zh="聯絡我們">Contact Us</a></li>
+                        <li><a href="#" data-lang-en="Shipping Info" data-lang-zh="運送資訊">Shipping Info</a></li>
+                        <li><a href="#" data-lang-en="Returns" data-lang-zh="退貨政策">Returns</a></li>
+                        <li><a href="#" data-lang-en="FAQ" data-lang-zh="常見問題">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 data-lang-en="Contact" data-lang-zh="聯絡方式">Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Music Street, HK</li>
+                        <li><i class="fas fa-phone"></i> +852 1234 5678</li>
+                        <li><i class="fas fa-envelope"></i> info@guitarhub.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GuitarHub. <span data-lang-en="All rights reserved." data-lang-zh="版權所有。">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/api-config.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/language.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/product-detail.js"></script>
+</body>
+</html>
