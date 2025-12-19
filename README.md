@@ -389,15 +389,6 @@ This project is created for educational purposes as part of a web development co
 
 ---
 
-## 📧 Support
-
-For issues or questions:
-1. Check the documentation in [backend_included_version/](backend_included_version/)
-2. Review [API_DOCUMENTATION.md](backend_included_version/API_DOCUMENTATION.md)
-3. See [QUICKSTART.md](backend_included_version/QUICKSTART.md) for setup help
-
----
-
 ## ✅ Project Status
 
 **Current Version**: Backend-Included (Recommended)
