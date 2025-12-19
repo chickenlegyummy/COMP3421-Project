@@ -90,7 +90,7 @@ body {
     font-size: var(--font-size-base);
     line-height: 1.6;
     color: var(--text-primary);
-    background-color: var(--bg-primary);
+    background-color: var(--bg-secondary);
     transition: background-color var(--transition-base), color var(--transition-base);
     overflow-x: hidden;
 }
