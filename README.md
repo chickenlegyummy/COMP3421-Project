@@ -1,108 +1,233 @@
-# GuitarHub - Premium Guitar Shop Website
+# 🎸 GuitarHub - Premium Guitar E-Commerce Platform
 
-A modern, fully-featured guitar shop e-commerce website built with pure HTML5, CSS3, and JavaScript (no frameworks). Features bilingual support (English/中文), dark/light theme switching, shopping cart functionality, and comprehensive product management.
+A full-stack e-commerce website for guitar sales featuring Node.js Express backend, SQLite database, JWT authentication, and a modern responsive frontend with bilingual support and theme switching.
 
 ## 🎯 Project Overview
 
-This project follows the COMP3421 assignment requirements, creating a professional e-commerce website for selling guitars and accessories with modern UI/UX design inspired by Gibson's website and implementing theme/language switching features from the Hiei-Blog approach.
+This project is a comprehensive e-commerce platform for selling guitars and accessories. It includes both a frontend-only version and a **full-stack backend-included version** (recommended) with complete user authentication, database integration, and RESTful API.
 
-## ✨ Features
+---
 
-### Core Functionality
-- ✅ **Bilingual Support**: Switch between English and Traditional Chinese (Hong Kong)
-- ✅ **Dark/Light Theme**: Toggle between light and dark themes with localStorage persistence
-- ✅ **Shopping Cart**: Full cart management with localStorage persistence
-- ✅ **Product Filtering**: Filter by category, price range, and brand
-- ✅ **Product Sorting**: Sort by featured, price (low-high), price (high-low), and name
-- ✅ **Product Search**: Search products by name or category
-- ✅ **Responsive Design**: Optimized for desktop, tablet, and mobile devices
-- ✅ **Smooth Animations**: CSS animations and transitions throughout
-- ✅ **Hero Slider**: Auto-playing hero slider with manual controls
-- ✅ **Pagination**: Navigate through product pages
-- ✅ **Grid/List View**: Toggle between grid and list view for products
-
-### Technical Features
-- **Pure Vanilla JavaScript**: No frameworks or dependencies
-- **HTML5 Semantic Markup**: Proper semantic HTML structure
-- **CSS Custom Properties**: Dynamic theming with CSS variables
-- **Modern ES6+ Syntax**: Uses classes, async/await, and modern JavaScript features
-- **LocalStorage**: Persistent user preferences and cart data
-- **Accessible Design**: ARIA labels and semantic HTML for accessibility
-- **Performance Optimized**: Lazy loading images, debounced search
-
-## 📁 Project Structure
+## 📂 Repository Structure
 
 ```
 COMP3421-Project/
-├── index.html                 # Homepage
-├── css/
-│   ├── styles.css            # Main stylesheet with theme variables
-│   ├── animations.css        # Animation keyframes and utilities
-│   ├── products.css          # Products page specific styles
-│   ├── cart.css              # Cart page specific styles
-│   ├── auth.css              # Authentication pages styles
-│   ├── product-detail.css    # Product detail page styles
-│   └── about.css             # About page styles
-├── js/
-│   ├── theme.js              # Theme switching functionality
-│   ├── language.js           # Language switching functionality
-│   ├── cart.js               # Shopping cart management
-│   ├── main.js               # Main application logic
-│   ├── products.js           # Products page functionality
-│   ├── cart-page.js          # Cart page functionality
-│   ├── auth.js               # Authentication functionality
-│   ├── product-detail.js     # Product detail page functionality
-│   ├── accessories.js        # Accessories page functionality
-│   └── about.js              # About page animations
-├── pages/
-│   ├── products.html         # Product listing page
-│   ├── product-detail.html   # Individual product detail page
-│   ├── cart.html             # Shopping cart page
-│   ├── login.html            # Login page
-│   ├── register.html         # Registration page
-│   ├── accessories.html      # Accessories page
-│   └── about.html            # About page
-├── assets/
-│   └── images/               # Product images and assets
-└── data/
-    └── products.json         # Product database (optional)
+│
+├── 📁 Root Directory (Frontend-Only Version)
+│   ├── index.html            # Homepage
+│   ├── js/                   # Client-side JavaScript
+│   ├── css/                  # Stylesheets
+│   ├── pages/                # HTML pages
+│   └── README.md             # This file
+│
+└── 📁 backend_included_version/    ⭐ MAIN PROJECT (RECOMMENDED)
+    ├── server.js             # Express server
+    ├── database.js           # SQLite database
+    ├── routes/               # API endpoints
+    ├── middleware/           # Authentication middleware
+    ├── scripts/              # Database initialization
+    ├── js/                   # Frontend with API integration
+    ├── css/                  # Stylesheets
+    ├── pages/                # HTML pages
+    └── Full documentation files
 ```
 
-## 🚀 Getting Started
+## 🚀 Quick Start
 
-### Installation
+### Option 1: Backend-Included Version (Recommended) ⭐
 
-1. Clone or download the repository
-2. Open the project folder
-3. Serve the files using a local server (required for best experience)
+Full-stack application with database and authentication:
 
-### Running the Project
+```bash
+cd backend_included_version
+npm install
+npm run init-db
+npm start
+# Visit: http://localhost:3000
+```
+
+**See [backend_included_version/README.md](backend_included_version/README.md) for complete setup guide.**
+
+### Option 2: Frontend-Only Version
+
+Simple client-side application (root directory):
+
+```bash
+# Open index.html in browser or use a local server
+python -m http.server 8000
+# Visit: http://localhost:8000
+```
+
+---
+
+## ✨ Features Overview
+
+### Frontend Features (Both Versions)
+- ✅ **Bilingual Support**: English / Traditional Chinese (Hong Kong)
+- ✅ **Dark/Light Theme**: Persistent theme switching
+- ✅ **Responsive Design**: Optimized for mobile, tablet, and desktop
+- ✅ **Shopping Cart**: Full cart management with persistence
+- ✅ **Product Filtering**: By category, price, and brand
+- ✅ **Product Sorting**: Multiple sort options
+- ✅ **Search Functionality**: Real-time product search
+- ✅ **Smooth Animations**: CSS transitions throughout
+- ✅ **Accessibility**: ARIA labels and semantic HTML
+
+### Backend Features (Backend Version Only) ⭐
+- ✅ **User Authentication**: JWT-based secure login/registration
+- ✅ **RESTful API**: 16+ endpoints for all operations
+- ✅ **SQLite Database**: Persistent data storage with 7 tables
+- ✅ **Password Encryption**: Bcrypt hashing
+- ✅ **Shopping Cart Sync**: Database-backed cart
+- ✅ **Order Management**: Complete order system
+- ✅ **Product Reviews**: User review functionality
+- ✅ **Input Validation**: Comprehensive validation
+- ✅ **Error Handling**: Robust error management
+- ✅ **CORS Support**: Cross-origin resource sharing
+
+---
+
+## 🗄️ Database Contents (Backend Version)
+
+After initialization:
+- **16 Products**: Electric, acoustic, bass, and classical guitars
+- **16 Accessories**: Strings, picks, cases, cables, pedals, tuners
+- **User Management**: Registration and authentication
+- **Shopping Carts**: User-specific carts
+- **Orders**: Order history and tracking
+- **Reviews**: Product and accessory reviews
+
+---
+
+## 🔌 API Endpoints (Backend Version)
+
+### Authentication
+- `POST /api/auth/register` - Register new user
+- `POST /api/auth/login` - Login user
+- `GET /api/auth/me` - Get current user (protected)
+- `POST /api/auth/verify` - Verify JWT token
+
+### Products & Accessories
+- `GET /api/products` - Get all products (with filtering & pagination)
+- `GET /api/products/:id` - Get product details
+- `GET /api/accessories` - Get all accessories
+- `GET /api/accessories/:id` - Get accessory details
+
+### Shopping Cart (Protected)
+- `GET /api/cart` - Get user's cart
+- `POST /api/cart` - Add item to cart
+- `PUT /api/cart/:itemId` - Update quantity
+- `DELETE /api/cart/:itemId` - Remove item
+- `DELETE /api/cart` - Clear cart
+
+### Orders (Protected)
+- `POST /api/orders` - Create new order
+- `GET /api/orders` - Get user's orders
+- `GET /api/orders/:id` - Get order details
+
+### Reviews
+- `GET /api/reviews/:productType/:productId` - Get reviews
+- `POST /api/reviews` - Create review (protected)
+- `DELETE /api/reviews/:id` - Delete review (protected)
+
+---
+
+## 📚 Documentation
+
+Comprehensive documentation is available in the **backend_included_version/** directory:
+
+1. **[README.md](backend_included_version/README.md)** - Complete setup and usage guide
+2. **[QUICKSTART.md](backend_included_version/QUICKSTART.md)** - 5-minute quick start
+3. **[API_DOCUMENTATION.md](backend_included_version/API_DOCUMENTATION.md)** - Full API reference
+4. **[IMPLEMENTATION_SUMMARY.md](backend_included_version/IMPLEMENTATION_SUMMARY.md)** - Technical details
+5. **[PROJECT_README.md](PROJECT_README.md)** - Project overview and structure
+
+---
+
+## 📁 Frontend-Only Version Details
+
+This section describes the root directory frontend-only version.
+
+### Project Structure
+
+```
+Root Directory (Frontend-Only)/
+├── index.html                 # Homepage
+├── css/
+│   ├── styles.css            # Main stylesheet
+│   ├── animations.css        # Animation utilities
+│   ├── products.css          # Products page styles
+│   ├── cart.css              # Cart page styles
+│   ├── auth.css              # Authentication pages
+│   ├── product-detail.css    # Product detail styles
+│   └── about.css             # About page styles
+├── js/
+│   ├── theme.js              # Theme switching
+│   ├── language.js           # Language switching
+│   ├── cart.js               # Shopping cart (localStorage)
+│   ├── main.js               # Main application logic
+│   ├── products.js           # Products page
+│   ├── cart-page.js          # Cart page
+│   ├── auth.js               # Mock authentication
+│   ├── product-detail.js     # Product detail page
+│   ├── accessories.js        # Accessories page
+│   └── about.js              # About page
+└── pages/
+    ├── products.html         # Product listing
+    ├── product-detail.html   # Product details
+    ├── cart.html             # Shopping cart
+    ├── login.html            # Login page
+    ├── register.html         # Registration page
+    ├── accessories.html      # Accessories page
+    └── accessories-detail.html
+```
+
+### Running the Frontend-Only Version
 
 **Using Python 3:**
 ```bash
 python -m http.server 8000
+# Visit: http://localhost:8000
 ```
 
 **Using Node.js:**
 ```bash
 npx http-server
+# Visit: http://localhost:8080
 ```
 
 **Using PHP:**
 ```bash
 php -S localhost:8000
+# Visit: http://localhost:8000
 ```
 
-Then open your browser and navigate to:
-```
-http://localhost:8000
-```
+---
 
-### Or Simply Open index.html
+## 🛠️ Technologies Used
 
-For basic functionality, you can directly open `index.html` in your browser. However, using a local server is recommended for full functionality.
+### Backend (Backend Version)
+- **Node.js** - JavaScript runtime
+- **Express** - Web framework
+- **SQLite3** - Database
+- **bcrypt** - Password hashing
+- **jsonwebtoken** - JWT authentication
+- **cors** - CORS middleware
+- **dotenv** - Environment variables
+- **express-validator** - Input validation
 
-## 🎨 Design Features
+### Frontend (Both Versions)
+- **HTML5** - Semantic structure
+- **CSS3** - Styling with CSS variables
+- **JavaScript (ES6+)** - Modern JavaScript
+- **Fetch API** - HTTP requests (backend version)
+- **localStorage** - Client-side persistence
+- **Font Awesome** - Icons
+- **Google Fonts** - Typography (Montserrat, Noto Sans TC)
+
+---
+
+## 🎨 Design Features (Both Versions)
 
 ### Color Scheme
 
@@ -123,7 +248,9 @@ For basic functionality, you can directly open `index.html` in your browser. How
 - Secondary Font: 'Noto Sans TC' (Chinese)
 - Responsive font sizes with CSS custom properties
 
-## 🛠️ Key Components
+---
+
+## 🎯 Key Frontend Components
 
 ### 1. Navigation Bar
 - Sticky header with scroll effects
@@ -147,13 +274,13 @@ For basic functionality, you can directly open `index.html` in your browser. How
 - Price display
 - Add to cart button
 - Badge system (New, Sale, Popular)
-- Smooth animations on scroll
+- Smooth animations
 
 ### 4. Shopping Cart
 - Add/remove items
 - Quantity management
 - Price calculation
-- localStorage persistence
+- Persistence (localStorage or database)
 - Notification system
 
 ### 5. Filter System
@@ -165,39 +292,143 @@ For basic functionality, you can directly open `index.html` in your browser. How
 
 ### 6. Theme Switching
 - Light/Dark mode toggle
-- Smooth transitions between themes
+- Smooth transitions
 - localStorage persistence
-- Consistent across all pages
 - Icon updates (sun/moon)
 
 ### 7. Language Switching
 - English/Chinese toggle
-- Instant language updates
+- Instant updates
 - localStorage persistence
 - Updates all text elements
-- Updates placeholders
 
-## 📱 Responsive Breakpoints
+---
 
+## 📱 Responsive Design
+
+### Breakpoints
 - **Desktop**: 1200px+ (max-width container)
 - **Tablet**: 992px and below (stacked navigation)
 - **Mobile**: 768px and below (mobile menu)
 - **Small Mobile**: 480px and below (single column)
 
-## 🎯 Usage
+---
 
-### Theme Toggle
-Click the sun/moon button in the navigation to switch between light and dark themes. Your preference is automatically saved.
+## 🧪 Testing
 
-### Language Toggle
-Click the EN/中 button to switch between English and Traditional Chinese. Your preference is automatically saved.
+### Frontend Testing (Both Versions)
+1. Navigate through all pages
+2. Test theme and language switching
+3. Add products to cart
+4. Test filters and search
+5. Check responsive design
 
-### Shopping Cart
-1. Browse products on homepage or products page
-2. Click "Add to Cart" on any product
-3. View cart by clicking the cart icon
-4. Adjust quantities or remove items
-5. Cart data persists across sessions
+### Backend Testing (Backend Version Only)
+1. Register a new account
+2. Login with credentials
+3. Add items to cart (synced to database)
+4. Create an order
+5. View order history
+6. Leave product reviews
+
+### API Testing Tools
+- **Postman** - API testing suite
+- **Thunder Client** - VS Code extension
+- **cURL** - Command-line testing
+- Browser DevTools - Network inspection
+
+---
+
+## 📖 Usage Guide
+
+### For Frontend-Only Version
+1. Open the website in your browser
+2. Browse products on homepage or products page
+3. Use filters and search
+4. Add items to cart
+5. View cart and adjust quantities
+6. Note: Cart data stored in localStorage only
+
+### For Backend Version
+1. Register an account or login
+2. Browse authenticated/public features
+3. Add items to cart (synced to database)
+4. Proceed to checkout
+5. View order history in account
+6. Leave reviews on products
+
+---
+
+## 🔒 Security Features (Backend Version)
+
+- **Password Hashing**: bcrypt with salt rounds
+- **JWT Authentication**: Secure token-based auth
+- **Input Validation**: express-validator
+- **SQL Injection Prevention**: Parameterized queries
+- **CORS Configuration**: Controlled origins
+- **Environment Variables**: Sensitive data protection
+- **HTTP-Only Cookies**: Optional cookie storage
+
+---
+
+## 🤝 Contributing
+
+This is a course project. For suggestions or improvements:
+1. Review the documentation
+2. Test the application thoroughly
+3. Report issues with details
+4. Suggest enhancements
+
+---
+
+## 📝 License
+
+This project is created for educational purposes as part of a web development course.
+
+---
+
+## 🎓 Course Information
+
+**Course**: Web Development
+**Project**: GuitarHub E-Commerce Platform
+**Features**:
+- Full-stack development
+- RESTful API design
+- Database integration
+- User authentication
+- Responsive frontend
+- Modern JavaScript (ES6+)
+
+---
+
+## 📧 Support
+
+For issues or questions:
+1. Check the documentation in [backend_included_version/](backend_included_version/)
+2. Review [API_DOCUMENTATION.md](backend_included_version/API_DOCUMENTATION.md)
+3. See [QUICKSTART.md](backend_included_version/QUICKSTART.md) for setup help
+
+---
+
+## ✅ Project Status
+
+**Current Version**: Backend-Included (Recommended)
+- ✅ Backend API functional
+- ✅ Database integration complete
+- ✅ Authentication working
+- ✅ Frontend integrated with API
+- ✅ Full documentation available
+- ✅ Testing completed
+- ✅ Ready for deployment
+
+**Frontend-Only Version**: Maintained for reference
+- ✅ Functional with localStorage
+- ✅ No backend required
+- ✅ Good for learning purposes
+
+---
+
+**🎸 GuitarHub** - Premium Guitar E-Commerce Platform
 
 ### Product Filtering
 1. Navigate to Products page
@@ -317,39 +548,6 @@ For questions or support regarding this project, please contact through the univ
 
 ## ✅ Completed Features
 
-- ✅ Homepage with hero slider
-- ✅ Product listing page with filters
-- ✅ Product detail page with image gallery
-- ✅ Shopping cart page with summary
-- ✅ Login & Registration pages with validation
-- ✅ Accessories page with filtering
-- ✅ About page with team section
-- ✅ Theme switching (light/dark)
-- ✅ Language switching (EN/中)
-- ✅ Shopping cart functionality
-- ✅ Responsive design
-- ✅ Smooth animations
-- ✅ Product search
-- ✅ Product sorting
-- ✅ Pagination
-- ✅ Form validation
-- ✅ Password strength indicator
-- ✅ Wishlist functionality
-- ✅ Related products
-- ✅ Product reviews section
-
-## 🚧 Backend Integration Required
-
-For a fully functional e-commerce site, implement:
-- User authentication API
-- Product management API
-- Order processing system
-- Payment gateway integration
-- Database for products and users
-- Email notifications
-- Inventory management
-- Order history tracking
-
 ---
 
-Made with ❤️ for COMP3421 Project | © 2025 GuitarHub
+**🎸 GuitarHub** - Premium Guitar E-Commerce Platform
