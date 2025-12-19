@@ -342,6 +342,7 @@
     }
     
     .page-header {
+        margin-top: 150px;
         padding: var(--space-xl) 0;
     }
     

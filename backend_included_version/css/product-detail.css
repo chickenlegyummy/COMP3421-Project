@@ -382,6 +382,7 @@
 
 .tab-pane.active {
     display: block;
+    margin-bottom: 100px;
     animation: fadeIn 0.3s ease;
 }
 
