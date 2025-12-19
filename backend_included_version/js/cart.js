@@ -111,10 +111,10 @@ class CartManager {
                 if (typeof typeOrProduct === 'string') {
                     // Fetch product info from API
                     const endpoint = itemType === 'product' 
-                        ? `${API.PRODUCTS.DETAIL.replace(':id', itemId)}`
-                        : `${API.ACCESSORIES.DETAIL.replace(':id', itemId)}`;
+                        ? API.PRODUCTS.DETAIL(itemId)
+                        : API.ACCESSORIES.DETAIL(itemId);
                     const response = await apiRequest(endpoint);
-                    productInfo = response[itemType];
+                    productInfo = response;
                 } else {
                     productInfo = typeOrProduct;
                 }

@@ -3,473 +3,7 @@
  * Handles accessory detail display, image gallery, tabs, and related products
  */
 
-// Import accessories database from accessories.js
-const ACCESSORIES_DATABASE_DETAIL = [
-    {
-        id: 101,
-        name: 'Electric Guitar Strings Set',
-        brand: "D'Addario",
-        category: 'strings',
-        price: 12.99,
-        originalPrice: 15.99,
-        badge: 'Popular',
-        image: 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
-            'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800',
-            'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=800',
-            'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800'
-        ],
-        description: 'Premium electric guitar strings designed for professional musicians. These strings offer exceptional tone, durability, and playability. Engineered with precision-wound construction for consistent intonation and long-lasting performance.',
-        rating: 4.8,
-        reviews: 342,
-        specs: {
-            'Gauge': '.010-.046',
-            'Material': 'Nickel Wound',
-            'Coating': 'No',
-            'Strings': '6',
-            'Tone': 'Bright',
-            'Durability': 'High',
-            'Package': 'Single Set',
-            'Brand': "D'Addario"
-        }
-    },
-    {
-        id: 102,
-        name: 'Acoustic Guitar Strings',
-        brand: 'Ernie Ball',
-        category: 'strings',
-        price: 14.99,
-        originalPrice: 17.99,
-        badge: 'Sale',
-        image: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800',
-            'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
-            'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=800',
-            'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800'
-        ],
-        description: 'High-quality acoustic guitar strings that deliver rich, warm tone with excellent projection. Perfect for both strumming and fingerpicking styles. Made with premium bronze alloy for optimal sound quality.',
-        rating: 4.7,
-        reviews: 289,
-        specs: {
-            'Gauge': '.012-.054',
-            'Material': '80/20 Bronze',
-            'Coating': 'No',
-            'Strings': '6',
-            'Tone': 'Warm',
-            'Durability': 'Medium',
-            'Package': 'Single Set',
-            'Brand': 'Ernie Ball'
-        }
-    },
-    {
-        id: 103,
-        name: 'Premium Guitar Picks Pack',
-        brand: 'Dunlop',
-        category: 'picks',
-        price: 8.99,
-        originalPrice: 11.99,
-        badge: '',
-        image: 'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=800',
-            'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
-            'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800',
-            'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800'
-        ],
-        description: 'Professional grade guitar picks designed for optimal grip and tone. This variety pack includes multiple gauges to suit different playing styles. Made from durable material that provides consistent performance.',
-        rating: 4.9,
-        reviews: 567,
-        specs: {
-            'Quantity': '12 picks',
-            'Gauges': '0.60mm, 0.73mm, 0.88mm, 1.00mm',
-            'Material': 'Tortex',
-            'Shape': 'Standard',
-            'Grip': 'Textured',
-            'Colors': 'Assorted',
-            'Package': 'Display Pack',
-            'Brand': 'Dunlop'
-        }
-    },
-    {
-        id: 104,
-        name: 'Jazz III Guitar Picks',
-        brand: 'Dunlop',
-        category: 'picks',
-        price: 6.99,
-        originalPrice: 8.99,
-        badge: 'New',
-        image: 'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=800',
-            'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
-            'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800',
-            'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800'
-        ],
-        description: 'Legendary Jazz III picks favored by speed players and technical guitarists. Small, sharp tip provides precision and control for fast playing.',
-        rating: 4.9,
-        reviews: 423,
-        specs: {
-            'Quantity': '6 picks',
-            'Gauge': '1.38mm',
-            'Material': 'Nylon',
-            'Shape': 'Jazz III',
-            'Grip': 'Standard',
-            'Color': 'Black',
-            'Package': 'Bag',
-            'Brand': 'Dunlop'
-        }
-    },
-    {
-        id: 105,
-        name: 'Hard Shell Guitar Case',
-        brand: 'Fender',
-        category: 'cases',
-        price: 149.99,
-        originalPrice: 199.99,
-        badge: '',
-        image: 'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
-            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
-            'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800'
-        ],
-        description: 'Premium hard shell case providing maximum protection for your guitar. Features plush interior lining, secure locking latches, and reinforced construction. Includes storage compartment for accessories.',
-        rating: 4.9,
-        reviews: 156,
-        specs: {
-            'Type': 'Hard Shell',
-            'Fit': 'Universal Electric',
-            'Interior': 'Plush Lined',
-            'Latches': '3 Secure Locks',
-            'Handle': 'Padded',
-            'Storage': 'Accessory Compartment',
-            'Weight': '8 lbs',
-            'Brand': 'Fender'
-        }
-    },
-    {
-        id: 106,
-        name: 'Gig Bag Deluxe',
-        brand: 'Mono',
-        category: 'cases',
-        price: 89.99,
-        originalPrice: 109.99,
-        badge: 'Popular',
-        image: 'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
-            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
-            'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800'
-        ],
-        description: 'Deluxe gig bag with excellent protection and comfort. Multiple pockets for accessories, padded straps, and weather-resistant exterior.',
-        rating: 4.7,
-        reviews: 234,
-        specs: {
-            'Type': 'Gig Bag',
-            'Fit': 'Universal',
-            'Interior': '20mm Padding',
-            'Pockets': 'Multiple',
-            'Straps': 'Padded Backpack',
-            'Exterior': 'Water Resistant',
-            'Weight': '3 lbs',
-            'Brand': 'Mono'
-        }
-    },
-    {
-        id: 107,
-        name: 'Professional Guitar Cable 20ft',
-        brand: 'Monster',
-        category: 'cables',
-        price: 39.99,
-        originalPrice: 49.99,
-        badge: 'Sale',
-        image: 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
-            'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800',
-            'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=800',
-            'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800'
-        ],
-        description: 'Professional quality guitar cable with superior shielding and low capacitance. Gold-plated connectors ensure reliable signal transmission.',
-        rating: 4.8,
-        reviews: 312,
-        specs: {
-            'Length': '20 feet',
-            'Connectors': '1/4" Gold Plated',
-            'Shielding': '95% Coverage',
-            'Capacitance': 'Low',
-            'Jacket': 'Braided',
-            'Warranty': 'Lifetime',
-            'Color': 'Black',
-            'Brand': 'Monster'
-        }
-    },
-    {
-        id: 108,
-        name: 'Instrument Cable 10ft',
-        brand: 'Planet Waves',
-        category: 'cables',
-        price: 24.99,
-        originalPrice: 29.99,
-        badge: '',
-        image: 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
-            'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800',
-            'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=800',
-            'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800'
-        ],
-        description: 'Reliable instrument cable perfect for studio and stage use. Features molded connectors and high-quality copper conductors.',
-        rating: 4.6,
-        reviews: 267,
-        specs: {
-            'Length': '10 feet',
-            'Connectors': '1/4" Nickel',
-            'Shielding': '90% Coverage',
-            'Capacitance': 'Standard',
-            'Jacket': 'PVC',
-            'Warranty': 'Limited Lifetime',
-            'Color': 'Black',
-            'Brand': 'Planet Waves'
-        }
-    },
-    {
-        id: 109,
-        name: 'Overdrive Pedal',
-        brand: 'Boss',
-        category: 'pedals',
-        price: 129.99,
-        originalPrice: 159.99,
-        badge: 'Popular',
-        image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
-            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800'
-        ],
-        description: 'Classic overdrive pedal that delivers warm, tube-like tone. Features versatile controls for shaping your sound from subtle boost to heavy crunch. Industry-standard pedal used by professionals worldwide.',
-        rating: 4.9,
-        reviews: 445,
-        specs: {
-            'Type': 'Overdrive',
-            'Controls': 'Level, Tone, Drive',
-            'Bypass': 'True Bypass',
-            'Input': '1/4" Jack',
-            'Output': '1/4" Jack',
-            'Power': '9V DC',
-            'Dimensions': '2.87" x 5" x 2.25"',
-            'Brand': 'Boss'
-        }
-    },
-    {
-        id: 110,
-        name: 'Delay Pedal',
-        brand: 'TC Electronic',
-        category: 'pedals',
-        price: 149.99,
-        originalPrice: 179.99,
-        badge: '',
-        image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
-            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800'
-        ],
-        description: 'Professional delay pedal with crystal-clear repeats and extensive control. Multiple delay modes and tap tempo functionality.',
-        rating: 4.8,
-        reviews: 356,
-        specs: {
-            'Type': 'Digital Delay',
-            'Controls': 'Time, Feedback, Mix, Type',
-            'Bypass': 'True Bypass',
-            'Delay Time': 'Up to 7 seconds',
-            'Modes': '4 Delay Types',
-            'Power': '9V DC',
-            'Dimensions': '2.8" x 4.8" x 2.2"',
-            'Brand': 'TC Electronic'
-        }
-    },
-    {
-        id: 111,
-        name: 'Reverb Pedal',
-        brand: 'Electro-Harmonix',
-        category: 'pedals',
-        price: 169.99,
-        originalPrice: 199.99,
-        badge: 'New',
-        image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
-            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800'
-        ],
-        description: 'Versatile reverb pedal with multiple hall, room, and plate algorithms. Create lush ambient soundscapes or subtle space.',
-        rating: 4.7,
-        reviews: 298,
-        specs: {
-            'Type': 'Digital Reverb',
-            'Controls': 'Decay, Mix, Tone, Type',
-            'Bypass': 'Buffered',
-            'Modes': '9 Reverb Types',
-            'Trails': 'Yes',
-            'Power': '9V DC',
-            'Dimensions': '4.5" x 2.75" x 2.1"',
-            'Brand': 'Electro-Harmonix'
-        }
-    },
-    {
-        id: 112,
-        name: 'Chromatic Tuner Pedal',
-        brand: 'Boss',
-        category: 'tuners',
-        price: 99.99,
-        originalPrice: 119.99,
-        badge: '',
-        image: 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
-            'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800',
-            'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=800',
-            'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800'
-        ],
-        description: 'Professional chromatic tuner pedal with large LED display. Fast, accurate tuning with true bypass for transparent operation.',
-        rating: 4.9,
-        reviews: 478,
-        specs: {
-            'Type': 'Chromatic',
-            'Display': 'LED',
-            'Accuracy': '+/- 1 cent',
-            'Bypass': 'True Bypass',
-            'Modes': 'Chromatic, Guitar, Bass',
-            'Power': '9V DC',
-            'Dimensions': '2.87" x 5" x 2.25"',
-            'Brand': 'Boss'
-        }
-    },
-    {
-        id: 113,
-        name: 'Clip-On Tuner',
-        brand: 'Snark',
-        category: 'tuners',
-        price: 19.99,
-        originalPrice: 24.99,
-        badge: 'Sale',
-        image: 'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
-            'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800',
-            'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=800',
-            'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800'
-        ],
-        description: 'Compact clip-on tuner with bright display. Perfect for quick tuning adjustments on stage or in the studio.',
-        rating: 4.6,
-        reviews: 612,
-        specs: {
-            'Type': 'Clip-On Chromatic',
-            'Display': 'Full Color',
-            'Accuracy': '+/- 1 cent',
-            'Battery': 'CR2032',
-            'Modes': 'Guitar, Bass, Violin',
-            'Rotation': '360°',
-            'Auto Off': 'Yes',
-            'Brand': 'Snark'
-        }
-    },
-    {
-        id: 114,
-        name: 'Bass Guitar Strings',
-        brand: 'Ernie Ball',
-        category: 'strings',
-        price: 29.99,
-        originalPrice: 34.99,
-        badge: '',
-        image: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=800',
-            'https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?w=800',
-            'https://images.unsplash.com/photo-1614963042989-c20d89097a68?w=800',
-            'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800'
-        ],
-        description: 'Professional bass guitar strings with punchy tone and excellent sustain. Round-wound construction for bright attack.',
-        rating: 4.8,
-        reviews: 245,
-        specs: {
-            'Gauge': '.045-.105',
-            'Material': 'Nickel Wound',
-            'Coating': 'No',
-            'Strings': '4',
-            'Tone': 'Bright',
-            'Durability': 'High',
-            'Package': 'Single Set',
-            'Brand': 'Ernie Ball'
-        }
-    },
-    {
-        id: 115,
-        name: 'Guitar Strap Leather',
-        brand: "Levy's",
-        category: 'cases',
-        price: 49.99,
-        originalPrice: 59.99,
-        badge: 'Popular',
-        image: 'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
-            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
-            'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800'
-        ],
-        description: 'Premium leather guitar strap with comfortable padding. Adjustable length and durable construction for long-lasting use.',
-        rating: 4.9,
-        reviews: 389,
-        specs: {
-            'Material': 'Genuine Leather',
-            'Width': '2.5"',
-            'Length': 'Adjustable 42"-60"',
-            'Padding': 'Yes',
-            'Ends': 'Leather Reinforced',
-            'Color': 'Brown',
-            'Style': 'Classic',
-            'Brand': "Levy's"
-        }
-    },
-    {
-        id: 116,
-        name: 'Pedalboard Case',
-        brand: 'Pedaltrain',
-        category: 'cases',
-        price: 199.99,
-        originalPrice: 249.99,
-        badge: 'New',
-        image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
-            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800'
-        ],
-        description: 'Professional pedalboard with tour-grade case. Includes mounting tape and cable management. Perfect for gigging musicians.',
-        rating: 4.9,
-        reviews: 234,
-        specs: {
-            'Size': 'Medium (24" x 12.5")',
-            'Case': 'Soft Case Included',
-            'Material': 'Aircraft Aluminum',
-            'Weight': '6 lbs',
-            'Cable Management': 'Yes',
-            'Mounting': 'Hook & Loop',
-            'Capacity': '8-10 pedals',
-            'Brand': 'Pedaltrain'
-        }
-    }
-];
+// Accessories are fetched from the API - no hardcoded database needed
 
 class AccessoriesDetailPage {
     constructor() {
@@ -480,15 +14,20 @@ class AccessoriesDetailPage {
         this.init();
     }
 
-    init() {
-        this.loadProduct();
+    async init() {
+        // Initialize navigation first (doesn't depend on product data)
+        this.initNavigation();
+        
+        // Wait for product to load before initializing components that need it
+        await this.loadProduct();
+        
+        // Now initialize components that depend on product data
         this.initImageGallery();
         this.initTabs();
         this.initQuantitySelector();
         this.initAddToCart();
         this.initWishlist();
         this.loadRelatedProducts();
-        this.initNavigation();
     }
 
     /**
@@ -705,18 +244,24 @@ class AccessoriesDetailPage {
     /**
      * Load Product from URL or default
      */
-    loadProduct() {
-        // Get product ID from URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const productId = parseInt(urlParams.get('id')) || 101;
+    async loadProduct() {
+        try {
+            // Get product ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = parseInt(urlParams.get('id')) || 101;
 
-        // Find product in database
-        this.currentProduct = ACCESSORIES_DATABASE_DETAIL.find(p => p.id === productId) || ACCESSORIES_DATABASE_DETAIL[0];
+            // Fetch accessory from API
+            const response = await apiRequest(API.ACCESSORIES.DETAIL(productId));
+            this.currentProduct = response;
 
-        // Update page content
-        this.updateProductInfo();
-        this.updateImages();
-        this.updateSpecifications();
+            // Update page content
+            this.updateProductInfo();
+            this.updateImages();
+            this.updateSpecifications();
+        } catch (error) {
+            console.error('Error loading accessory:', error);
+            this.showNotification('Failed to load accessory details', 'error');
+        }
     }
 
     /**
@@ -730,12 +275,22 @@ class AccessoriesDetailPage {
         document.getElementById('productBrand').textContent = product.brand;
         document.getElementById('productTitle').textContent = product.name;
         document.getElementById('productPrice').textContent = `$${product.price}`;
-        document.getElementById('originalPrice').textContent = `$${product.originalPrice}`;
+        
+        // Handle originalPrice - if not in database, hide the discount elements
+        const originalPriceEl = document.getElementById('originalPrice');
+        const discountBadgeEl = document.getElementById('discountBadge');
+        if (product.originalPrice && product.originalPrice > product.price) {
+            originalPriceEl.textContent = `$${product.originalPrice}`;
+            const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
+            discountBadgeEl.textContent = `-${discount}%`;
+            originalPriceEl.style.display = '';
+            discountBadgeEl.style.display = '';
+        } else {
+            originalPriceEl.style.display = 'none';
+            discountBadgeEl.style.display = 'none';
+        }
+        
         document.getElementById('productDescription').textContent = product.description;
-
-        // Calculate discount percentage
-        const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
-        document.getElementById('discountBadge').textContent = `-${discount}%`;
 
         // Update page title
         document.title = `${product.name} - GuitarHub`;
@@ -749,12 +304,15 @@ class AccessoriesDetailPage {
         const mainImage = document.getElementById('mainImage');
         const thumbnailGallery = document.querySelector('.thumbnail-gallery');
 
+        // Handle both single image (from database) and images array (if exists)
+        const images = product.images || [product.image];
+        
         // Set main image
-        mainImage.src = product.images[0];
+        mainImage.src = images[0];
         mainImage.alt = product.name;
 
         // Create thumbnails
-        thumbnailGallery.innerHTML = product.images.map((img, index) => `
+        thumbnailGallery.innerHTML = images.map((img, index) => `
             <div class="thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}">
                 <img src="${img}" alt="${product.name} ${index + 1}">
             </div>
@@ -802,12 +360,21 @@ class AccessoriesDetailPage {
         const specsContainer = document.getElementById('specsContainer');
         const specs = this.currentProduct.specs;
 
-        specsContainer.innerHTML = Object.entries(specs).map(([label, value]) => `
-            <div class="spec-item">
-                <span class="spec-label">${label}</span>
-                <span class="spec-value">${value}</span>
-            </div>
-        `).join('');
+        // Handle missing specs field
+        if (specs && Object.keys(specs).length > 0) {
+            specsContainer.innerHTML = Object.entries(specs).map(([label, value]) => `
+                <div class="spec-item">
+                    <span class="spec-label">${label}</span>
+                    <span class="spec-value">${value}</span>
+                </div>
+            `).join('');
+        } else {
+            specsContainer.innerHTML = `
+                <div class="spec-item" style="text-align: center; color: #666; grid-column: 1/-1;">
+                    Specifications not available
+                </div>
+            `;
+        }
     }
 
     /**
@@ -932,13 +499,17 @@ class AccessoriesDetailPage {
     /**
      * Load Related Products
      */
-    loadRelatedProducts() {
-        const relatedGrid = document.getElementById('relatedProductsGrid');
-        
-        // Filter products in the same category, excluding current
-        const relatedProducts = ACCESSORIES_DATABASE_DETAIL
-            .filter(p => p.category === this.currentProduct.category && p.id !== this.currentProduct.id)
-            .slice(0, 4);
+    async loadRelatedProducts() {
+        try {
+            const relatedGrid = document.getElementById('relatedProductsGrid');
+            
+            // Fetch accessories from the same category
+            const response = await apiRequest(`${API.ACCESSORIES.LIST}?category=${this.currentProduct.category}&limit=5`);
+            
+            // Filter out current product and limit to 4
+            const relatedProducts = response.accessories
+                .filter(p => p.id !== this.currentProduct.id)
+                .slice(0, 4);
 
         relatedGrid.innerHTML = relatedProducts.map(product => {
             const badge = product.badge || '';
@@ -962,6 +533,9 @@ class AccessoriesDetailPage {
                 </div>
             `;
         }).join('');
+        } catch (error) {
+            console.error('Error loading related accessories:', error);
+        }
     }
 
     /**

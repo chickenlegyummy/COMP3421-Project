@@ -3,473 +3,7 @@
  * Handles product detail display, image gallery, tabs, and related products
  */
 
-// Import product database from products.js
-const PRODUCT_DATABASE = [
-    {
-        id: 1,
-        name: 'Les Paul Standard',
-        brand: 'Gibson',
-        category: 'electric',
-        price: 2499,
-        originalPrice: 2999,
-        badge: 'New',
-        image: 'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
-            'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800',
-            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800'
-        ],
-        description: 'The iconic Les Paul Standard represents the pinnacle of electric guitar craftsmanship. With its mahogany body, maple top, and exceptional playability, this guitar delivers the legendary tone that has defined rock music for generations.',
-        rating: 4.8,
-        reviews: 127,
-        specs: {
-            'Body Material': 'Mahogany',
-            'Top Material': 'Maple',
-            'Neck Material': 'Mahogany',
-            'Fretboard': 'Rosewood',
-            'Scale Length': '24.75"',
-            'Frets': '22',
-            'Pickups': 'Humbucker x2',
-            'Hardware': 'Chrome'
-        }
-    },
-    {
-        id: 2,
-        name: 'Stratocaster Deluxe',
-        brand: 'Fender',
-        category: 'electric',
-        price: 2099,
-        originalPrice: 2499,
-        badge: 'Sale',
-        image: 'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800',
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
-            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800'
-        ],
-        description: 'The Stratocaster Deluxe combines classic Fender tone with modern innovations. Featuring premium pickups and exceptional playability, this guitar is perfect for players seeking versatile tones.',
-        rating: 4.9,
-        reviews: 203,
-        specs: {
-            'Body Material': 'Alder',
-            'Top Material': 'Alder',
-            'Neck Material': 'Maple',
-            'Fretboard': 'Maple',
-            'Scale Length': '25.5"',
-            'Frets': '22',
-            'Pickups': 'Single-Coil x3',
-            'Hardware': 'Nickel'
-        }
-    },
-    {
-        id: 3,
-        name: 'Acoustic Dreadnought',
-        brand: 'Martin',
-        category: 'acoustic',
-        price: 1899,
-        originalPrice: 2199,
-        badge: '',
-        image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
-            'https://images.unsplash.com/photo-1525201548942-d8732f6617a0?w=800',
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800'
-        ],
-        description: 'Classic dreadnought acoustic guitar with rich, powerful tone. Perfect for strumming and fingerpicking, this instrument delivers exceptional sound quality.',
-        rating: 4.7,
-        reviews: 156,
-        specs: {
-            'Body Style': 'Dreadnought',
-            'Top Material': 'Sitka Spruce',
-            'Back & Sides': 'Rosewood',
-            'Neck Material': 'Mahogany',
-            'Fretboard': 'Rosewood',
-            'Scale Length': '25.4"',
-            'Frets': '20',
-            'Electronics': 'None'
-        }
-    },
-    {
-        id: 4,
-        name: 'Jazz Bass Premium',
-        brand: 'Fender',
-        category: 'bass',
-        price: 2299,
-        originalPrice: 2699,
-        badge: 'Popular',
-        image: 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800',
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
-            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800'
-        ],
-        description: 'Premium Jazz Bass featuring classic tone and modern playability. Dual single-coil pickups deliver the iconic sound that has defined bass playing for decades.',
-        rating: 4.8,
-        reviews: 189,
-        specs: {
-            'Body Material': 'Alder',
-            'Neck Material': 'Maple',
-            'Fretboard': 'Rosewood',
-            'Scale Length': '34"',
-            'Frets': '20',
-            'Pickups': 'Single-Coil x2',
-            'Strings': '4',
-            'Hardware': 'Chrome'
-        }
-    },
-    {
-        id: 5,
-        name: 'SG Special',
-        brand: 'Gibson',
-        category: 'electric',
-        price: 1599,
-        originalPrice: 1899,
-        badge: '',
-        image: 'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
-            'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800',
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800'
-        ],
-        description: 'The SG Special delivers classic Gibson tone in a lightweight, double-cutaway design. Perfect for rock and blues players seeking powerful humbucker tones.',
-        rating: 4.7,
-        reviews: 134,
-        specs: {
-            'Body Material': 'Mahogany',
-            'Neck Material': 'Mahogany',
-            'Fretboard': 'Rosewood',
-            'Scale Length': '24.75"',
-            'Frets': '22',
-            'Pickups': 'Humbucker x2',
-            'Hardware': 'Chrome',
-            'Weight': 'Light'
-        }
-    },
-    {
-        id: 6,
-        name: 'Telecaster Classic',
-        brand: 'Fender',
-        category: 'electric',
-        price: 1899,
-        originalPrice: 2199,
-        badge: 'Sale',
-        image: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
-            'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800',
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
-            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800'
-        ],
-        description: 'Classic Telecaster offering legendary twang and versatile tones. From country to rock, this guitar delivers the authentic Fender sound.',
-        rating: 4.8,
-        reviews: 167,
-        specs: {
-            'Body Material': 'Ash',
-            'Neck Material': 'Maple',
-            'Fretboard': 'Maple',
-            'Scale Length': '25.5"',
-            'Frets': '21',
-            'Pickups': 'Single-Coil x2',
-            'Hardware': 'Chrome',
-            'Bridge': 'Fixed'
-        }
-    },
-    {
-        id: 7,
-        name: 'Classical Pro',
-        brand: 'Martin',
-        category: 'classical',
-        price: 899,
-        originalPrice: 1099,
-        badge: '',
-        image: 'https://images.unsplash.com/photo-1525201548942-d8732f6617a0?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1525201548942-d8732f6617a0?w=800',
-            'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800'
-        ],
-        description: 'Professional classical guitar with warm, resonant tone. Features traditional construction with premium tonewoods and nylon strings.',
-        rating: 4.6,
-        reviews: 98,
-        specs: {
-            'Body Style': 'Classical',
-            'Top Material': 'Cedar',
-            'Back & Sides': 'Mahogany',
-            'Neck Material': 'Mahogany',
-            'Fretboard': 'Rosewood',
-            'Scale Length': '25.6"',
-            'Frets': '19',
-            'Strings': 'Nylon'
-        }
-    },
-    {
-        id: 8,
-        name: 'RG Series',
-        brand: 'Ibanez',
-        category: 'electric',
-        price: 799,
-        originalPrice: 999,
-        badge: 'New',
-        image: 'https://images.unsplash.com/photo-1558272287-4fbd5d9bfd9d?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1558272287-4fbd5d9bfd9d?w=800',
-            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800'
-        ],
-        description: 'High-performance electric guitar designed for speed and precision. Perfect for metal and rock players seeking aggressive tones and fast playability.',
-        rating: 4.7,
-        reviews: 223,
-        specs: {
-            'Body Material': 'Basswood',
-            'Neck Material': 'Maple',
-            'Fretboard': 'Rosewood',
-            'Scale Length': '25.5"',
-            'Frets': '24',
-            'Pickups': 'Humbucker x2, Single-Coil x1',
-            'Hardware': 'Black',
-            'Bridge': 'Floyd Rose'
-        }
-    },
-    {
-        id: 9,
-        name: 'Precision Bass',
-        brand: 'Fender',
-        category: 'bass',
-        price: 1799,
-        originalPrice: 2099,
-        badge: '',
-        image: 'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
-            'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800',
-            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800'
-        ],
-        description: 'The legendary Precision Bass delivers powerful, punchy tone. Split-coil pickup provides the classic sound that has defined bass playing.',
-        rating: 4.9,
-        reviews: 245,
-        specs: {
-            'Body Material': 'Alder',
-            'Neck Material': 'Maple',
-            'Fretboard': 'Maple',
-            'Scale Length': '34"',
-            'Frets': '20',
-            'Pickups': 'Split-Coil',
-            'Strings': '4',
-            'Hardware': 'Chrome'
-        }
-    },
-    {
-        id: 10,
-        name: 'J-45 Acoustic',
-        brand: 'Gibson',
-        category: 'acoustic',
-        price: 2799,
-        originalPrice: 3199,
-        badge: 'Popular',
-        image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
-            'https://images.unsplash.com/photo-1525201548942-d8732f6617a0?w=800',
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800'
-        ],
-        description: 'Iconic Gibson acoustic guitar with warm, balanced tone. The J-45 has been a favorite of songwriters for generations.',
-        rating: 4.9,
-        reviews: 178,
-        specs: {
-            'Body Style': 'Round Shoulder',
-            'Top Material': 'Sitka Spruce',
-            'Back & Sides': 'Mahogany',
-            'Neck Material': 'Mahogany',
-            'Fretboard': 'Rosewood',
-            'Scale Length': '24.75"',
-            'Frets': '20',
-            'Electronics': 'Optional'
-        }
-    },
-    {
-        id: 11,
-        name: 'Explorer',
-        brand: 'Gibson',
-        category: 'electric',
-        price: 2199,
-        originalPrice: 2599,
-        badge: '',
-        image: 'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
-            'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800',
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800'
-        ],
-        description: 'Bold and aggressive Explorer design with powerful humbucker pickups. Perfect for rock and metal players seeking distinctive tone and style.',
-        rating: 4.7,
-        reviews: 142,
-        specs: {
-            'Body Material': 'Mahogany',
-            'Neck Material': 'Mahogany',
-            'Fretboard': 'Rosewood',
-            'Scale Length': '24.75"',
-            'Frets': '22',
-            'Pickups': 'Humbucker x2',
-            'Hardware': 'Chrome',
-            'Shape': 'Explorer'
-        }
-    },
-    {
-        id: 12,
-        name: 'SR Bass',
-        brand: 'Ibanez',
-        category: 'bass',
-        price: 699,
-        originalPrice: 899,
-        badge: 'Sale',
-        image: 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800',
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
-            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800'
-        ],
-        description: 'Versatile SR Bass with slim neck profile and active electronics. Perfect for modern players seeking fast playability and tonal flexibility.',
-        rating: 4.6,
-        reviews: 198,
-        specs: {
-            'Body Material': 'Mahogany',
-            'Neck Material': 'Maple',
-            'Fretboard': 'Rosewood',
-            'Scale Length': '34"',
-            'Frets': '24',
-            'Pickups': 'Active x2',
-            'Strings': '4',
-            'Electronics': 'Active EQ'
-        }
-    },
-    {
-        id: 13,
-        name: 'D-28 Acoustic',
-        brand: 'Martin',
-        category: 'acoustic',
-        price: 3199,
-        originalPrice: 3599,
-        badge: 'New',
-        image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
-            'https://images.unsplash.com/photo-1525201548942-d8732f6617a0?w=800',
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800'
-        ],
-        description: 'The legendary Martin D-28 has been a favorite of musicians for decades. Rich, powerful tone and stunning craftsmanship define this classic dreadnought.',
-        rating: 4.9,
-        reviews: 267,
-        specs: {
-            'Body Style': 'Dreadnought',
-            'Top Material': 'Sitka Spruce',
-            'Back & Sides': 'East Indian Rosewood',
-            'Neck Material': 'Select Hardwood',
-            'Fretboard': 'Ebony',
-            'Scale Length': '25.4"',
-            'Frets': '20',
-            'Electronics': 'None'
-        }
-    },
-    {
-        id: 14,
-        name: 'Jem Series',
-        brand: 'Ibanez',
-        category: 'electric',
-        price: 1999,
-        originalPrice: 2399,
-        badge: '',
-        image: 'https://images.unsplash.com/photo-1558272287-4fbd5d9bfd9d?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1558272287-4fbd5d9bfd9d?w=800',
-            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800',
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800'
-        ],
-        description: 'Signature Jem Series guitar featuring unique styling and premium components. Designed for virtuoso players seeking exceptional tone and playability.',
-        rating: 4.8,
-        reviews: 156,
-        specs: {
-            'Body Material': 'Basswood',
-            'Neck Material': 'Maple',
-            'Fretboard': 'Maple',
-            'Scale Length': '25.5"',
-            'Frets': '24',
-            'Pickups': 'DiMarzio',
-            'Hardware': 'Gold',
-            'Bridge': 'Edge Tremolo'
-        }
-    },
-    {
-        id: 15,
-        name: 'Nylon Classical',
-        brand: 'Gibson',
-        category: 'classical',
-        price: 1299,
-        originalPrice: 1599,
-        badge: '',
-        image: 'https://images.unsplash.com/photo-1525201548942-d8732f6617a0?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1525201548942-d8732f6617a0?w=800',
-            'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=800',
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800'
-        ],
-        description: 'Premium classical guitar with exceptional tonal clarity. Traditional construction with modern refinements for discerning players.',
-        rating: 4.7,
-        reviews: 112,
-        specs: {
-            'Body Style': 'Classical',
-            'Top Material': 'Spruce',
-            'Back & Sides': 'Rosewood',
-            'Neck Material': 'Mahogany',
-            'Fretboard': 'Ebony',
-            'Scale Length': '25.6"',
-            'Frets': '19',
-            'Strings': 'Nylon'
-        }
-    },
-    {
-        id: 16,
-        name: 'American Ultra',
-        brand: 'Fender',
-        category: 'electric',
-        price: 2899,
-        originalPrice: 3299,
-        badge: 'Popular',
-        image: 'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800',
-        images: [
-            'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800',
-            'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800',
-            'https://images.unsplash.com/photo-1556449895-a33c9dba33dd?w=800',
-            'https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?w=800'
-        ],
-        description: 'The ultimate Fender performance guitar featuring modern appointments and premium craftsmanship. Ultra Noiseless pickups and advanced ergonomics.',
-        rating: 4.9,
-        reviews: 189,
-        specs: {
-            'Body Material': 'Alder',
-            'Neck Material': 'Maple',
-            'Fretboard': 'Maple',
-            'Scale Length': '25.5"',
-            'Frets': '22',
-            'Pickups': 'Ultra Noiseless x3',
-            'Hardware': 'Chrome',
-            'Bridge': '2-Point Tremolo'
-        }
-    }
-];
+// Products are fetched from the API - no hardcoded database needed
 
 class ProductDetailPage {
     constructor() {
@@ -481,8 +15,14 @@ class ProductDetailPage {
         this.init();
     }
 
-    init() {
-        this.loadProduct();
+    async init() {
+        // Initialize navigation first (doesn't depend on product data)
+        this.initNavigation();
+        
+        // Wait for product to load before initializing components that need it
+        await this.loadProduct();
+        
+        // Now initialize components that depend on product data
         this.initImageGallery();
         this.initTabs();
         this.initColorOptions();
@@ -490,7 +30,6 @@ class ProductDetailPage {
         this.initAddToCart();
         this.initWishlist();
         this.loadRelatedProducts();
-        this.initNavigation();
     }
 
     /**
@@ -707,18 +246,24 @@ class ProductDetailPage {
     /**
      * Load Product from URL or default
      */
-    loadProduct() {
-        // Get product ID from URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const productId = parseInt(urlParams.get('id')) || 1;
+    async loadProduct() {
+        try {
+            // Get product ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = parseInt(urlParams.get('id')) || 1;
 
-        // Find product in database
-        this.currentProduct = PRODUCT_DATABASE.find(p => p.id === productId) || PRODUCT_DATABASE[0];
+            // Fetch product from API
+            const response = await apiRequest(API.PRODUCTS.DETAIL(productId));
+            this.currentProduct = response;
 
-        // Update page content
-        this.updateProductInfo();
-        this.updateImages();
-        this.updateSpecifications();
+            // Update page content
+            this.updateProductInfo();
+            this.updateImages();
+            this.updateSpecifications();
+        } catch (error) {
+            console.error('Error loading product:', error);
+            this.showNotification('Failed to load product details', 'error');
+        }
     }
 
     /**
@@ -732,12 +277,22 @@ class ProductDetailPage {
         document.getElementById('productBrand').textContent = product.brand;
         document.getElementById('productTitle').textContent = product.name;
         document.getElementById('productPrice').textContent = `$${product.price}`;
-        document.getElementById('originalPrice').textContent = `$${product.originalPrice}`;
+        
+        // Handle originalPrice - if not in database, hide the discount elements
+        const originalPriceEl = document.getElementById('originalPrice');
+        const discountBadgeEl = document.getElementById('discountBadge');
+        if (product.originalPrice && product.originalPrice > product.price) {
+            originalPriceEl.textContent = `$${product.originalPrice}`;
+            const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
+            discountBadgeEl.textContent = `-${discount}%`;
+            originalPriceEl.style.display = '';
+            discountBadgeEl.style.display = '';
+        } else {
+            originalPriceEl.style.display = 'none';
+            discountBadgeEl.style.display = 'none';
+        }
+        
         document.getElementById('productDescription').textContent = product.description;
-
-        // Calculate discount percentage
-        const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
-        document.getElementById('discountBadge').textContent = `-${discount}%`;
 
         // Update page title
         document.title = `${product.name} - Guitar Shop`;
@@ -751,12 +306,15 @@ class ProductDetailPage {
         const mainImage = document.getElementById('mainImage');
         const thumbnailGallery = document.querySelector('.thumbnail-gallery');
 
+        // Handle both single image (from database) and images array (if exists)
+        const images = product.images || [product.image];
+        
         // Set main image
-        mainImage.src = product.images[0];
+        mainImage.src = images[0];
         mainImage.alt = product.name;
 
         // Create thumbnails
-        thumbnailGallery.innerHTML = product.images.map((img, index) => `
+        thumbnailGallery.innerHTML = images.map((img, index) => `
             <div class="thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}">
                 <img src="${img}" alt="${product.name} ${index + 1}">
             </div>
@@ -804,12 +362,21 @@ class ProductDetailPage {
         const specsContainer = document.getElementById('specsContainer');
         const specs = this.currentProduct.specs;
 
-        specsContainer.innerHTML = Object.entries(specs).map(([label, value]) => `
-            <div class="spec-item">
-                <span class="spec-label">${label}</span>
-                <span class="spec-value">${value}</span>
-            </div>
-        `).join('');
+        // Handle missing specs field
+        if (specs && Object.keys(specs).length > 0) {
+            specsContainer.innerHTML = Object.entries(specs).map(([label, value]) => `
+                <div class="spec-item">
+                    <span class="spec-label">${label}</span>
+                    <span class="spec-value">${value}</span>
+                </div>
+            `).join('');
+        } else {
+            specsContainer.innerHTML = `
+                <div class="spec-item" style="text-align: center; color: #666; grid-column: 1/-1;">
+                    Specifications not available
+                </div>
+            `;
+        }
     }
 
     /**
@@ -950,13 +517,17 @@ class ProductDetailPage {
     /**
      * Load Related Products
      */
-    loadRelatedProducts() {
-        const relatedGrid = document.getElementById('relatedProductsGrid');
-        
-        // Filter products in the same category, excluding current
-        const relatedProducts = PRODUCT_DATABASE
-            .filter(p => p.category === this.currentProduct.category && p.id !== this.currentProduct.id)
-            .slice(0, 4);
+    async loadRelatedProducts() {
+        try {
+            const relatedGrid = document.getElementById('relatedProductsGrid');
+            
+            // Fetch products from the same category
+            const response = await apiRequest(`${API.PRODUCTS.LIST}?category=${this.currentProduct.category}&limit=5`);
+            
+            // Filter out current product and limit to 4
+            const relatedProducts = response.products
+                .filter(p => p.id !== this.currentProduct.id)
+                .slice(0, 4);
 
         relatedGrid.innerHTML = relatedProducts.map(product => {
             const badge = product.badge || '';
@@ -980,6 +551,9 @@ class ProductDetailPage {
                 </div>
             `;
         }).join('');
+        } catch (error) {
+            console.error('Error loading related products:', error);
+        }
     }
 
     /**
