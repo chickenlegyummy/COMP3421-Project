@@ -46,6 +46,9 @@ const PRODUCTS_DATABASE = [
     { id: 16, name: 'American Ultra', category: 'electric', brand: 'fender', price: 2899, image: 'https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=300', badge: 'Popular', featured: true },
 ];
 
+// Make PRODUCTS_DATABASE globally accessible
+window.PRODUCTS_DATABASE = PRODUCTS_DATABASE;
+
 class ProductsPage {
     constructor() {
         this.allProducts = [...PRODUCTS_DATABASE];

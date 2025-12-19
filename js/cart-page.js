@@ -3,29 +3,6 @@
  * Handles cart display, quantity management, and checkout
  */
 
-// Mobile menu position calculator
-const updateMobileMenuPosition = () => {
-    if (window.innerWidth <= 992) {
-        const navCenter = document.querySelector('.nav-center');
-        const topBanner = document.querySelector('.top-banner');
-        const navbar = document.querySelector('.navbar');
-        const topOffset = (topBanner?.offsetHeight || 0) + (navbar?.offsetHeight || 0);
-        if (navCenter) {
-            navCenter.style.top = `${topOffset}px`;
-            navCenter.style.height = `calc(100vh - ${topOffset}px)`;
-        }
-        document.documentElement.style.setProperty('--menu-top-offset', `${topOffset}px`);
-    } else {
-        const navCenter = document.querySelector('.nav-center');
-        if (navCenter) {
-            navCenter.style.top = '';
-            navCenter.style.height = '';
-        }
-        document.documentElement.style.removeProperty('--menu-top-offset');
-    }
-};
-window.updateMobileMenuPosition = updateMobileMenuPosition;
-
 class CartPage {
     constructor() {
         this.cart = cartManager.getCart();

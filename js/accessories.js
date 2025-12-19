@@ -46,6 +46,9 @@ const ACCESSORIES_DATABASE = [
     { id: 116, name: 'Pedalboard Case', category: 'cases', brand: 'pedaltrain', price: 199.99, image: 'https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?w=300', badge: 'New', featured: true },
 ];
 
+// Make ACCESSORIES_DATABASE globally accessible
+window.ACCESSORIES_DATABASE = ACCESSORIES_DATABASE;
+
 class AccessoriesPage {
     constructor() {
         this.allProducts = [...ACCESSORIES_DATABASE];

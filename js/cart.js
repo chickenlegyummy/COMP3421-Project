@@ -172,6 +172,9 @@ class CartManager {
 // Initialize cart manager
 const cartManager = new CartManager();
 
+// Make cartManager globally accessible
+window.cartManager = cartManager;
+
 // Export for use in other scripts
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = CartManager;

@@ -26,7 +26,8 @@ const updateMobileMenuPosition = () => {
 };
 window.updateMobileMenuPosition = updateMobileMenuPosition;
 
-// Import product database from products.js
+// NOTE: Frontend-only version - Product data is hardcoded since there's no backend API
+// In the backend version, this data is fetched from the database via API calls
 const PRODUCT_DATABASE = [
     {
         id: 1,

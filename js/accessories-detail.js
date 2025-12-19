@@ -26,7 +26,8 @@ const updateMobileMenuPosition = () => {
 };
 window.updateMobileMenuPosition = updateMobileMenuPosition;
 
-// Import accessories database from accessories.js
+// NOTE: Frontend-only version - Accessory data is hardcoded since there's no backend API
+// In the backend version, this data is fetched from the database via API calls
 const ACCESSORIES_DATABASE_DETAIL = [
     {
         id: 101,
