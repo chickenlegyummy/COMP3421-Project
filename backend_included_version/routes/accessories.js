@@ -142,6 +142,16 @@ router.get('/:id', async (req, res) => {
             return res.status(404).json({ error: 'Accessory not found' });
         }
 
+        // Parse specs JSON if it exists
+        if (accessory.specs) {
+            try {
+                accessory.specs = JSON.parse(accessory.specs);
+            } catch (e) {
+                console.error('Error parsing accessory specs:', e);
+                accessory.specs = null;
+            }
+        }
+
         // Get related accessories (same category, excluding current)
         const relatedAccessories = await allAsync(
             `SELECT id, name, category, brand, price, image, badge, featured

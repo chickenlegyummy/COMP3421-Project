@@ -142,6 +142,16 @@ router.get('/:id', async (req, res) => {
             return res.status(404).json({ error: 'Product not found' });
         }
 
+        // Parse specs JSON if it exists
+        if (product.specs) {
+            try {
+                product.specs = JSON.parse(product.specs);
+            } catch (e) {
+                console.error('Error parsing product specs:', e);
+                product.specs = null;
+            }
+        }
+
         // Get related products (same category, excluding current product)
         const relatedProducts = await allAsync(
             `SELECT id, name, category, brand, price, image, badge, featured

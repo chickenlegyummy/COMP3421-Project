@@ -50,6 +50,7 @@ function initializeTables() {
                     badge TEXT,
                     featured INTEGER DEFAULT 0,
                     stock_quantity INTEGER DEFAULT 0,
+                    specs TEXT,
                     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
                 )
             `);
@@ -67,6 +68,7 @@ function initializeTables() {
                     badge TEXT,
                     featured INTEGER DEFAULT 0,
                     stock_quantity INTEGER DEFAULT 0,
+                    specs TEXT,
                     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
                 )
             `);
