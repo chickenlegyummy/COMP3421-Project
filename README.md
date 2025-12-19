@@ -132,18 +132,6 @@ After initialization:
 
 ---
 
-## 📚 Documentation
-
-Comprehensive documentation is available in the **backend_included_version/** directory:
-
-1. **[README.md](backend_included_version/README.md)** - Complete setup and usage guide
-2. **[QUICKSTART.md](backend_included_version/QUICKSTART.md)** - 5-minute quick start
-3. **[API_DOCUMENTATION.md](backend_included_version/API_DOCUMENTATION.md)** - Full API reference
-4. **[IMPLEMENTATION_SUMMARY.md](backend_included_version/IMPLEMENTATION_SUMMARY.md)** - Technical details
-5. **[PROJECT_README.md](PROJECT_README.md)** - Project overview and structure
-
----
-
 ## 📁 Frontend-Only Version Details
 
 This section describes the root directory frontend-only version.
@@ -398,15 +386,6 @@ This project is created for educational purposes as part of a web development co
 - User authentication
 - Responsive frontend
 - Modern JavaScript (ES6+)
-
----
-
-## 📧 Support
-
-For issues or questions:
-1. Check the documentation in [backend_included_version/](backend_included_version/)
-2. Review [API_DOCUMENTATION.md](backend_included_version/API_DOCUMENTATION.md)
-3. See [QUICKSTART.md](backend_included_version/QUICKSTART.md) for setup help
 
 ---
 
